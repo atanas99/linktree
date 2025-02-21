@@ -5,6 +5,7 @@ import com.example.linktree.users.dto.UserUpdateDto;
 import com.example.linktree.users.entity.User;
 import com.example.linktree.users.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,5 +32,11 @@ public class UserController {
     @PostMapping("/create")
     public User createUser(@RequestBody UserCreationDto user) {
         return this.userService.createUser(user);
+    }
+
+    @GetMapping("/get/{username}")
+    public ResponseEntity<UserUpdateDto> getUser(@PathVariable String username) {
+        UserUpdateDto userDto = this.userService.getEntityByUsername(username);
+        return ResponseEntity.ok(userDto);
     }
 }
