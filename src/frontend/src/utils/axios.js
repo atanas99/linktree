@@ -31,28 +31,18 @@ export const fetcher = async (args) => {
 // ----------------------------------------------------------------------
 
 export const endpoints = {
-  chat: '/api/chat',
-  kanban: '/api/kanban',
-  calendar: '/api/calendar',
   auth: {
-    me: '/api/auth/me',
-    signIn: '/api/auth/sign-in',
-    signUp: '/api/auth/sign-up',
+    signIn: '/session/login',
+    signUp: '/users/create',
+    csrfToken: '/session/csrf-token',
   },
-  mail: {
-    list: '/api/mail/list',
-    details: '/api/mail/details',
-    labels: '/api/mail/labels',
+  links: {
+    createLink: '/links/create',
+    updateLink: '/links/update/',
+    allLinks: '/links/all',
+    delete: '/links/delete',
   },
-  post: {
-    list: '/api/post/list',
-    details: '/api/post/details',
-    latest: '/api/post/latest',
-    search: '/api/post/search',
-  },
-  product: {
-    list: '/api/product/list',
-    details: '/api/product/details',
-    search: '/api/product/search',
-  },
+  users: {
+    getUserByLinkId: (linkId) => `/users/link${linkId}`,
+  }
 };

@@ -40,7 +40,7 @@ public class LinksController {
         return linkService.updateLink(link);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete")
     public void deleteLink(@RequestBody BigInteger id) {
         linkService.deleteLink(id);
     }

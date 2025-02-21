@@ -23,7 +23,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/userByLinkId{id}")
+    @GetMapping("/link{id}")
     public UserUpdateDto getUserByLinkId(@PathVariable BigInteger id) {
         return userService.getUserByLinkId(id);
     }
