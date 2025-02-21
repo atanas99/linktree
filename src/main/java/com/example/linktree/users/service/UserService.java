@@ -39,4 +39,13 @@ public class UserService {
         user.setPassword(encoder.encode(dto.getPassword()));
         return userRepository.save(user);
     }
+
+    public UserUpdateDto getEntityByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+
+        UserUpdateDto userDto = new UserUpdateDto();
+        userDto.setId(user.getId());
+        userDto.setUsername(user.getUsername());
+        return userDto;
+    }
 }
