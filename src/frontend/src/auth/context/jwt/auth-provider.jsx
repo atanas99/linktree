@@ -1,41 +1,42 @@
 'use client';
 
-import { useMemo, useEffect, useCallback } from 'react';
+import {useCallback, useEffect, useMemo} from 'react';
 
-import { useSetState } from 'src/hooks/use-set-state';
+import {useSetState} from 'src/hooks/use-set-state';
 
-import axios, { endpoints } from 'src/utils/axios';
+import axios, {endpoints} from 'src/utils/axios';
 
-import { STORAGE_KEY } from './constant';
-import { AuthContext } from '../auth-context';
-import { setSession, isValidToken } from './utils';
+import {STORAGE_KEY} from './constant';
+import {AuthContext} from '../auth-context';
+import {isValidToken, jwtDecode, setSession} from './utils';
+import {signOut} from "./action";
 
 // ----------------------------------------------------------------------
 
-export function AuthProvider({ children }) {
-  const { state, setState } = useSetState({
+export function AuthProvider({children}) {
+  const {state, setState} = useSetState({
     user: null,
     loading: true,
   });
 
   const checkUserSession = useCallback(async () => {
     try {
-      const accessToken = sessionStorage.getItem(STORAGE_KEY);
-
+      const accessToken = localStorage.getItem(STORAGE_KEY);
       if (accessToken && isValidToken(accessToken)) {
-        setSession(accessToken);
+        await setSession(accessToken);
+        const username = jwtDecode(accessToken).sub
+        const res = await axios.get(endpoints.users.getUser(username));
+        console.log(res.data)
+        const user = res.data;
 
-        const res = await axios.get(endpoints.auth.me);
-
-        const { user } = res.data;
-
-        setState({ user: { ...user, accessToken }, loading: false });
+        setState({user: {...user, accessToken}, loading: false});
       } else {
-        setState({ user: null, loading: false });
+        setState({user: null, loading: false});
+        await signOut();
       }
     } catch (error) {
       console.error(error);
-      setState({ user: null, loading: false });
+      setState({user: null, loading: false});
     }
   }, [setState]);
 
@@ -47,22 +48,26 @@ export function AuthProvider({ children }) {
   // ----------------------------------------------------------------------
 
   const checkAuthenticated = state.user ? 'authenticated' : 'unauthenticated';
-
   const status = state.loading ? 'loading' : checkAuthenticated;
 
   const memoizedValue = useMemo(
     () => ({
       user: state.user
         ? {
-            ...state.user,
-            role: state.user?.role ?? 'admin',
-          }
+          id: state.user?.userId,
+          role: state.user?.role ?? 'user',
+          displayName: state.user?.username,
+          status: state.user?.status,
+          department: state.user?.department,
+        }
         : null,
       checkUserSession,
       loading: status === 'loading',
       authenticated: status === 'authenticated',
       unauthenticated: status === 'unauthenticated',
+
     }),
+
     [checkUserSession, state.user, status]
   );
 

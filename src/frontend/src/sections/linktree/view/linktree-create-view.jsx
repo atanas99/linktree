@@ -4,17 +4,14 @@ import { useState } from 'react';
 import { Button, Card, Grid, Typography, Box } from '@mui/material';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { LinkItem } from '../linkItem';
+import {getIconByName, getColorByName} from "../socialMediaStyles";
 
-const linkColors = {
-  GitHub: "#333",
-  YouTube: "#FF0000",
-  Twitter: "#1DA1F2",
-  Facebook: "#1877F2",
-  Instagram: "#E4405F",
-  LinkedIn: "#0077B5",
-  TikTok: "#000000",
-  Snapchat: "#FFFC00"
-};
+
+import {Iconify} from "../../../components/iconify";
+
+
+
+
 
 export function LinktreeCreateView() {
   const [links, setLinks] = useState([]);
@@ -50,10 +47,10 @@ export function LinktreeCreateView() {
               <Box
                 sx={{
                   position: "absolute",
-                  top: "44%",
+                  top: "43%",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  width: "85%",
+                  width: "80%",
                   display: "flex",
                   flexDirection: "column",
                   gap: 1
@@ -64,12 +61,12 @@ export function LinktreeCreateView() {
                     key={link.id}
                     fullWidth
                     variant="contained"
+                    startIcon={<Iconify icon={getIconByName(link.name)} />}
                     sx={{
-                      backgroundColor: linkColors[link.name] || "#555",
                       position: "relative",
                       width: "100%",
                       height: "50px",
-                      mt: `${index * 5}px`
+                      mt: `${index + 3}px`
                     }}
                   >
                     {link.name}

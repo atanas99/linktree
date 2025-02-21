@@ -4,7 +4,13 @@ import { CONFIG } from 'src/config-global';
 
 // ----------------------------------------------------------------------
 
-const axiosInstance = axios.create({ baseURL: CONFIG.site.serverUrl });
+const axiosInstance = axios.create({
+  baseURL: 'http://localhost:8080', // Dein Backend-Server
+  proxy: {
+    host: 'localhost',
+    port: 8080,
+  },
+});
 
 axiosInstance.interceptors.response.use(
   (response) => response,
@@ -44,5 +50,6 @@ export const endpoints = {
   },
   users: {
     getUserByLinkId: (linkId) => `/users/link${linkId}`,
+    getUser: (username) => `/users/get/${username}`,
   }
 };
