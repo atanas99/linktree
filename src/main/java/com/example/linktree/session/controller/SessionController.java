@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/session")
-@CrossOrigin(origins = "http://localhost:3039")
+@CrossOrigin()
 public class SessionController {
 
     private final SessionService service;
