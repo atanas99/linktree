@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/links")
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:3033")
 @RequiredArgsConstructor
 public class LinksController {
 
