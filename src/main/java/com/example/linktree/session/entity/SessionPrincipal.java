@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -19,7 +20,11 @@ public class SessionPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ADMIN"));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    }
+
+    public BigInteger getId() {
+        return user.getId();
     }
 
     @Override

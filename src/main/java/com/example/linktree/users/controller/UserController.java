@@ -18,7 +18,7 @@ import java.math.BigInteger;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:3033", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:3033")
 @RequiredArgsConstructor
 public class UserController {
 
