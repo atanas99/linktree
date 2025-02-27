@@ -14,7 +14,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserCreationDto {
     @JsonProperty
-    private String username;
+    private String email;
     @JsonProperty
     private String password;
+    @JsonProperty
+    private String name;
+    @JsonProperty
+    private String surname;
 }

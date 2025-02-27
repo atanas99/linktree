@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigInteger;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,4 +14,11 @@ import java.math.BigInteger;
 public class UserUpdateDto extends UserCreationDto {
     @JsonProperty
     private BigInteger id;
+    @JsonProperty
+    private byte[] content;
+    @JsonProperty
+    private String fileName;
+    @JsonProperty
+    private long size;
+
 }

@@ -8,5 +8,5 @@ import java.math.BigInteger;
 
 @Repository
 public interface SessionRepository extends JpaRepository<User, BigInteger> {
-    User findByUsername(String username);
+    User findByEmail(String email);
 }

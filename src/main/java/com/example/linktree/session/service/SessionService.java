@@ -1,6 +1,5 @@
 package com.example.linktree.session.service;
 
-import com.example.linktree.session.repository.SessionRepository;
 import com.example.linktree.users.dto.UserCreationDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +16,11 @@ public class SessionService {
 
     private final AuthenticationManager authManager;
 
-    private final SessionRepository repository;
 
     public String verify(UserCreationDto user) throws JsonProcessingException {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getUsername());
+            return jwtService.generateToken(user.getEmail());
         } else {
             return "fail";
         }
