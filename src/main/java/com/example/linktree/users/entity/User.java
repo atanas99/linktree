@@ -31,9 +31,15 @@ public class User {
     @SequenceGenerator(name = "UserIdentity", sequenceName = "USER_ID_SEQ", allocationSize = 1)
     private BigInteger id;
     @Column
-    private String username;
+    private String email;
     @Column
     private String password;
+    @Column
+    private String name;
+    @Column
+    private String surname;
+    @Column
+    private byte[] content;
 
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
