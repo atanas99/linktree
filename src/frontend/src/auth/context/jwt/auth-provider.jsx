@@ -55,10 +55,10 @@ export function AuthProvider({children}) {
       user: state.user
         ? {
           id: state.user?.userId,
-          role: state.user?.role ?? 'user',
-          displayName: state.user?.username,
-          status: state.user?.status,
-          department: state.user?.department,
+          email: state.user?.email,
+          name: state.user?.name,
+          content: state.user?.content,
+          surname: state.user?.surname,
         }
         : null,
       checkUserSession,

@@ -1,0 +1,14 @@
+import { CONFIG } from 'src/config-global';
+
+import { HomeView } from 'src/sections/home/view';
+import { LinktreeEditView } from 'src/sections/linktree/view/linktree-edit-view';
+
+// ----------------------------------------------------------------------
+
+export const metadata = { title: `Create - ${CONFIG.site.name}` };
+
+export default function Page() {
+  return (
+    <LinktreeEditView />
+  );
+}

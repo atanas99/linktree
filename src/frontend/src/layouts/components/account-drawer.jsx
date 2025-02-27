@@ -23,14 +23,19 @@ import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 import { AnimateAvatar } from 'src/components/animate';
 
-import { useMockedUser } from 'src/auth/hooks';
+import {useAuthContext, useMockedUser} from 'src/auth/hooks';
 import { AccountButton } from './account-button';
 import { SignOutButton } from './sign-out-button';
+import {useBoolean} from "../../hooks/use-boolean";
+import Button from "@mui/material/Button";
+import {ProfileUpdateView} from "../../sections/profile/view/update-profile-view";
 
 // ----------------------------------------------------------------------
 
 export function AccountDrawer({ data = [], sx, ...other }) {
   const theme = useTheme();
+
+  const profileUpdateOpen = useBoolean(false);
 
   const router = useRouter();
 
@@ -48,13 +53,6 @@ export function AccountDrawer({ data = [], sx, ...other }) {
     setOpen(false);
   }, []);
 
-  const handleClickItem = useCallback(
-    (path) => {
-      handleCloseDrawer();
-      router.push(path);
-    },
-    [handleCloseDrawer, router]
-  );
 
   const renderAvatar = (
     <AnimateAvatar
@@ -110,6 +108,11 @@ export function AccountDrawer({ data = [], sx, ...other }) {
             </Typography>
           </Stack>
         </Scrollbar>
+        <ProfileUpdateView open={profileUpdateOpen.value} onClose={profileUpdateOpen.onFalse} />
+        <Box sx={{ p: 2.5 }}>
+          <Button variant={"outlined"} fullWidth onClick={profileUpdateOpen.onTrue}>Edit Profile Details</Button>
+        </Box>
+
 
         <Box sx={{ p: 2.5 }}>
           <SignOutButton onClose={handleCloseDrawer} />
