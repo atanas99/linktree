@@ -7,15 +7,15 @@ import packageJson from '../package.json';
 export const CONFIG = {
   site: {
     name: 'mylinks',
-    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL ?? '',
-    assetURL: process.env.NEXT_PUBLIC_ASSET_URL ?? '',
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '',
+    serverUrl: "http://localhost:8080",
+    assetURL: "http://localhost:3033",
+    basePath: "http://localhost:3033",
     version: packageJson.version,
   },
   isStaticExport: JSON.parse(`${process.env.BUILD_STATIC_EXPORT}`),
   auth: {
     method: 'jwt',
-    skip: true,
+    skip: false,
     redirectPath: paths.dashboard.root,
   },
 

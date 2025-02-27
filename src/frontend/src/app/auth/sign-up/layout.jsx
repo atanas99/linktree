@@ -1,13 +1,14 @@
-import { AuthSplitLayout } from 'src/layouts/auth-split';
+
 
 import { GuestGuard } from 'src/auth/guard';
+import {AuthCenteredLayout} from "../../../layouts/auth-centered";
 
 // ----------------------------------------------------------------------
 
 export default function Layout({ children }) {
   return (
     <GuestGuard>
-      <AuthSplitLayout>{children}</AuthSplitLayout>
+      <AuthCenteredLayout>{children}</AuthCenteredLayout>
     </GuestGuard>
   );
 }

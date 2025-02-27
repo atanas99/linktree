@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Container, Typography } from '@mui/material';
+import {Box, Stack, Container, Typography, Card} from '@mui/material';
 
 import { varAlpha, textGradient } from 'src/theme/styles';
 
@@ -11,34 +11,40 @@ import { HeroBackground } from './components/hero-background';
 import { Button } from '@mui/material';
 import { useRouter } from 'src/routes/hooks';
 import { paths } from 'src/routes/paths';
+import {LinksDisplay} from "../linktree/linksDisplay";
 
 // ----------------------------------------------------------------------
 
-export function HomeHero({ sx, ...other }) {
+export function LinktreeViewHero({ sx, ...other }) {
   const theme = useTheme();
   const router = useRouter();
-
-  const renderHeading = (
-    <Box
-      component="h1"
-      display="flex"
-      flexWrap="wrap"
-      justifyContent="center"
-      sx={{
-        ...theme.typography.h2,
-        my: 0,
-        mx: 'auto',
-        maxWidth: 680,
-        fontFamily: theme.typography.fontSecondaryFamily,
-        [theme.breakpoints.up('lg')]: { fontSize: 72, lineHeight: '90px' },
-      }}
-    >
-      <Box component="span" sx={{ width: 1, opacity: 0.24 }}>
-        linkme
-      </Box>
-      Welcome
-    </Box>
-  );
+  const links = [
+    {
+      id: 1740655535584,
+      name: "YouTube",
+      url: "https://www.youtube.com"
+    },
+    {
+      id: 1740655540001,
+      name: "GitHub",
+      url: "https://www.github.com"
+    },
+    {
+      id: 1740655541234,
+      name: "Google",
+      url: "https://www.google.com"
+    },
+    {
+      id: 1740655545678,
+      name: "Stack Overflow",
+      url: "https://stackoverflow.com"
+    },
+    {
+      id: 1740655549101,
+      name: "MDN Web Docs",
+      url: "https://developer.mozilla.org"
+    }
+  ];
 
   return (
     <Stack
@@ -65,10 +71,8 @@ export function HomeHero({ sx, ...other }) {
           textAlign: 'center',
         }}
       >
-        <Stack spacing={3} sx={{ mt: '-10%' }}>
-          {renderHeading}
-        </Stack>
-        <Button onClick={() => router.push(paths.linkTree.root)}  variant = "outlined">Get Started</Button>
+
+        <LinksDisplay links={links}/>
       </Container>
       <HeroBackground />
     </Stack>
