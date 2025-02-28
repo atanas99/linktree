@@ -24,9 +24,9 @@ import {signInWithPassword} from 'src/auth/context/jwt';
 // ----------------------------------------------------------------------
 
 export const SignInSchema = zod.object({
-  username: zod
+  email: zod
     .string()
-    .min(1, {message: 'Username is required!'}),
+    .min(1, {message: 'Email is required!'}),
   password: zod
     .string()
     .min(1, {message: 'Password is required!'})
@@ -44,7 +44,7 @@ export function JwtSignInView() {
   const password = useBoolean();
 
   const defaultValues = {
-    username: 'admin',
+    email: 'admin',
     password: 'admin',
   };
 
@@ -60,13 +60,13 @@ export function JwtSignInView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await signInWithPassword({username: data.username, password: data.password});
+      await signInWithPassword({email: data.email, password: data.password});
       await checkUserSession?.();
 
       router.refresh();
     } catch (error) {
       console.error(error);
-      setErrorMsg("Wrong username or password!");
+      setErrorMsg("Wrong email or password!");
     }
   });
 
@@ -80,7 +80,7 @@ export function JwtSignInView() {
 
   const renderForm = (
     <Stack spacing={3}>
-      <Field.Text name="username" label="Username" InputLabelProps={{shrink: true}}/>
+      <Field.Text name="email" label="Email" InputLabelProps={{shrink: true}}/>
 
       <Stack spacing={1.5}>
         <Field.Text
