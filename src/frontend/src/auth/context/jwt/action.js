@@ -8,13 +8,11 @@ import { STORAGE_KEY } from './constant';
 /** **************************************
  * Sign in
  *************************************** */
-export const signInWithPassword = async ({ username, password }) => {
+export const signInWithPassword = async ({ email, password }) => {
   try {
-    const params = { username, password };
-    console.log(params);
+    const params = { email, password };
 
     const res = await axios.post(endpoints.auth.signIn, params);
-    console.log(res.data)
     const { token } = res.data;
 
     if (!token) {
@@ -24,6 +22,7 @@ export const signInWithPassword = async ({ username, password }) => {
     setSession(token);
   } catch (error) {
     console.error('Error during sign in:', error);
+    setSession(null);
     throw error;
   }
 };
