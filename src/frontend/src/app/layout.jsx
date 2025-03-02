@@ -13,6 +13,7 @@ import { detectSettings } from 'src/components/settings/server';
 import { SettingsDrawer, defaultSettings, SettingsProvider } from 'src/components/settings';
 
 import { AuthProvider } from 'src/auth/context/jwt';
+import {Snackbar} from "../components/snackbar";
 
 // ----------------------------------------------------------------------
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }) {
           >
             <ThemeProvider>
               <MotionLazy>
+                <Snackbar />
                 <ProgressBar />
                 <SettingsDrawer />
                 {children}

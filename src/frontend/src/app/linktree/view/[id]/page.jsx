@@ -8,8 +8,9 @@ import {LinktreeViewView} from "../../../../sections/linktree-view/view/linktree
 
 export const metadata = { title: `Create - ${CONFIG.site.name}` };
 
-export default function Page() {
+export default function Page({ params }) {
+  const { id } = params;
   return (
-    <LinktreeViewView />
+    <LinktreeViewView userId={id}/>
   );
 }
