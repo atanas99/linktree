@@ -6,12 +6,20 @@ import com.example.linktree.users.dto.UserUpdateDto;
 import com.example.linktree.users.entity.User;
 import com.example.linktree.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.net.URLConnection;
 
 @Service
 @RequiredArgsConstructor
@@ -53,6 +61,7 @@ public class UserService {
         userDto.setContent(user.getContent());
         return userDto;
     }
+
     public User updateUser(UserUpdateDto dto, MultipartFile file) throws IOException {
 
         User existingUser = userRepository.findById(dto.getId()).orElseThrow();
@@ -77,4 +86,22 @@ public class UserService {
 
         return userRepository.save(existingUser);
     }
+
+    public ResponseEntity<ByteArrayResource> getUserImage(BigInteger userId) throws IOException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        byte[] fileContent = user.getContent();
+        String mimeType = URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(fileContent));
+        if (mimeType == null || (!mimeType.equals("image/png") && !mimeType.equals("image/jpeg"))) {
+            throw new ResponseStatusException(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Only PNG and JPEG images are supported");
+        }
+
+        ByteArrayResource resource = new ByteArrayResource(fileContent);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(mimeType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + user.getName() + "\"")
+                .body(resource);
+    }
 }
+

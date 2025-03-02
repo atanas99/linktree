@@ -6,6 +6,7 @@ import com.example.linktree.users.entity.User;
 import com.example.linktree.users.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -43,13 +43,19 @@ public class UserController {
     }
 
     @GetMapping("/get/{email}")
-    public ResponseEntity<UserUpdateDto> getUser(@PathVariable String email){
+    public ResponseEntity<UserUpdateDto> getUser(@PathVariable String email) {
         UserUpdateDto userDto = this.userService.getEntityByEmail(email);
         return ResponseEntity.ok(userDto);
     }
-    @PatchMapping(path ="/update",consumes = "multipart/form-data")
-    public ResponseEntity <String> updateUser(@RequestParam Map<String, String > user, @RequestParam("file") MultipartFile file) throws IOException {
+
+    @PatchMapping(path = "/update", consumes = "multipart/form-data")
+    public ResponseEntity<String> updateUser(@RequestParam Map<String, String> user, @RequestParam("file") MultipartFile file) throws IOException {
         userService.updateUser(objectMapper.convertValue(user, UserUpdateDto.class), file);
         return ResponseEntity.ok("User updated successfully");
+    }
+
+    @GetMapping("/get/user/{id}")
+    public ResponseEntity<ByteArrayResource> getUserImage(@PathVariable BigInteger id) throws IOException {
+        return userService.getUserImage(id);
     }
 }
