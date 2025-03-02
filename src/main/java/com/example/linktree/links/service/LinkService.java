@@ -44,5 +44,9 @@ public class LinkService {
         linkRepository.deleteById(id);
     }
 
+    public List<Link> getLinksByUserId(BigInteger userId) {
+        return linkRepository.findByUserId(userId);
+    }
+
 
 }
