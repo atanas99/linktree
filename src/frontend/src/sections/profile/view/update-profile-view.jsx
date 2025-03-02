@@ -14,7 +14,8 @@ import DialogContent from '@mui/material/DialogContent';
 import { toast } from 'src/components/snackbar';
 import { Field, Form } from 'src/components/hook-form';
 import { Iconify } from '../../../components/iconify';
-
+import axios from "../../../utils/axios";
+import {endpoints} from "../../../utils/axios";
 // ----------------------------------------------------------------------
 
 export const ProfileUpdateSchema = zod.object({
@@ -67,6 +68,29 @@ export function ProfileUpdateView({ currentUser, open, onClose }) {
   const onSubmit = handleSubmit(async (data) => {
     const promise = new Promise((resolve) => setTimeout(resolve, 1000));
     try {
+      const formData = new FormData();
+      formData.append("name", data.firstname);
+      formData.append("surname", data.lastname);
+      formData.append("email", data.email);
+      formData.append("id", currentUser.id);
+
+      // Immer den "file"-Parameter anhängen
+      if (data.avatar) {
+        formData.append("file", data.avatar);
+        console.log(formData.get("file"));
+      } else {
+        // Dummy-Datei als File-Objekt erzeugen
+        const dummyFile = new File([""], "dummy.txt", { type: "text/plain" });
+        formData.append("file", dummyFile);
+      }
+
+      // Kein manuelles Setzen von Content-Type – Axios übernimmt das automatisch!
+      await axios.patch(endpoints.users.updateUser, formData, {
+        headers: {
+          ...axios.defaults.headers.common,
+          "Content-Type": "multipart/form-data",
+        },
+      });
       reset();
       onClose();
       toast.promise(promise, {
@@ -80,6 +104,8 @@ export function ProfileUpdateView({ currentUser, open, onClose }) {
       console.error(error);
     }
   });
+
+
 
   return (
     <Dialog fullWidth maxWidth="sm" open={open} onClose={onClose}>

@@ -26,7 +26,6 @@ export function AuthProvider({children}) {
         await setSession(accessToken);
         const username = jwtDecode(accessToken).sub
         const res = await axios.get(endpoints.users.getUser(username));
-        console.log(res.data)
         const user = res.data;
 
         setState({user: {...user, accessToken}, loading: false});
@@ -54,7 +53,7 @@ export function AuthProvider({children}) {
     () => ({
       user: state.user
         ? {
-          id: state.user?.userId,
+          id: state.user?.id,
           email: state.user?.email,
           name: state.user?.name,
           content: state.user?.content,

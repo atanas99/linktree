@@ -41,7 +41,8 @@ export function AccountDrawer({ data = [], sx, ...other }) {
 
   const pathname = usePathname();
 
-  const { user } = useMockedUser();
+  const { user } = useAuthContext();
+  console.log(user)
 
   const [open, setOpen] = useState(false);
 
@@ -100,7 +101,7 @@ export function AccountDrawer({ data = [], sx, ...other }) {
             {renderAvatar}
 
             <Typography variant="subtitle1" noWrap sx={{ mt: 2 }}>
-              {user?.displayName}
+              {user?.name} {user?.surname}
             </Typography>
 
             <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }} noWrap>
@@ -108,7 +109,7 @@ export function AccountDrawer({ data = [], sx, ...other }) {
             </Typography>
           </Stack>
         </Scrollbar>
-        <ProfileUpdateView open={profileUpdateOpen.value} onClose={profileUpdateOpen.onFalse} />
+        <ProfileUpdateView open={profileUpdateOpen.value} currentUser={user} onClose={profileUpdateOpen.onFalse} />
         <Box sx={{ p: 2.5 }}>
           <Button variant={"outlined"} fullWidth onClick={profileUpdateOpen.onTrue}>Edit Profile Details</Button>
         </Box>

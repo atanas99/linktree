@@ -45,5 +45,6 @@ export const endpoints = {
   users: {
     getUserByLinkId: (linkId) => `/users/link${linkId}`,
     getUser: (username) => `/users/get/${username}`,
+    updateUser: '/users/update',
   }
 };
