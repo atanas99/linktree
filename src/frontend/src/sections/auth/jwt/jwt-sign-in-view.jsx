@@ -20,6 +20,9 @@ import {Field, Form} from 'src/components/hook-form';
 
 import {useAuthContext} from 'src/auth/hooks';
 import {signInWithPassword} from 'src/auth/context/jwt';
+import Link from "@mui/material/Link";
+import {paths} from "../../../routes/paths";
+import {RouterLink} from "../../../routes/components";
 
 // ----------------------------------------------------------------------
 
@@ -77,6 +80,14 @@ export function JwtSignInView() {
 
     </Stack>
   );
+  const renderBottom = (
+    <Stack spacing={1.5} sx={{mb: 1}}>
+      <Typography variant="body2" sx={{color: 'text.secondary'}}>
+        Don’t have an account? &nbsp;
+        <Link href={paths.auth.signUp} component={RouterLink} variant="subtitle2"> Create Account</Link>
+      </Typography>
+    </Stack>
+  )
 
   const renderForm = (
     <Stack spacing={3}>
@@ -127,6 +138,8 @@ export function JwtSignInView() {
       <Form methods={methods} onSubmit={onSubmit}>
         {renderForm}
       </Form>
+      {renderBottom}
     </>
+
   );
 }

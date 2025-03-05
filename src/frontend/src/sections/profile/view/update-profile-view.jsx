@@ -1,5 +1,5 @@
 import { z as zod } from 'zod';
-import { useMemo, useState } from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Box from '@mui/material/Box';
@@ -15,27 +15,33 @@ import { toast } from 'src/components/snackbar';
 import { Field, Form } from 'src/components/hook-form';
 import { Iconify } from '../../../components/iconify';
 import axios from "../../../utils/axios";
-import {endpoints} from "../../../utils/axios";
+import { endpoints } from "../../../utils/axios";
 // ----------------------------------------------------------------------
 
 export const ProfileUpdateSchema = zod.object({
   firstname: zod.string().optional(),
   lastname: zod.string().optional(),
   email: zod.string().min(1, { message: 'Email is required!' }).email({ message: 'Email is not valid!' }),
-  avatar: zod.string().optional(),
 });
 
 // ----------------------------------------------------------------------
 
 export function ProfileUpdateView({ currentUser, open, onClose }) {
-  const [avatarPreview, setAvatarPreview] = useState(currentUser?.avatar || '');
+  console.log(currentUser)
+  const [avatarPreview, setAvatarPreview] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  useEffect(() => {
+    if (currentUser?.content) {
+      setAvatarPreview(`data:image/png;base64,${currentUser.content}`);
+    }
+  }, [currentUser?.content]);
 
   const defaultValues = useMemo(
     () => ({
-      firstname: currentUser?.firstname || '',
-      lastname: currentUser?.lastname || '',
+      firstname: currentUser?.name || '',
+      lastname: currentUser?.surname || '',
       email: currentUser?.email || '',
-      avatar: currentUser?.avatar || '',
     }),
     [currentUser]
   );
@@ -56,10 +62,10 @@ export function ProfileUpdateView({ currentUser, open, onClose }) {
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setSelectedFile(file);
       const reader = new FileReader();
-      reader.onload = () => {
+      reader.onloadend = () => {
         setAvatarPreview(reader.result);
-        setValue('avatar', reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -73,39 +79,30 @@ export function ProfileUpdateView({ currentUser, open, onClose }) {
       formData.append("surname", data.lastname);
       formData.append("email", data.email);
       formData.append("id", currentUser.id);
+      formData.append("file", selectedFile);
 
-      // Immer den "file"-Parameter anhängen
-      if (data.avatar) {
-        formData.append("file", data.avatar);
-        console.log(formData.get("file"));
-      } else {
-        // Dummy-Datei als File-Objekt erzeugen
-        const dummyFile = new File([""], "dummy.txt", { type: "text/plain" });
-        formData.append("file", dummyFile);
-      }
-
-      // Kein manuelles Setzen von Content-Type – Axios übernimmt das automatisch!
       await axios.patch(endpoints.users.updateUser, formData, {
         headers: {
           ...axios.defaults.headers.common,
           "Content-Type": "multipart/form-data",
         },
       });
+
       reset();
       onClose();
+
       toast.promise(promise, {
         loading: 'Loading...',
         success: 'Update success!',
         error: 'Update error!',
       });
+
       await promise;
       window.location.reload();
     } catch (error) {
       console.error(error);
     }
   });
-
-
 
   return (
     <Dialog fullWidth maxWidth="sm" open={open} onClose={onClose}>

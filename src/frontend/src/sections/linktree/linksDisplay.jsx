@@ -1,8 +1,16 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { Iconify } from "../../components/iconify";
 import { getColorByName, getIconByName } from "./socialMediaStyles";
+import {useEffect, useState} from "react";
 
 export function LinksDisplay({ links, profileData }) {
+  const [avatarPreview, setAvatarPreview] = useState(null);
+
+  useEffect(() => {
+    if (profileData?.content) {
+      setAvatarPreview(`data:image/png;base64,${profileData.content}`);
+    }
+  }, [profileData?.content]);
   return (
     <Box sx={{ width: "100%", maxWidth: "307px", position: "relative" }}>
       <img
@@ -15,11 +23,10 @@ export function LinksDisplay({ links, profileData }) {
           display: "block"
         }}
       />
-      {/* Profilbereich */}
       <Box
         sx={{
           position: "absolute",
-          top: "18%",
+          top: "10%",
           left: "50%",
           transform: "translateX(-50%)",
           width: "80%",
@@ -30,14 +37,14 @@ export function LinksDisplay({ links, profileData }) {
         }}
       >
         <Avatar
-          src={profileData?.avatar}
+          src={avatarPreview}
           alt={profileData?.firstName}
-          sx={{ width: 70, height: 70, mb: 1 }}
+          sx={{ width: 100, height: 100, mb: 1.7 }}
         />
-        <Typography variant="h6" fontWeight="bold">
-          {profileData?.firstName} {profileData?.lastName}
+        <Typography variant="h5" color={"#000000"} fontWeight="bold" sx={{backgroundColor: "#FFFFFF"}}>
+          {profileData?.name} {profileData?.surname}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" sx={{backgroundColor: "#FFFFFF"}}>
           {profileData?.email}
         </Typography>
       </Box>

@@ -1,50 +1,35 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-
+import { useState, useCallback, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Drawer from '@mui/material/Drawer';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 
-import { paths } from 'src/routes/paths';
-import { useRouter, usePathname } from 'src/routes/hooks';
-
-import { _mock } from 'src/_mock';
-import { varAlpha } from 'src/theme/styles';
-
-import { Label } from 'src/components/label';
-import { Iconify } from 'src/components/iconify';
+import { useTheme } from '@mui/material/styles';
 import { Scrollbar } from 'src/components/scrollbar';
-import { AnimateAvatar } from 'src/components/animate';
-
-import {useAuthContext, useMockedUser} from 'src/auth/hooks';
+import { Iconify } from 'src/components/iconify';
+import { useAuthContext } from 'src/auth/hooks';
 import { AccountButton } from './account-button';
 import { SignOutButton } from './sign-out-button';
-import {useBoolean} from "../../hooks/use-boolean";
-import Button from "@mui/material/Button";
-import {ProfileUpdateView} from "../../sections/profile/view/update-profile-view";
+import { useBoolean } from '../../hooks/use-boolean';
+import { ProfileUpdateView } from '../../sections/profile/view/update-profile-view';
 
-// ----------------------------------------------------------------------
-
-export function AccountDrawer({ data = [], sx, ...other }) {
+export function AccountDrawer({ sx, ...other }) {
   const theme = useTheme();
-
   const profileUpdateOpen = useBoolean(false);
-
-  const router = useRouter();
-
-  const pathname = usePathname();
-
   const { user } = useAuthContext();
-  console.log(user)
-
   const [open, setOpen] = useState(false);
+  const [avatarPreview, setAvatarPreview] = useState(null);
+
+  useEffect(() => {
+    if (user?.content) {
+      setAvatarPreview(`data:image/png;base64,${user.content}`);
+    }
+  }, [user?.content]);
 
   const handleOpenDrawer = useCallback(() => {
     setOpen(true);
@@ -54,30 +39,13 @@ export function AccountDrawer({ data = [], sx, ...other }) {
     setOpen(false);
   }, []);
 
-
-  const renderAvatar = (
-    <AnimateAvatar
-      width={96}
-      slotProps={{
-        avatar: { src: user?.photoURL, alt: user?.displayName },
-        overlay: {
-          border: 2,
-          spacing: 3,
-          color: `linear-gradient(135deg, ${varAlpha(theme.vars.palette.primary.mainChannel, 0)} 25%, ${theme.vars.palette.primary.main} 100%)`,
-        },
-      }}
-    >
-      {user?.displayName?.charAt(0).toUpperCase()}
-    </AnimateAvatar>
-  );
-
   return (
     <>
       <AccountButton
         open={open}
         onClick={handleOpenDrawer}
-        photoURL={user?.photoURL}
-        displayName={user?.displayName}
+        photoURL={avatarPreview}
+        displayName={user?.name}
         sx={sx}
         {...other}
       />
@@ -86,7 +54,6 @@ export function AccountDrawer({ data = [], sx, ...other }) {
         open={open}
         onClose={handleCloseDrawer}
         anchor="right"
-        slotProps={{ backdrop: { invisible: true } }}
         PaperProps={{ sx: { width: 320 } }}
       >
         <IconButton
@@ -98,7 +65,7 @@ export function AccountDrawer({ data = [], sx, ...other }) {
 
         <Scrollbar>
           <Stack alignItems="center" sx={{ pt: 8 }}>
-            {renderAvatar}
+            <Avatar src={avatarPreview} alt={user?.name} sx={{ width: 96, height: 96 }} />
 
             <Typography variant="subtitle1" noWrap sx={{ mt: 2 }}>
               {user?.name} {user?.surname}
@@ -109,11 +76,14 @@ export function AccountDrawer({ data = [], sx, ...other }) {
             </Typography>
           </Stack>
         </Scrollbar>
-        <ProfileUpdateView open={profileUpdateOpen.value} currentUser={user} onClose={profileUpdateOpen.onFalse} />
-        <Box sx={{ p: 2.5 }}>
-          <Button variant={"outlined"} fullWidth onClick={profileUpdateOpen.onTrue}>Edit Profile Details</Button>
-        </Box>
 
+        <ProfileUpdateView open={profileUpdateOpen.value} currentUser={user} onClose={profileUpdateOpen.onFalse} />
+
+        <Box sx={{ p: 2.5 }}>
+          <Button variant="outlined" fullWidth onClick={profileUpdateOpen.onTrue}>
+            Edit Profile Details
+          </Button>
+        </Box>
 
         <Box sx={{ p: 2.5 }}>
           <SignOutButton onClose={handleCloseDrawer} />

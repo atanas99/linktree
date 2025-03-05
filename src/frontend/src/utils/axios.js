@@ -41,10 +41,12 @@ export const endpoints = {
     updateLink: '/links/update/',
     allLinks: '/links/all',
     delete: '/links/delete',
+    getLinks: (userId) => `/links/user/${userId}`,
   },
   users: {
     getUserByLinkId: (linkId) => `/users/link${linkId}`,
     getUser: (username) => `/users/get/${username}`,
     updateUser: '/users/update',
+
   }
 };

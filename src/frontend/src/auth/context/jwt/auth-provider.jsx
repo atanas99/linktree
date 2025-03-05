@@ -24,8 +24,8 @@ export function AuthProvider({children}) {
       const accessToken = localStorage.getItem(STORAGE_KEY);
       if (accessToken && isValidToken(accessToken)) {
         await setSession(accessToken);
-        const username = jwtDecode(accessToken).sub
-        const res = await axios.get(endpoints.users.getUser(username));
+        const email = jwtDecode(accessToken).sub
+        const res = await axios.get(endpoints.users.getUser(email));
         const user = res.data;
 
         setState({user: {...user, accessToken}, loading: false});

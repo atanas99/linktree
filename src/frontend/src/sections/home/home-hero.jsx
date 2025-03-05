@@ -55,7 +55,7 @@ export function HomeHero({ sx, ...other }) {
       >
 
         <Box sx={{ mt: 6, mb: 4 }}>
-          <AnimatedButton onClick={() => router.push(paths.linkTree.create)} big />
+          <AnimatedButton onClick={() => router.push(paths.linkTree.root)} big />
         </Box>
 
 

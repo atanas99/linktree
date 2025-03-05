@@ -45,6 +45,7 @@
     "sonner": "^2.0.1",
     "stylis": "^4.3.2",
     "stylis-plugin-rtl": "^2.1.1",
+    "swiper": "^11.2.4",
     "toast": "^0.5.4",
     "zod": "^3.23.8"
   },

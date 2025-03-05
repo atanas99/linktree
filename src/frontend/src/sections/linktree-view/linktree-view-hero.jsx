@@ -12,39 +12,37 @@ import { Button } from '@mui/material';
 import { useRouter } from 'src/routes/hooks';
 import { paths } from 'src/routes/paths';
 import {LinksDisplay} from "../linktree/linksDisplay";
+import {useEffect, useState} from "react";
+import axios, {endpoints} from "../../utils/axios";
+import {toast} from "../../components/snackbar";
 
 // ----------------------------------------------------------------------
 
-export function LinktreeViewHero({ sx, ...other }) {
+export function LinktreeViewHero({ userId, sx, ...other }) {
   const theme = useTheme();
   const router = useRouter();
-  const links = [
-    {
-      id: 1740655535584,
-      name: "YouTube",
-      url: "https://www.youtube.com"
-    },
-    {
-      id: 1740655540001,
-      name: "GitHub",
-      url: "https://www.github.com"
-    },
-    {
-      id: 1740655541234,
-      name: "Google",
-      url: "https://www.google.com"
-    },
-    {
-      id: 1740655545678,
-      name: "Stack Overflow",
-      url: "https://stackoverflow.com"
-    },
-    {
-      id: 1740655549101,
-      name: "MDN Web Docs",
-      url: "https://developer.mozilla.org"
+  const [links, setLinks] = useState([]);
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const response = await axios.get(endpoints.links.getLinks(userId));
+        setLinks(response.data);
+      } catch (error) {
+        toast.error("Failed to fetch links");
+      }
+    };
+    const fetchProfileDetails = async () => {
+      try {
+        const response = await axios.get(endpoints.users.getUser(userId));
+        setProfile(response.data);
+      } catch (error) {
+        toast.error("Failed to fetch profile details");
+      }
     }
-  ];
+    if (userId) {
+      fetchLinks();
+    }
+  }, [userId]);
 
   return (
     <Stack

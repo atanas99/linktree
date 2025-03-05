@@ -24,12 +24,13 @@ import { Form, Field } from 'src/components/hook-form';
 
 import { signUp } from 'src/auth/context/jwt';
 import { useAuthContext } from 'src/auth/hooks';
+import {toast} from "sonner";
 
 // ----------------------------------------------------------------------
 
 export const SignUpSchema = zod.object({
-  firstName: zod.string().min(1, { message: 'First name is required!' }),
-  lastName: zod.string().min(1, { message: 'Last name is required!' }),
+  firstName: zod.string().optional(),
+  lastName: zod.string().optional(),
   email: zod
     .string()
     .min(1, { message: 'Email is required!' })
@@ -73,12 +74,11 @@ export function JwtSignUpView() {
       await signUp({
         email: data.email,
         password: data.password,
-        firstName: data.firstName,
-        lastName: data.lastName,
+        name: data.firstName,
+        surname: data.lastName,
       });
-      await checkUserSession?.();
-
-      router.refresh();
+      toast.success("User Created!");
+      router.replace(paths.auth.signIn);
     } catch (error) {
       console.error(error);
       setErrorMsg(error instanceof Error ? error.message : error);
@@ -87,14 +87,14 @@ export function JwtSignUpView() {
 
   const renderHead = (
     <Stack spacing={1.5} sx={{ mb: 5 }}>
-      <Typography variant="h5">Get started absolutely free</Typography>
+      <Typography variant="h5">Get started</Typography>
 
       <Stack direction="row" spacing={0.5}>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           Already have an account?
         </Typography>
 
-        <Link component={RouterLink} href={paths.auth.jwt.signIn} variant="subtitle2">
+        <Link component={RouterLink} href={paths.auth.signIn} variant="subtitle2">
           Sign in
         </Link>
       </Stack>
@@ -141,27 +141,6 @@ export function JwtSignUpView() {
     </Stack>
   );
 
-  const renderTerms = (
-    <Typography
-      component="div"
-      sx={{
-        mt: 3,
-        textAlign: 'center',
-        typography: 'caption',
-        color: 'text.secondary',
-      }}
-    >
-      {'By signing up, I agree to '}
-      <Link underline="always" color="text.primary">
-        Terms of service
-      </Link>
-      {' and '}
-      <Link underline="always" color="text.primary">
-        Privacy policy
-      </Link>
-      .
-    </Typography>
-  );
 
   return (
     <>
@@ -177,7 +156,6 @@ export function JwtSignUpView() {
         {renderForm}
       </Form>
 
-      {renderTerms}
     </>
   );
 }
