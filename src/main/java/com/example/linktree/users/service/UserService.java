@@ -32,14 +32,12 @@ public class UserService {
 
     public UserUpdateDto getUserByLinkId(BigInteger id) {
 
-        return linkRepository.findById(id)
-                .map(link -> {
-                    UserUpdateDto user = new UserUpdateDto();
-                    user.setId(link.getUser().getId());
-                    user.setEmail(link.getUser().getEmail());
-                    return user;
-                })
-                .orElse(null);
+        return linkRepository.findById(id).map(link -> {
+            UserUpdateDto user = new UserUpdateDto();
+            user.setId(link.getUser().getId());
+            user.setEmail(link.getUser().getEmail());
+            return user;
+        }).orElse(null);
     }
 
 
@@ -53,6 +51,15 @@ public class UserService {
     public UserUpdateDto getEntityByEmail(String email) {
         User user = userRepository.findByEmail(email);
 
+        return getUserUpdateDto(user);
+    }
+
+    public UserUpdateDto getUserById(BigInteger id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return getUserUpdateDto(user);
+    }
+
+    private UserUpdateDto getUserUpdateDto(User user) {
         UserUpdateDto userDto = new UserUpdateDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
@@ -61,6 +68,7 @@ public class UserService {
         userDto.setContent(user.getContent());
         return userDto;
     }
+
 
     public User updateUser(UserUpdateDto dto, MultipartFile file) throws IOException {
 
@@ -88,8 +96,7 @@ public class UserService {
     }
 
     public ResponseEntity<ByteArrayResource> getUserImage(BigInteger userId) throws IOException {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        User user = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         byte[] fileContent = user.getContent();
         String mimeType = URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(fileContent));
@@ -98,10 +105,7 @@ public class UserService {
         }
 
         ByteArrayResource resource = new ByteArrayResource(fileContent);
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(mimeType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + user.getName() + "\"")
-                .body(resource);
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(mimeType)).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + user.getName() + "\"").body(resource);
     }
 }
 

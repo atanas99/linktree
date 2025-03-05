@@ -6,7 +6,6 @@ import com.example.linktree.users.entity.User;
 import com.example.linktree.users.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,9 +41,15 @@ public class UserController {
         return this.userService.createUser(user);
     }
 
-    @GetMapping("/get/{email}")
+    @GetMapping("/get/userByEmail/{email}")
     public ResponseEntity<UserUpdateDto> getUser(@PathVariable String email) {
         UserUpdateDto userDto = this.userService.getEntityByEmail(email);
+        return ResponseEntity.ok(userDto);
+    }
+
+    @GetMapping("/get/userById/{id}")
+    public ResponseEntity<UserUpdateDto> getUserById(@PathVariable BigInteger id) {
+        UserUpdateDto userDto = this.userService.getUserById(id);
         return ResponseEntity.ok(userDto);
     }
 
@@ -52,10 +57,5 @@ public class UserController {
     public ResponseEntity<String> updateUser(@RequestParam Map<String, String> user, @RequestParam("file") MultipartFile file) throws IOException {
         userService.updateUser(objectMapper.convertValue(user, UserUpdateDto.class), file);
         return ResponseEntity.ok("User updated successfully");
-    }
-
-    @GetMapping("/get/user/{id}")
-    public ResponseEntity<ByteArrayResource> getUserImage(@PathVariable BigInteger id) throws IOException {
-        return userService.getUserImage(id);
     }
 }
