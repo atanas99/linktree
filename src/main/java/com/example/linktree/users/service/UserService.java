@@ -1,25 +1,18 @@
 package com.example.linktree.users.service;
 
-import com.example.linktree.links.repository.LinkRepository;
 import com.example.linktree.users.dto.UserCreationDto;
 import com.example.linktree.users.dto.UserUpdateDto;
 import com.example.linktree.users.entity.User;
 import com.example.linktree.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.net.URLConnection;
 
 @Service
 @RequiredArgsConstructor
@@ -27,21 +20,13 @@ public class UserService {
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     private final UserRepository userRepository;
-    private final LinkRepository linkRepository;
-
-
-    public UserUpdateDto getUserByLinkId(BigInteger id) {
-
-        return linkRepository.findById(id).map(link -> {
-            UserUpdateDto user = new UserUpdateDto();
-            user.setId(link.getUser().getId());
-            user.setEmail(link.getUser().getEmail());
-            return user;
-        }).orElse(null);
-    }
-
 
     public User createUser(UserCreationDto dto) {
+        User existingUser = userRepository.findByEmail(dto.getEmail());
+
+        if (existingUser != null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists");
+        }
         User user = new User();
         user.setEmail(dto.getEmail());
         user.setPassword(encoder.encode(dto.getPassword()));
@@ -54,6 +39,11 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         return getUserUpdateDto(user);
+    }
+
+    public BigInteger findUserIdByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null ? user.getId() : null;
     }
 
     public UserUpdateDto getUserById(BigInteger id) {
@@ -95,19 +85,6 @@ public class UserService {
         }
 
         return userRepository.save(existingUser);
-    }
-
-    public ResponseEntity<ByteArrayResource> getUserImage(BigInteger userId) throws IOException {
-        User user = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        byte[] fileContent = user.getContent();
-        String mimeType = URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(fileContent));
-        if (mimeType == null || (!mimeType.equals("image/png") && !mimeType.equals("image/jpeg"))) {
-            throw new ResponseStatusException(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Only PNG and JPEG images are supported");
-        }
-
-        ByteArrayResource resource = new ByteArrayResource(fileContent);
-        return ResponseEntity.ok().contentType(MediaType.parseMediaType(mimeType)).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + user.getName() + "\"").body(resource);
     }
 }
 

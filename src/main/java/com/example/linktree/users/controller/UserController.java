@@ -24,30 +24,25 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:3033")
+@CrossOrigin()
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final ObjectMapper objectMapper;
 
-    @GetMapping("/link{id}")
-    public UserUpdateDto getUserByLinkId(@PathVariable BigInteger id) {
-        return userService.getUserByLinkId(id);
-    }
-
     @PostMapping("/create")
     public User createUser(@RequestBody UserCreationDto user) {
         return this.userService.createUser(user);
     }
 
-    @GetMapping("/get/userByEmail/{email}")
+    @GetMapping("/get/byEmail/{email}")
     public ResponseEntity<UserUpdateDto> getUser(@PathVariable String email) {
         UserUpdateDto userDto = this.userService.getEntityByEmail(email);
         return ResponseEntity.ok(userDto);
     }
 
-    @GetMapping("/get/userById/{id}")
+    @GetMapping("/get/byId/{id}")
     public ResponseEntity<UserUpdateDto> getUserById(@PathVariable BigInteger id) {
         UserUpdateDto userDto = this.userService.getUserById(id);
         return ResponseEntity.ok(userDto);

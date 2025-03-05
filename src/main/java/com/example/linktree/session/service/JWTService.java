@@ -39,7 +39,16 @@ public class JWTService {
 
     public String generateToken(String username) throws JsonProcessingException {
         Map<String, Object> claims = new HashMap<>();
-        String token = Jwts.builder().claims().add(claims).subject(username).issuedAt(new Date(System.currentTimeMillis())).expiration(new Date(System.currentTimeMillis() + 86400000)).and().signWith(getKey()).compact();
+        String token = Jwts
+                .builder()
+                .claims()
+                .add(claims)
+                .subject(username)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + 86400000))
+                .and()
+                .signWith(getKey())
+                .compact();
         claims.put("token", token);
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(claims);

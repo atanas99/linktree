@@ -20,11 +20,8 @@ public class LinkService {
     private final LinkRepository linkRepository;
     private final UserRepository userRepository;
 
-    public List<Link> getAllLinks() {
-        return linkRepository.findAll();
-    }
 
-    public List<Link> updateLinks(BigInteger id, List<LinkUpdateDto> links) {
+    public List<Link> createLinks(BigInteger id, List<LinkUpdateDto> links) {
         List<Link> userLinks = linkRepository.findByUserId(id);
         for (Link link : userLinks) {
             linkRepository.delete(link);
