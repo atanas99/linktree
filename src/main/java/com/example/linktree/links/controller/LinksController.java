@@ -24,14 +24,9 @@ public class LinksController {
 
     private final LinkService linkService;
 
-    @GetMapping("/all")
-    public List<Link> getAllLinks() {
-        return linkService.getAllLinks();
-    }
-    
-    @PostMapping("/create/{id}")
+    @PostMapping("/create/byUser/{id}")
     public List<Link> createLink(@PathVariable BigInteger id, @RequestBody List<LinkUpdateDto> links) {
-        return linkService.updateLinks(id, links);
+        return linkService.createLinks(id, links);
     }
 
     @DeleteMapping("/delete")
@@ -39,7 +34,7 @@ public class LinksController {
         linkService.deleteLink(id);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("get/byUser/{id}")
     public List<Link> getLinksByUserId(@PathVariable BigInteger id) {
         return linkService.getLinksByUserId(id);
     }

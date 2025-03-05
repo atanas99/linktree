@@ -2,7 +2,7 @@ package com.example.linktree.session.controller;
 
 
 import com.example.linktree.session.service.SessionService;
-import com.example.linktree.users.dto.UserCreationDto;
+import com.example.linktree.users.dto.UserUpdateDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/session")
-@CrossOrigin(origins = "http://localhost:3033")
+@CrossOrigin()
 public class SessionController {
 
     private final SessionService service;
@@ -33,7 +33,7 @@ public class SessionController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserCreationDto user) throws JsonProcessingException {
+    public String login(@RequestBody UserUpdateDto user) throws JsonProcessingException {
         return service.verify(user);
     }
 

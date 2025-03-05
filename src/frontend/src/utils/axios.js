@@ -37,16 +37,15 @@ export const endpoints = {
     csrfToken: '/session/csrf-token',
   },
   links: {
-    createLink: '/links/create',
-    updateLink: '/links/update/',
-    allLinks: '/links/all',
+    createLink: (userId) => `/links/create/byUser/${userId}`,
     delete: '/links/delete',
-    getLinks: (userId) => `/links/user/${userId}`,
+    getLinks: (userId) => `/links/get/byUser/${userId}`,
   },
   users: {
-    getUserByLinkId: (linkId) => `/users/link${linkId}`,
-    getUser: (username) => `/users/get/${username}`,
+    getUser: (username) => `/users/get/byEmail/${username}`,
     updateUser: '/users/update',
+    getUserById: (userId) => `/users/get/byId/${userId}`,
+
 
   }
 };
