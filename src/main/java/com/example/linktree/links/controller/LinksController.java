@@ -1,6 +1,5 @@
 package com.example.linktree.links.controller;
 
-import com.example.linktree.links.dto.LinkCreationDto;
 import com.example.linktree.links.dto.LinkUpdateDto;
 import com.example.linktree.links.entity.Link;
 import com.example.linktree.links.service.LinkService;
@@ -8,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/links")
-@CrossOrigin(origins = "http://localhost:3033")
+@CrossOrigin()
 @RequiredArgsConstructor
 public class LinksController {
 
@@ -30,15 +28,10 @@ public class LinksController {
     public List<Link> getAllLinks() {
         return linkService.getAllLinks();
     }
-
-    @PostMapping("/create")
-    public Link createLink(@RequestBody LinkCreationDto link) {
-        return linkService.createLink(link);
-    }
-
-    @PatchMapping("/update")
-    public Link updateLink(@RequestBody LinkUpdateDto link) {
-        return linkService.updateLink(link);
+    
+    @PostMapping("/create/{id}")
+    public List<Link> createLink(@PathVariable BigInteger id, @RequestBody List<LinkUpdateDto> links) {
+        return linkService.updateLinks(id, links);
     }
 
     @DeleteMapping("/delete")

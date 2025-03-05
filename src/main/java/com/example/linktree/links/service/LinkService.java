@@ -1,6 +1,5 @@
 package com.example.linktree.links.service;
 
-import com.example.linktree.links.dto.LinkCreationDto;
 import com.example.linktree.links.dto.LinkUpdateDto;
 import com.example.linktree.links.entity.Link;
 import com.example.linktree.links.repository.LinkRepository;
@@ -10,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,24 +20,26 @@ public class LinkService {
     private final LinkRepository linkRepository;
     private final UserRepository userRepository;
 
-    public Link createLink(LinkCreationDto dto) {
-        Link link = new Link();
-        link.setName((dto.getName()));
-        link.setUrl(dto.getUrl());
-        User user = userRepository.findById(dto.getUser_id()).orElseThrow();
-        link.setUser(user);
-        return linkRepository.save(link);
-    }
-
     public List<Link> getAllLinks() {
         return linkRepository.findAll();
     }
 
-    public Link updateLink(LinkUpdateDto dto) {
-        Link existingLink = linkRepository.findById(dto.getId()).orElseThrow();
-        existingLink.setName(dto.getName());
-        existingLink.setUrl(dto.getUrl());
-        return linkRepository.save(existingLink);
+    public List<Link> updateLinks(BigInteger id, List<LinkUpdateDto> links) {
+        List<Link> userLinks = linkRepository.findByUserId(id);
+        for (Link link : userLinks) {
+            linkRepository.delete(link);
+        }
+
+        List<Link> processedLinks = new ArrayList<>();
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        for (LinkUpdateDto dto : links) {
+            Link newLink = new Link();
+            newLink.setName(dto.getName());
+            newLink.setUrl(dto.getUrl());
+            newLink.setUser(user);
+            processedLinks.add(linkRepository.save(newLink));
+        }
+        return processedLinks;
     }
 
     public void deleteLink(BigInteger id) {
@@ -47,6 +49,5 @@ public class LinkService {
     public List<Link> getLinksByUserId(BigInteger userId) {
         return linkRepository.findByUserId(userId);
     }
-
 
 }
