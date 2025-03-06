@@ -30,7 +30,6 @@ import {backdrop} from './backdrop';
 import {progress} from './progress';
 import {timeline} from './timeline';
 import {checkbox} from './checkbox';
-import {accordion} from './accordion';
 import {textfield} from './textfield';
 import {typography} from './typography';
 import {pagination} from './pagination';
@@ -79,7 +78,6 @@ export const components = {
   ...checkbox,
   ...treeView,
   ...dataGrid,
-  ...accordion,
   ...textfield,
   ...typography,
   ...pagination,
