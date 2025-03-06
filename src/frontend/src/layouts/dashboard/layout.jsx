@@ -6,7 +6,6 @@ import Alert from '@mui/material/Alert';
 import {useTheme} from '@mui/material/styles';
 import {stylesMode, varAlpha} from 'src/theme/styles';
 
-import {bulletColor} from 'src/components/nav-section';
 import {useSettingsContext} from 'src/components/settings';
 
 import {Main} from './main';
