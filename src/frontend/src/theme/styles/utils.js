@@ -37,11 +37,11 @@ export function pxToRem(value) {
 /**
  * Responsive font sizes
  */
-export function responsiveFontSizes({ sm, md, lg }) {
+export function responsiveFontSizes({sm, md, lg}) {
   return {
-    [mediaQueries.upSm]: { fontSize: pxToRem(sm) },
-    [mediaQueries.upMd]: { fontSize: pxToRem(md) },
-    [mediaQueries.upLg]: { fontSize: pxToRem(lg) },
+    [mediaQueries.upSm]: {fontSize: pxToRem(sm)},
+    [mediaQueries.upMd]: {fontSize: pxToRem(md)},
+    [mediaQueries.upLg]: {fontSize: pxToRem(lg)},
   };
 }
 
@@ -70,7 +70,7 @@ export function createPaletteChannel(hexPalette) {
     channelPalette[`${key}Channel`] = hexToRgbChannel(value);
   });
 
-  return { ...hexPalette, ...channelPalette };
+  return {...hexPalette, ...channelPalette};
 }
 
 /**

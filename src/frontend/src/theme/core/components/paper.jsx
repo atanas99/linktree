@@ -1,4 +1,4 @@
-import { varAlpha } from '../../styles';
+import {varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -6,14 +6,14 @@ const MuiPaper = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { elevation: 0 },
+  defaultProps: {elevation: 0},
 
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: { backgroundImage: 'none' },
-    outlined: ({ theme }) => ({
+    root: {backgroundImage: 'none'},
+    outlined: ({theme}) => ({
       borderColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
     }),
   },
@@ -21,4 +21,4 @@ const MuiPaper = {
 
 // ----------------------------------------------------------------------
 
-export const paper = { MuiPaper };
+export const paper = {MuiPaper};

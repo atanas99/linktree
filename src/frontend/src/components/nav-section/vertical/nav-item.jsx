@@ -1,16 +1,16 @@
-import { forwardRef } from 'react';
+import {forwardRef} from 'react';
 
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 
-import { stylesMode } from 'src/theme/styles';
+import {stylesMode} from 'src/theme/styles';
 
-import { useNavItem } from '../hooks';
-import { Iconify } from '../../iconify';
-import { navSectionClasses } from '../classes';
-import { stateClasses, sharedStyles } from '../styles';
+import {useNavItem} from '../hooks';
+import {Iconify} from '../../iconify';
+import {navSectionClasses} from '../classes';
+import {sharedStyles, stateClasses} from '../styles';
 
 // ----------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ export const NavItem = forwardRef(
           [`& .${navSectionClasses.item.info}`]: slotProps?.info,
           [`& .${navSectionClasses.item.arrow}`]: slotProps?.arrow,
         }}
-        className={stateClasses({ open: open && !active, active, disabled })}
+        className={stateClasses({open: open && !active, active, disabled})}
         {...navItem.baseProps}
         {...other}
       >
@@ -112,7 +112,7 @@ export const NavItem = forwardRef(
 const StyledNavItem = styled(ButtonBase, {
   shouldForwardProp: (prop) =>
     prop !== 'active' && prop !== 'open' && prop !== 'disabled' && prop !== 'depth',
-})(({ active, open, disabled, depth, theme }) => {
+})(({active, open, disabled, depth, theme}) => {
   const rootItem = depth === 1;
 
   const subItem = !rootItem;
@@ -131,7 +131,7 @@ const StyledNavItem = styled(ButtonBase, {
       },
     },
 
-    texts: { minWidth: 0, flex: '1 1 auto' },
+    texts: {minWidth: 0, flex: '1 1 auto'},
 
     title: {
       ...sharedStyles.noWrap,
@@ -152,8 +152,8 @@ const StyledNavItem = styled(ButtonBase, {
       margin: 'var(--nav-icon-margin)',
     },
 
-    arrow: { ...sharedStyles.arrow },
-    info: { ...sharedStyles.info },
+    arrow: {...sharedStyles.arrow},
+    info: {...sharedStyles.info},
   };
 
   return {
@@ -163,12 +163,12 @@ const StyledNavItem = styled(ButtonBase, {
     ...(rootItem && {
       ...baseStyles.item,
       minHeight: 'var(--nav-item-root-height)',
-      [`& .${navSectionClasses.item.icon}`]: { ...baseStyles.icon },
-      [`& .${navSectionClasses.item.texts}`]: { ...baseStyles.texts },
-      [`& .${navSectionClasses.item.title}`]: { ...baseStyles.title },
-      [`& .${navSectionClasses.item.caption}`]: { ...baseStyles.caption },
-      [`& .${navSectionClasses.item.arrow}`]: { ...baseStyles.arrow },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
+      [`& .${navSectionClasses.item.icon}`]: {...baseStyles.icon},
+      [`& .${navSectionClasses.item.texts}`]: {...baseStyles.texts},
+      [`& .${navSectionClasses.item.title}`]: {...baseStyles.title},
+      [`& .${navSectionClasses.item.caption}`]: {...baseStyles.caption},
+      [`& .${navSectionClasses.item.arrow}`]: {...baseStyles.arrow},
+      [`& .${navSectionClasses.item.info}`]: {...baseStyles.info},
       // State
       ...(active && {
         color: 'var(--nav-item-root-active-color)',
@@ -191,12 +191,12 @@ const StyledNavItem = styled(ButtonBase, {
     ...(subItem && {
       ...baseStyles.item,
       minHeight: 'var(--nav-item-sub-height)',
-      [`& .${navSectionClasses.item.icon}`]: { ...baseStyles.icon },
-      [`& .${navSectionClasses.item.texts}`]: { ...baseStyles.texts },
-      [`& .${navSectionClasses.item.title}`]: { ...baseStyles.title },
-      [`& .${navSectionClasses.item.caption}`]: { ...baseStyles.caption },
-      [`& .${navSectionClasses.item.arrow}`]: { ...baseStyles.arrow },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
+      [`& .${navSectionClasses.item.icon}`]: {...baseStyles.icon},
+      [`& .${navSectionClasses.item.texts}`]: {...baseStyles.texts},
+      [`& .${navSectionClasses.item.title}`]: {...baseStyles.title},
+      [`& .${navSectionClasses.item.caption}`]: {...baseStyles.caption},
+      [`& .${navSectionClasses.item.arrow}`]: {...baseStyles.arrow},
+      [`& .${navSectionClasses.item.info}`]: {...baseStyles.info},
       // Shape
       '&::before': {
         left: 0,

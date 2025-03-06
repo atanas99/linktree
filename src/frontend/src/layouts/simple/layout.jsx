@@ -2,15 +2,15 @@
 
 import Alert from '@mui/material/Alert';
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import {useBoolean} from 'src/hooks/use-boolean';
 
-import { Main, CompactContent } from './main';
-import { HeaderBase } from '../core/header-base';
-import { LayoutSection } from '../core/layout-section';
+import {CompactContent, Main} from './main';
+import {HeaderBase} from '../core/header-base';
+import {LayoutSection} from '../core/layout-section';
 
 // ----------------------------------------------------------------------
 
-export function SimpleLayout({ sx, children, content }) {
+export function SimpleLayout({sx, children, content}) {
   const mobileNavOpen = useBoolean();
 
   const layoutQuery = 'md';
@@ -37,12 +37,12 @@ export function SimpleLayout({ sx, children, content }) {
           }}
           slots={{
             topArea: (
-              <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
+              <Alert severity="info" sx={{display: 'none', borderRadius: 0}}>
                 This is an info Alert.
               </Alert>
             ),
           }}
-          slotProps={{ container: { maxWidth: false } }}
+          slotProps={{container: {maxWidth: false}}}
         />
       }
       /** **************************************

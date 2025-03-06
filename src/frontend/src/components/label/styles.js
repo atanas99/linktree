@@ -1,13 +1,13 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
-export const StyledLabel = styled(Box)(({ theme, ownerState: { color, variant } }) => {
+export const StyledLabel = styled(Box)(({theme, ownerState: {color, variant}}) => {
   const defaultColor = {
     ...(color === 'default' && {
       /**
@@ -16,7 +16,7 @@ export const StyledLabel = styled(Box)(({ theme, ownerState: { color, variant } 
       ...(variant === 'filled' && {
         color: theme.vars.palette.common.white,
         backgroundColor: theme.vars.palette.text.primary,
-        [stylesMode.dark]: { color: theme.vars.palette.grey[800] },
+        [stylesMode.dark]: {color: theme.vars.palette.grey[800]},
       }),
       /**
        * @variant outlined
@@ -66,7 +66,7 @@ export const StyledLabel = styled(Box)(({ theme, ownerState: { color, variant } 
       ...(variant === 'soft' && {
         color: theme.vars.palette[color].dark,
         backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.16),
-        [stylesMode.dark]: { color: theme.vars.palette[color].light },
+        [stylesMode.dark]: {color: theme.vars.palette[color].light},
       }),
       /**
        * @variant inverted

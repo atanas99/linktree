@@ -1,29 +1,29 @@
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { varAlpha, hideScrollY } from 'src/theme/styles';
+import {hideScrollY, varAlpha} from 'src/theme/styles';
 
-import { Logo } from 'src/components/logo';
-import { Scrollbar } from 'src/components/scrollbar';
-import { NavSectionMini, NavSectionVertical } from 'src/components/nav-section';
+import {Logo} from 'src/components/logo';
+import {Scrollbar} from 'src/components/scrollbar';
+import {NavSectionMini, NavSectionVertical} from 'src/components/nav-section';
 
-import { NavToggleButton } from '../components/nav-toggle-button';
+import {NavToggleButton} from '../components/nav-toggle-button';
 
 // ----------------------------------------------------------------------
 
-export function NavVertical({ sx, data, slots, isNavMini, layoutQuery, onToggleNav, ...other }) {
+export function NavVertical({sx, data, slots, isNavMini, layoutQuery, onToggleNav, ...other}) {
   const theme = useTheme();
 
   const renderNavVertical = (
     <>
       {slots?.topArea ?? (
-        <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
-          <Logo />
+        <Box sx={{pl: 3.5, pt: 2.5, pb: 1}}>
+          <Logo/>
         </Box>
       )}
 
       <Scrollbar fillContent>
-        <NavSectionVertical data={data} sx={{ px: 2, flex: '1 1 auto' }} {...other} />
+        <NavSectionVertical data={data} sx={{px: 2, flex: '1 1 auto'}} {...other} />
       </Scrollbar>
     </>
   );
@@ -31,14 +31,14 @@ export function NavVertical({ sx, data, slots, isNavMini, layoutQuery, onToggleN
   const renderNavMini = (
     <>
       {slots?.topArea ?? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', py: 2.5 }}>
-          <Logo />
+        <Box sx={{display: 'flex', justifyContent: 'center', py: 2.5}}>
+          <Logo/>
         </Box>
       )}
 
       <NavSectionMini
         data={data}
-        sx={{ pb: 2, px: 0.5, ...hideScrollY, flex: '1 1 auto', overflowY: 'auto' }}
+        sx={{pb: 2, px: 0.5, ...hideScrollY, flex: '1 1 auto', overflowY: 'auto'}}
         {...other}
       />
 

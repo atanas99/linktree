@@ -1,18 +1,16 @@
 import Box from '@mui/material/Box';
-import { styled, useTheme } from '@mui/material/styles';
+import {styled, useTheme} from '@mui/material/styles';
 
 
-import { Logo } from 'src/components/logo';
+import {Logo} from 'src/components/logo';
 
-import { HeaderSection } from './header-section';
-import { MenuButton } from '../components/menu-button';
-import { SignInButton } from '../components/sign-in-button';
-import { AccountDrawer } from '../components/account-drawer';
-import { SettingsButton } from '../components/settings-button';
+import {HeaderSection} from './header-section';
+import {AccountDrawer} from '../components/account-drawer';
+import {SettingsButton} from '../components/settings-button';
 
 // ----------------------------------------------------------------------
 
-const StyledDivider = styled('span')(({ theme }) => ({
+const StyledDivider = styled('span')(({theme}) => ({
   width: 1,
   height: 10,
   flexShrink: 0,
@@ -34,27 +32,27 @@ const StyledDivider = styled('span')(({ theme }) => ({
     position: 'absolute',
     backgroundColor: 'currentColor',
   },
-  '&::after': { bottom: -5, top: 'auto' },
+  '&::after': {bottom: -5, top: 'auto'},
 }));
 
 // ----------------------------------------------------------------------
 
 export function HeaderBase({
-  sx,
-  data,
-  slots,
-  slotProps,
-  onOpenNav,
-  layoutQuery,
+                             sx,
+                             data,
+                             slots,
+                             slotProps,
+                             onOpenNav,
+                             layoutQuery,
 
-  slotsDisplay: {
-    account = true,
-    settings = true,
-    menuButton = true,
-  } = {},
+                             slotsDisplay: {
+                               account = true,
+                               settings = true,
+                               menuButton = true,
+                             } = {},
 
-  ...other
-}) {
+                             ...other
+                           }) {
   const theme = useTheme();
 
   return (
@@ -69,10 +67,10 @@ export function HeaderBase({
             {slots?.leftAreaStart}
 
             {/* -- Logo -- */}
-            <Logo />
+            <Logo/>
 
             {/* -- Divider -- */}
-            <StyledDivider data-slot="divider" />
+            <StyledDivider data-slot="divider"/>
 
 
             {slots?.leftAreaEnd}
@@ -87,15 +85,15 @@ export function HeaderBase({
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: { xs: 1, sm: 1.5 },
+                gap: {xs: 1, sm: 1.5},
               }}
             >
 
               {/* -- Settings button -- */}
-              {settings && <SettingsButton data-slot="settings" />}
+              {settings && <SettingsButton data-slot="settings"/>}
 
               {/* -- Account drawer -- */}
-              {account && <AccountDrawer data-slot="account" data={data?.account} />}
+              {account && <AccountDrawer data-slot="account" data={data?.account}/>}
 
 
             </Box>

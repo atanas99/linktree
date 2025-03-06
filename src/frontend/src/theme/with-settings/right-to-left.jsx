@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import createCache from '@emotion/cache';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { CacheProvider } from '@emotion/react';
+import {CacheProvider} from '@emotion/react';
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ const cacheRtl = createCache({
   stylisPlugins: [rtlPlugin],
 });
 
-export function RTL({ children, direction }) {
+export function RTL({children, direction}) {
   useEffect(() => {
     document.dir = direction;
   }, [direction]);

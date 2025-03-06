@@ -1,9 +1,9 @@
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import {experimental_extendTheme as extendTheme} from '@mui/material/styles';
 
-import { setFont } from './styles/utils';
-import { overridesTheme } from './overrides-theme';
-import { shadows, typography, components, colorSchemes, customShadows } from './core';
-import { updateCoreWithSettings, updateComponentsWithSettings } from './with-settings/update-theme';
+import {setFont} from './styles/utils';
+import {overridesTheme} from './overrides-theme';
+import {colorSchemes, components, customShadows, shadows, typography} from './core';
+import {updateComponentsWithSettings, updateCoreWithSettings} from './with-settings/update-theme';
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ export function createTheme(settings) {
     shadows: shadows(settings.colorScheme),
     customShadows: customShadows(settings.colorScheme),
     direction: settings.direction,
-    shape: { borderRadius: 8 },
+    shape: {borderRadius: 8},
     components,
     typography: {
       ...typography,
@@ -69,24 +69,24 @@ function shouldSkipGeneratingVar(keys, value) {
 }
 
 /**
-* createTheme without @settings and @locale components.
-*
+ * createTheme without @settings and @locale components.
+ *
  ```jsx
-export function createTheme(): Theme {
-  const initialTheme = {
-    colorSchemes,
-    shadows: shadows('light'),
-    customShadows: customShadows('light'),
-    shape: { borderRadius: 8 },
-    components,
-    typography,
-    cssVarPrefix: '',
-    shouldSkipGeneratingVar,
-  };
+ export function createTheme(): Theme {
+ const initialTheme = {
+ colorSchemes,
+ shadows: shadows('light'),
+ customShadows: customShadows('light'),
+ shape: { borderRadius: 8 },
+ components,
+ typography,
+ cssVarPrefix: '',
+ shouldSkipGeneratingVar,
+ };
 
-  const theme = extendTheme(initialTheme, overridesTheme);
+ const theme = extendTheme(initialTheme, overridesTheme);
 
-  return theme;
-}
+ return theme;
+ }
  ```
-*/
+ */

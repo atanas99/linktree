@@ -1,14 +1,14 @@
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 
-import { varAlpha } from 'src/theme/styles';
+import {varAlpha} from 'src/theme/styles';
 
-import { Logo } from '../logo';
+import {Logo} from '../logo';
 
 // ----------------------------------------------------------------------
 
-export function AnimateLogo1({ logo, sx, ...other }) {
+export function AnimateLogo1({logo, sx, ...other}) {
   return (
     <Box
       sx={{
@@ -24,16 +24,16 @@ export function AnimateLogo1({ logo, sx, ...other }) {
     >
       <Box
         component={m.div}
-        animate={{ scale: [1, 0.9, 0.9, 1, 1], opacity: [1, 0.48, 0.48, 1, 1] }}
+        animate={{scale: [1, 0.9, 0.9, 1, 1], opacity: [1, 0.48, 0.48, 1, 1]}}
         transition={{
           duration: 2,
           repeatDelay: 1,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        sx={{ display: 'inline-flex' }}
+        sx={{display: 'inline-flex'}}
       >
-        {logo ?? <Logo disableLink width={64} height={64} />}
+        {logo ?? <Logo disableLink width={64} height={64}/>}
       </Box>
 
       <Box
@@ -44,7 +44,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
           opacity: [0.25, 1, 1, 1, 0.25],
           borderRadius: ['25%', '25%', '50%', '50%', '25%'],
         }}
-        transition={{ ease: 'linear', duration: 3.2, repeat: Infinity }}
+        transition={{ease: 'linear', duration: 3.2, repeat: Infinity}}
         sx={{
           position: 'absolute',
           width: 'calc(100% - 20px)',
@@ -61,7 +61,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
           opacity: [1, 0.25, 0.25, 0.25, 1],
           borderRadius: ['25%', '25%', '50%', '50%', '25%'],
         }}
-        transition={{ ease: 'linear', duration: 3.2, repeat: Infinity }}
+        transition={{ease: 'linear', duration: 3.2, repeat: Infinity}}
         sx={{
           width: 1,
           height: 1,
@@ -75,7 +75,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function AnimateLogo2({ logo, sx, ...other }) {
+export function AnimateLogo2({logo, sx, ...other}) {
   return (
     <Box
       alignItems="center"
@@ -91,12 +91,12 @@ export function AnimateLogo2({ logo, sx, ...other }) {
       }}
       {...other}
     >
-      {logo ?? <Logo sx={{ zIndex: 9 }} />}
+      {logo ?? <Logo sx={{zIndex: 9}}/>}
 
       <Box
         component={m.div}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 10, ease: 'linear', repeat: Infinity }}
+        animate={{rotate: 360}}
+        transition={{duration: 10, ease: 'linear', repeat: Infinity}}
         sx={{
           width: 1,
           height: 1,

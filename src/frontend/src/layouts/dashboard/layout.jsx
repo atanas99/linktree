@@ -1,32 +1,22 @@
 'use client';
 
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 
 import Alert from '@mui/material/Alert';
-import { useTheme } from '@mui/material/styles';
-import { iconButtonClasses } from '@mui/material/IconButton';
+import {useTheme} from '@mui/material/styles';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import {bulletColor} from 'src/components/nav-section';
+import {useSettingsContext} from 'src/components/settings';
 
-import { _contacts, _notifications } from 'src/_mock';
-import { varAlpha, stylesMode } from 'src/theme/styles';
-
-import { bulletColor } from 'src/components/nav-section';
-import { useSettingsContext } from 'src/components/settings';
-
-import { Main } from './main';
-import { NavMobile } from './nav-mobile';
-import { layoutClasses } from '../classes';
-import { NavVertical } from './nav-vertical';
-import { NavHorizontal } from './nav-horizontal';
-import { _account } from '../config-nav-account';
-import { HeaderBase } from '../core/header-base';
-import { LayoutSection } from '../core/layout-section';
-import { navData as dashboardNavData } from '../config-nav-dashboard';
+import {Main} from './main';
+import {layoutClasses} from '../classes';
+import {HeaderBase} from '../core/header-base';
+import {LayoutSection} from '../core/layout-section';
 
 // ----------------------------------------------------------------------
 
-export function DashboardLayout({ sx, children, data }) {
+export function DashboardLayout({sx, children, data}) {
   const theme = useTheme();
 
   const settings = useSettingsContext();
@@ -34,7 +24,6 @@ export function DashboardLayout({ sx, children, data }) {
   const navColorVars = useNavColorVars(theme, settings);
 
   const layoutQuery = 'lg';
-
 
 
   return (
@@ -47,12 +36,9 @@ export function DashboardLayout({ sx, children, data }) {
         headerSection={
           <HeaderBase
             layoutQuery={layoutQuery}
-            data={{
-              account: _account,
-            }}
             slots={{
               topArea: (
-                <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
+                <Alert severity="info" sx={{display: 'none', borderRadius: 0}}>
                   This is an info Alert.
                 </Alert>
               ),
@@ -64,7 +50,7 @@ export function DashboardLayout({ sx, children, data }) {
                     display: 'none',
                   },
                   [`& [data-area="right"]`]: {
-                    gap: { xs: 0, sm: 0.75 },
+                    gap: {xs: 0, sm: 0.75},
                   },
                 },
               },
@@ -114,7 +100,7 @@ export function DashboardLayout({ sx, children, data }) {
 
 function useNavColorVars(theme, settings) {
   const {
-    vars: { palette },
+    vars: {palette},
   } = theme;
 
   return useMemo(() => {

@@ -1,5 +1,5 @@
 import SvgIcon from '@mui/material/SvgIcon';
-import { radioClasses } from '@mui/material/Radio';
+import {radioClasses} from '@mui/material/Radio';
 
 // ----------------------------------------------------------------------
 
@@ -34,24 +34,24 @@ const MuiRadio = {
    *************************************** */
   defaultProps: {
     size: 'small',
-    icon: <RadioIcon />,
-    checkedIcon: <RadioCheckedIcon />,
+    icon: <RadioIcon/>,
+    checkedIcon: <RadioCheckedIcon/>,
   },
 
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ ownerState, theme }) => ({
+    root: ({ownerState, theme}) => ({
       padding: theme.spacing(1),
       ...(ownerState.color === 'default' && {
-        [`&.${radioClasses.checked}`]: { color: theme.vars.palette.text.primary },
+        [`&.${radioClasses.checked}`]: {color: theme.vars.palette.text.primary},
       }),
-      [`&.${radioClasses.disabled}`]: { color: theme.vars.palette.action.disabled },
+      [`&.${radioClasses.disabled}`]: {color: theme.vars.palette.action.disabled},
     }),
   },
 };
 
 // ----------------------------------------------------------------------
 
-export const radio = { MuiRadio };
+export const radio = {MuiRadio};

@@ -1,15 +1,15 @@
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 
-import { CONFIG } from 'src/config-global';
-import { setFont, varAlpha, stylesMode } from 'src/theme/styles';
+import {CONFIG} from 'src/config-global';
+import {setFont, stylesMode, varAlpha} from 'src/theme/styles';
 
-import { Block } from './styles';
-import { SvgColor } from '../../svg-color';
+import {Block} from './styles';
+import {SvgColor} from '../../svg-color';
 
 // ----------------------------------------------------------------------
 
-export function FontOptions({ value, options, onClickOption }) {
+export function FontOptions({value, options, onClickOption}) {
   return (
     <Block title="Font">
       <Box component="ul" gap={1.5} display="grid" gridTemplateColumns="repeat(2, 1fr)">
@@ -17,7 +17,7 @@ export function FontOptions({ value, options, onClickOption }) {
           const selected = value === option;
 
           return (
-            <Box component="li" key={option} sx={{ display: 'inline-flex' }}>
+            <Box component="li" key={option} sx={{display: 'inline-flex'}}>
               <ButtonBase
                 disableRipple
                 onClick={() => onClickOption(option)}

@@ -53,7 +53,7 @@ export function keyBy(array, key) {
   return (array || []).reduce((result, item) => {
     const keyValue = key ? item[key] : item;
 
-    return { ...result, [String(keyValue)]: item };
+    return {...result, [String(keyValue)]: item};
   }, {});
 }
 
@@ -114,10 +114,10 @@ export const merge = (target, ...sources) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const key in source) {
     if (isObject(source[key])) {
-      if (!target[key]) Object.assign(target, { [key]: {} });
+      if (!target[key]) Object.assign(target, {[key]: {}});
       merge(target[key], source[key]);
     } else {
-      Object.assign(target, { [key]: source[key] });
+      Object.assign(target, {[key]: source[key]});
     }
   }
 

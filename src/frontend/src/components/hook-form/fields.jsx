@@ -1,4 +1,4 @@
-import { RHFTextField } from './rhf-text-field';
+import {RHFTextField} from './rhf-text-field';
 
 // ----------------------------------------------------------------------
 

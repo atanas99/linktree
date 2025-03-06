@@ -185,14 +185,14 @@ export function fDateRangeShortLabel(startDate, endDate, initial) {
 /** output: '2024-05-28T05:55:31+00:00'
  */
 export function fAdd({
-  years = 0,
-  months = 0,
-  days = 0,
-  hours = 0,
-  minutes = 0,
-  seconds = 0,
-  milliseconds = 0,
-}) {
+                       years = 0,
+                       months = 0,
+                       days = 0,
+                       hours = 0,
+                       minutes = 0,
+                       seconds = 0,
+                       milliseconds = 0,
+                     }) {
   const result = dayjs()
     .add(
       dayjs.duration({
@@ -213,14 +213,14 @@ export function fAdd({
 /** output: '2024-05-28T05:55:31+00:00'
  */
 export function fSub({
-  years = 0,
-  months = 0,
-  days = 0,
-  hours = 0,
-  minutes = 0,
-  seconds = 0,
-  milliseconds = 0,
-}) {
+                       years = 0,
+                       months = 0,
+                       days = 0,
+                       hours = 0,
+                       minutes = 0,
+                       seconds = 0,
+                       milliseconds = 0,
+                     }) {
   const result = dayjs()
     .subtract(
       dayjs.duration({

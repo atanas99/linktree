@@ -1,11 +1,11 @@
 import SvgIcon from '@mui/material/SvgIcon';
 import IconButton from '@mui/material/IconButton';
 
-import { varAlpha } from 'src/theme/styles';
+import {varAlpha} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
-export function NavToggleButton({ isNavMini, sx, ...other }) {
+export function NavToggleButton({isNavMini, sx, ...other}) {
   return (
     <IconButton
       size="small"

@@ -34,4 +34,5 @@ To set up your local server:
 
 ---
 
-**NOTE:** When copying folders remember to also copy hidden files like .env. This is important because .env files often contain environment variables that are crucial for the application to run correctly.
+**NOTE:** When copying folders remember to also copy hidden files like .env. This is important because .env files often
+contain environment variables that are crucial for the application to run correctly.

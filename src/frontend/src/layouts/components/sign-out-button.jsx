@@ -1,18 +1,18 @@
-import { useCallback } from 'react';
+import {useCallback} from 'react';
 
 import Button from '@mui/material/Button';
 
-import { useRouter } from 'src/routes/hooks';
+import {useRouter} from 'src/routes/hooks';
 
-import { useAuthContext } from 'src/auth/hooks';
-import { signOut } from 'src/auth/context/jwt/action';
+import {useAuthContext} from 'src/auth/hooks';
+import {signOut} from 'src/auth/context/jwt/action';
 
 // ----------------------------------------------------------------------
 
-export function SignOutButton({ onClose, ...other }) {
+export function SignOutButton({onClose, ...other}) {
   const router = useRouter();
 
-  const { checkUserSession } = useAuthContext();
+  const {checkUserSession} = useAuthContext();
 
   const handleLogout = useCallback(async () => {
     try {

@@ -1,25 +1,25 @@
-import { useRef, useEffect } from 'react';
-import { m, animate, useInView, useTransform, useMotionValue } from 'framer-motion';
+import {useEffect, useRef} from 'react';
+import {animate, m, useInView, useMotionValue, useTransform} from 'framer-motion';
 
 import Typography from '@mui/material/Typography';
 
 // ----------------------------------------------------------------------
 
 export function AnimateCountUp({
-  to,
-  sx,
-  from = 0,
-  unit = '',
-  toFixed = 0,
-  duration = 2,
-  once = true,
-  amount = 0.5,
-  component = 'p',
-  ...other
-}) {
+                                 to,
+                                 sx,
+                                 from = 0,
+                                 unit = '',
+                                 toFixed = 0,
+                                 duration = 2,
+                                 once = true,
+                                 amount = 0.5,
+                                 component = 'p',
+                                 ...other
+                               }) {
   const ref = useRef(null);
 
-  const inView = useInView(ref, { once, amount });
+  const inView = useInView(ref, {once, amount});
 
   const count = useMotionValue(from);
 
@@ -27,7 +27,7 @@ export function AnimateCountUp({
 
   useEffect(() => {
     if (inView) {
-      animate(count, to, { duration });
+      animate(count, to, {duration});
     }
   }, [count, duration, inView, to]);
 

@@ -1,19 +1,19 @@
 import NoSsr from '@mui/material/NoSsr';
-import { tabClasses } from '@mui/material/Tab';
-import { useTheme } from '@mui/material/styles';
-import Tabs, { tabsClasses } from '@mui/material/Tabs';
+import {tabClasses} from '@mui/material/Tab';
+import {useTheme} from '@mui/material/styles';
+import Tabs, {tabsClasses} from '@mui/material/Tabs';
 
-import { stylesMode } from 'src/theme/styles';
+import {stylesMode} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
-export function CustomTabs({ children, slotProps, sx, ...other }) {
+export function CustomTabs({children, slotProps, sx, ...other}) {
   const theme = useTheme();
 
   return (
     <Tabs
       sx={{
-        gap: { sm: 0 },
+        gap: {sm: 0},
         minHeight: 38,
         flexShrink: 0,
         alignItems: 'center',
@@ -42,7 +42,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
             display: 'block',
             bgcolor: 'common.white',
             boxShadow: theme.customShadows.z1,
-            [stylesMode.dark]: { bgcolor: 'grey.900' },
+            [stylesMode.dark]: {bgcolor: 'grey.900'},
             ...slotProps?.indicator,
           },
         },
@@ -62,7 +62,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
       TabIndicatorProps={{
         children: (
           <NoSsr>
-            <span />
+            <span/>
           </NoSsr>
         ),
       }}

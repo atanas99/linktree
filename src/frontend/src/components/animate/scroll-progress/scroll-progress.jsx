@@ -1,19 +1,19 @@
-import { m, useSpring } from 'framer-motion';
+import {m, useSpring} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 
 // ----------------------------------------------------------------------
 
 export function ScrollProgress({
-  size,
-  variant,
-  progress,
-  thickness = 3.6,
-  color = 'primary',
-  sx,
-  ...other
-}) {
-  const scaleX = useSpring(progress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+                                 size,
+                                 variant,
+                                 progress,
+                                 thickness = 3.6,
+                                 color = 'primary',
+                                 sx,
+                                 ...other
+                               }) {
+  const scaleX = useSpring(progress, {stiffness: 100, damping: 30, restDelta: 0.001});
 
   const progressSize = variant === 'circular' ? size ?? 64 : size ?? 3;
 
@@ -56,7 +56,7 @@ export function ScrollProgress({
         cy={progressSize / 2}
         r={progressSize / 2 - thickness - 4}
         pathLength="1"
-        style={{ pathLength: progress }}
+        style={{pathLength: progress}}
       />
     </Box>
   );
@@ -78,12 +78,12 @@ export function ScrollProgress({
         }),
         ...sx,
       }}
-      style={{ scaleX }}
+      style={{scaleX}}
       {...other}
     />
   );
 
   return (
-    <Box sx={{ overflow: 'hidden' }}>{variant === 'circular' ? renderCircular : renderLinear}</Box>
+    <Box sx={{overflow: 'hidden'}}>{variant === 'circular' ? renderCircular : renderLinear}</Box>
   );
 }

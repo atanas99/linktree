@@ -1,10 +1,9 @@
 "use client";
 
 import {useEffect, useState} from 'react';
-import {Button, Card, Grid, Typography, Box, Tab} from '@mui/material';
+import {Box, Button, Card, Grid, Typography} from '@mui/material';
 import {DashboardContent} from 'src/layouts/dashboard';
 import {LinkItem} from '../linkItem';
-import {getIconByName, getColorByName} from "../socialMediaStyles";
 import {paths} from "../../../routes/paths";
 
 import {Iconify} from "../../../components/iconify";
@@ -46,7 +45,7 @@ export function LinktreeEditView() {
 
   const handleSave = async () => {
     try {
-      await axios.post(endpoints.links.createLink(user.id), links.map(({ name, url }) => ({ name, url })));
+      await axios.post(endpoints.links.createLink(user.id), links.map(({name, url}) => ({name, url})));
 
       toast.success("Linktree saved successfully");
     } catch (error) {
@@ -61,7 +60,7 @@ export function LinktreeEditView() {
         <Button
           variant="contained"
           endIcon={<Iconify icon="cuida:open-in-new-tab-outline"/>}
-          onClick={() => window.open(paths.linkTree.view(3, "_blank", "noopener,noreferrer"))}
+          onClick={() => window.open(paths.linkTree.view(user.id, "_blank", "noopener,noreferrer"))}
         >
           Preview
         </Button>

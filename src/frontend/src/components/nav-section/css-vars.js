@@ -1,4 +1,4 @@
-import { varAlpha } from 'src/theme/styles';
+import {varAlpha} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
@@ -9,7 +9,7 @@ export const bulletColor = {
 
 function colorVars(theme, variant) {
   const {
-    vars: { palette },
+    vars: {palette},
   } = theme;
 
   return {
@@ -39,7 +39,7 @@ function colorVars(theme, variant) {
 // ----------------------------------------------------------------------
 
 function verticalVars(theme) {
-  const { shape, spacing } = theme;
+  const {shape, spacing} = theme;
 
   return {
     ...colorVars(theme, 'vertical'),
@@ -66,7 +66,7 @@ function verticalVars(theme) {
 // ----------------------------------------------------------------------
 
 function miniVars(theme) {
-  const { shape, spacing } = theme;
+  const {shape, spacing} = theme;
 
   return {
     ...colorVars(theme, 'mini'),
@@ -88,7 +88,7 @@ function miniVars(theme) {
 // ----------------------------------------------------------------------
 
 function horizontalVars(theme) {
-  const { shape, spacing } = theme;
+  const {shape, spacing} = theme;
 
   return {
     ...colorVars(theme, 'horizontal'),

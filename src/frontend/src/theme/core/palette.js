@@ -1,5 +1,5 @@
 import COLORS from './colors.json';
-import { varAlpha, createPaletteChannel } from '../styles';
+import {createPaletteChannel, varAlpha} from '../styles';
 
 // ----------------------------------------------------------------------
 
@@ -67,8 +67,8 @@ export const baseAction = {
 };
 
 export const action = {
-  light: { ...baseAction, active: grey[600] },
-  dark: { ...baseAction, active: grey[500] },
+  light: {...baseAction, active: grey[600]},
+  dark: {...baseAction, active: grey[500]},
 };
 
 /*
@@ -104,6 +104,6 @@ export const darkPalette = {
 // ----------------------------------------------------------------------
 
 export const colorSchemes = {
-  light: { palette: lightPalette },
-  dark: { palette: darkPalette },
+  light: {palette: lightPalette},
+  dark: {palette: darkPalette},
 };

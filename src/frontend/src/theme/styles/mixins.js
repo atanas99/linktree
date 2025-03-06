@@ -1,11 +1,11 @@
-import { dividerClasses } from '@mui/material/Divider';
-import { checkboxClasses } from '@mui/material/Checkbox';
-import { menuItemClasses } from '@mui/material/MenuItem';
-import { autocompleteClasses } from '@mui/material/Autocomplete';
+import {dividerClasses} from '@mui/material/Divider';
+import {checkboxClasses} from '@mui/material/Checkbox';
+import {menuItemClasses} from '@mui/material/MenuItem';
+import {autocompleteClasses} from '@mui/material/Autocomplete';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { remToPx, varAlpha, mediaQueries } from './utils';
+import {mediaQueries, remToPx, varAlpha} from './utils';
 
 // ----------------------------------------------------------------------
 
@@ -18,14 +18,14 @@ export const hideScrollX = {
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
   overflowX: 'auto',
-  '&::-webkit-scrollbar': { display: 'none' },
+  '&::-webkit-scrollbar': {display: 'none'},
 };
 
 export const hideScrollY = {
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
   overflowY: 'auto',
-  '&::-webkit-scrollbar': { display: 'none' },
+  '&::-webkit-scrollbar': {display: 'none'},
 };
 
 /**
@@ -72,7 +72,7 @@ export function borderGradient(props) {
  * Usage:
  * ...bgGradient({ color: `to right, ${theme.vars.palette.grey[900]} 25%, ${varAlpha(theme.vars.palette.primary.darkerChannel, 0.88)}`, imgUrl: '/assets/background/overlay.png' }),
  */
-export function bgGradient({ color, imgUrl }) {
+export function bgGradient({color, imgUrl}) {
   if (imgUrl) {
     return {
       background: `linear-gradient(${color}), url(${imgUrl})`,
@@ -81,14 +81,14 @@ export function bgGradient({ color, imgUrl }) {
       backgroundPosition: 'center center',
     };
   }
-  return { background: `linear-gradient(${color})` };
+  return {background: `linear-gradient(${color})`};
 }
 
 /**
  * Usage:
  * ...bgBlur({ color: `varAlpha(theme.vars.palette.background.paperChannel, 0.8)`, imgUrl: '/assets/background/overlay.png', blur: 6 }),
  */
-export function bgBlur({ color, blur = 6, imgUrl }) {
+export function bgBlur({color, blur = 6, imgUrl}) {
   if (imgUrl) {
     return {
       position: 'relative',
@@ -129,7 +129,7 @@ function getLineHeight(lineHeight, fontSize) {
   return lineHeight;
 }
 
-export function maxLine({ line, persistent }) {
+export function maxLine({line, persistent}) {
   const baseStyles = {
     overflow: 'hidden',
     display: '-webkit-box',
@@ -149,15 +149,15 @@ export function maxLine({ line, persistent }) {
     return {
       ...baseStyles,
       ...(lineHeight && {
-        ...(fontSizeBase && { height: fontSizeBase * lineHeight * line }),
+        ...(fontSizeBase && {height: fontSizeBase * lineHeight * line}),
         ...(fontSizeSm && {
-          [mediaQueries.upSm]: { height: fontSizeSm * lineHeight * line },
+          [mediaQueries.upSm]: {height: fontSizeSm * lineHeight * line},
         }),
         ...(fontSizeMd && {
-          [mediaQueries.upMd]: { height: fontSizeMd * lineHeight * line },
+          [mediaQueries.upMd]: {height: fontSizeMd * lineHeight * line},
         }),
         ...(fontSizeLg && {
-          [mediaQueries.upLg]: { height: fontSizeLg * lineHeight * line },
+          [mediaQueries.upLg]: {height: fontSizeLg * lineHeight * line},
         }),
       }),
     };
@@ -170,7 +170,7 @@ export function maxLine({ line, persistent }) {
  * Usage:
  * ...paper({ theme, color: varAlpha(theme.vars.palette.background.paperChannel, 0.9), dropdown: true }),
  */
-export function paper({ theme, color, dropdown }) {
+export function paper({theme, color, dropdown}) {
   return {
     ...bgBlur({
       color: color ?? varAlpha(theme.vars.palette.background.paperChannel, 0.9),
@@ -200,11 +200,11 @@ export function menuItem(theme) {
     ...theme.typography.body2,
     padding: theme.spacing(0.75, 1),
     borderRadius: theme.shape.borderRadius * 0.75,
-    '&:not(:last-of-type)': { marginBottom: 4 },
+    '&:not(:last-of-type)': {marginBottom: 4},
     [`&.${menuItemClasses.selected}`]: {
       fontWeight: theme.typography.fontWeightSemiBold,
       backgroundColor: theme.vars.palette.action.selected,
-      '&:hover': { backgroundColor: theme.vars.palette.action.hover },
+      '&:hover': {backgroundColor: theme.vars.palette.action.hover},
     },
     [`& .${checkboxClasses.root}`]: {
       padding: theme.spacing(0.5),
@@ -213,8 +213,8 @@ export function menuItem(theme) {
     },
     [`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
       backgroundColor: theme.vars.palette.action.selected,
-      '&:hover': { backgroundColor: theme.vars.palette.action.hover },
+      '&:hover': {backgroundColor: theme.vars.palette.action.hover},
     },
-    [`&+.${dividerClasses.root}`]: { margin: theme.spacing(0.5, 0) },
+    [`&+.${dividerClasses.root}`]: {margin: theme.spacing(0.5, 0)},
   };
 }

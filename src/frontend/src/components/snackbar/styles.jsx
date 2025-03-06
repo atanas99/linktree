@@ -1,14 +1,14 @@
-import { Toaster } from 'sonner';
+import {Toaster} from 'sonner';
 
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 
-import { varAlpha } from 'src/theme/styles';
+import {varAlpha} from 'src/theme/styles';
 
-import { toasterClasses } from './classes';
+import {toasterClasses} from './classes';
 
 // ----------------------------------------------------------------------
 
-export const StyledToaster = styled(Toaster)(({ theme }) => {
+export const StyledToaster = styled(Toaster)(({theme}) => {
   const baseStyles = {
     toastDefault: {
       padding: theme.spacing(1, 1, 1, 1.5),
@@ -51,7 +51,7 @@ export const StyledToaster = styled(Toaster)(({ theme }) => {
       animation: 'rotate 3s infinite linear',
       background: `conic-gradient(${varAlpha(theme.vars.palette.text.primaryChannel, 0)}, ${varAlpha(theme.vars.palette.text.disabledChannel, 0.64)})`,
     },
-    [toasterClasses.loaderVisible]: { display: 'flex' },
+    [toasterClasses.loaderVisible]: {display: 'flex'},
   };
 
   return {
@@ -118,7 +118,7 @@ export const StyledToaster = styled(Toaster)(({ theme }) => {
     /*
      * Default
      */
-    '@keyframes rotate': { to: { transform: 'rotate(1turn)' } },
+    '@keyframes rotate': {to: {transform: 'rotate(1turn)'}},
 
     [`& .${toasterClasses.default}`]: {
       ...baseStyles.toastDefault,

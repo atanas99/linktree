@@ -1,16 +1,16 @@
 'use client';
 
-import { forwardRef } from 'react';
-import { Icon, disableCache } from '@iconify/react';
+import {forwardRef} from 'react';
+import {disableCache, Icon} from '@iconify/react';
 
 import Box from '@mui/material/Box';
 import NoSsr from '@mui/material/NoSsr';
 
-import { iconifyClasses } from './classes';
+import {iconifyClasses} from './classes';
 
 // ----------------------------------------------------------------------
 
-export const Iconify = forwardRef(({ className, width = 20, sx, ...other }, ref) => {
+export const Iconify = forwardRef(({className, width = 20, sx, ...other}, ref) => {
   const baseStyles = {
     width,
     height: width,
@@ -22,7 +22,7 @@ export const Iconify = forwardRef(({ className, width = 20, sx, ...other }, ref)
     <Box
       component="span"
       className={iconifyClasses.root.concat(className ? ` ${className}` : '')}
-      sx={{ ...baseStyles, ...sx }}
+      sx={{...baseStyles, ...sx}}
     />
   );
 
@@ -32,7 +32,7 @@ export const Iconify = forwardRef(({ className, width = 20, sx, ...other }, ref)
         ref={ref}
         component={Icon}
         className={iconifyClasses.root.concat(className ? ` ${className}` : '')}
-        sx={{ ...baseStyles, ...sx }}
+        sx={{...baseStyles, ...sx}}
         {...other}
       />
     </NoSsr>

@@ -2,15 +2,15 @@ import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import ListSubheader from '@mui/material/ListSubheader';
 
-import { stylesMode } from 'src/theme/styles';
+import {stylesMode} from 'src/theme/styles';
 
-import { navSectionClasses } from './classes';
-import { svgColorClasses } from '../svg-color';
-import { Iconify, iconifyClasses } from '../iconify';
+import {navSectionClasses} from './classes';
+import {svgColorClasses} from '../svg-color';
+import {Iconify, iconifyClasses} from '../iconify';
 
 // ----------------------------------------------------------------------
 
-export function stateClasses({ open, active, disabled }) {
+export function stateClasses({open, active, disabled}) {
   let classes = navSectionClasses.item.root;
 
   if (active) {
@@ -62,12 +62,12 @@ export const sharedStyles = {
     textOverflow: 'ellipsis',
   },
 
-  disabled: { opacity: 0.48, pointerEvents: 'none' },
+  disabled: {opacity: 0.48, pointerEvents: 'none'},
 };
 
 // ----------------------------------------------------------------------
 
-export function Subheader({ sx, open, children, ...other }) {
+export function Subheader({sx, open, children, ...other}) {
   return (
     <ListSubheader
       disableSticky
@@ -91,7 +91,7 @@ export function Subheader({ sx, open, children, ...other }) {
         '&:hover': {
           pl: 2,
           color: 'var(--nav-subheader-hover-color)',
-          [`& .${iconifyClasses.root}`]: { opacity: 1 },
+          [`& .${iconifyClasses.root}`]: {opacity: 1},
         },
         ...sx,
       }}
@@ -118,7 +118,7 @@ export function Subheader({ sx, open, children, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function NavCollapse({ sx, depth, children, ...other }) {
+export function NavCollapse({sx, depth, children, ...other}) {
   return (
     <Collapse
       sx={{
@@ -152,7 +152,7 @@ export function NavCollapse({ sx, depth, children, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function NavLi({ sx, children, disabled, ...other }) {
+export function NavLi({sx, children, disabled, ...other}) {
   return (
     <Box
       component="li"
@@ -160,7 +160,7 @@ export function NavLi({ sx, children, disabled, ...other }) {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        ...(disabled && { cursor: 'not-allowed' }),
+        ...(disabled && {cursor: 'not-allowed'}),
         ...sx,
       }}
       {...other}
@@ -172,7 +172,7 @@ export function NavLi({ sx, children, disabled, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function NavUl({ children, sx, ...other }) {
+export function NavUl({children, sx, ...other}) {
   return (
     <Box
       component="ul"

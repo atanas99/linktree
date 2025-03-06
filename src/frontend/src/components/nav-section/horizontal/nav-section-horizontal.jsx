@@ -1,22 +1,22 @@
 import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { NavList } from './nav-list';
-import { NavUl, NavLi } from '../styles';
-import { Scrollbar } from '../../scrollbar';
-import { navSectionClasses } from '../classes';
-import { navSectionCssVars } from '../css-vars';
+import {NavList} from './nav-list';
+import {NavLi, NavUl} from '../styles';
+import {Scrollbar} from '../../scrollbar';
+import {navSectionClasses} from '../classes';
+import {navSectionCssVars} from '../css-vars';
 
 // ----------------------------------------------------------------------
 
 export function NavSectionHorizontal({
-  sx,
-  data,
-  render,
-  slotProps,
-  enabledRootRedirect,
-  cssVars: overridesVars,
-}) {
+                                       sx,
+                                       data,
+                                       render,
+                                       slotProps,
+                                       enabledRootRedirect,
+                                       cssVars: overridesVars,
+                                     }) {
   const theme = useTheme();
 
   const cssVars = {
@@ -26,9 +26,9 @@ export function NavSectionHorizontal({
 
   return (
     <Scrollbar
-      sx={{ height: 1 }}
+      sx={{height: 1}}
       slotProps={{
-        content: { height: 1, display: 'flex', alignItems: 'center' },
+        content: {height: 1, display: 'flex', alignItems: 'center'},
       }}
     >
       <Stack
@@ -44,7 +44,7 @@ export function NavSectionHorizontal({
           ...sx,
         }}
       >
-        <NavUl sx={{ flexDirection: 'row', gap: 'var(--nav-item-gap)' }}>
+        <NavUl sx={{flexDirection: 'row', gap: 'var(--nav-item-gap)'}}>
           {data.map((group) => (
             <Group
               key={group.subheader ?? group.items[0].title}
@@ -63,10 +63,10 @@ export function NavSectionHorizontal({
 
 // ----------------------------------------------------------------------
 
-function Group({ items, render, slotProps, enabledRootRedirect, cssVars }) {
+function Group({items, render, slotProps, enabledRootRedirect, cssVars}) {
   return (
     <NavLi>
-      <NavUl sx={{ flexDirection: 'row', gap: 'var(--nav-item-gap)' }}>
+      <NavUl sx={{flexDirection: 'row', gap: 'var(--nav-item-gap)'}}>
         {items.map((list) => (
           <NavList
             key={list.title}

@@ -3,16 +3,16 @@ import Switch from '@mui/material/Switch';
 import Tooltip from '@mui/material/Tooltip';
 import ButtonBase from '@mui/material/ButtonBase';
 
-import { CONFIG } from 'src/config-global';
-import { varAlpha } from 'src/theme/styles';
+import {CONFIG} from 'src/config-global';
+import {varAlpha} from 'src/theme/styles';
 
-import { Iconify } from 'src/components/iconify';
+import {Iconify} from 'src/components/iconify';
 
-import { SvgColor } from '../../svg-color';
+import {SvgColor} from '../../svg-color';
 
 // ----------------------------------------------------------------------
 
-export function BaseOption({ icon, label, tooltip, selected, ...other }) {
+export function BaseOption({icon, label, tooltip, selected, ...other}) {
   return (
     <ButtonBase
       disableRipple
@@ -24,7 +24,7 @@ export function BaseOption({ icon, label, tooltip, selected, ...other }) {
         flexDirection: 'column',
         alignItems: 'flex-start',
         border: (theme) => `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
-        '&:hover': { bgcolor: (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08) },
+        '&:hover': {bgcolor: (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08)},
         ...(selected && {
           bgcolor: (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08),
         }),
@@ -35,13 +35,13 @@ export function BaseOption({ icon, label, tooltip, selected, ...other }) {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
-        sx={{ width: 1, mb: 3 }}
+        sx={{width: 1, mb: 3}}
       >
-        <SvgColor src={`${CONFIG.site.basePath}/assets/icons/setting/ic-${icon}.svg`} />
-        <Switch name={label} size="small" color="default" checked={selected} sx={{ mr: -0.75 }} />
+        <SvgColor src={`${CONFIG.site.basePath}/assets/icons/setting/ic-${icon}.svg`}/>
+        <Switch name={label} size="small" color="default" checked={selected} sx={{mr: -0.75}}/>
       </Box>
 
-      <Box display="flex" alignItems="center" justifyContent="space-between" sx={{ width: 1 }}>
+      <Box display="flex" alignItems="center" justifyContent="space-between" sx={{width: 1}}>
         <Box
           component="span"
           sx={{
@@ -58,13 +58,13 @@ export function BaseOption({ icon, label, tooltip, selected, ...other }) {
             arrow
             title={tooltip}
             slotProps={{
-              tooltip: { sx: { maxWidth: 240, mr: 0.5 } },
+              tooltip: {sx: {maxWidth: 240, mr: 0.5}},
             }}
           >
             <Iconify
               width={16}
               icon="eva:info-outline"
-              sx={{ cursor: 'pointer', color: 'text.disabled' }}
+              sx={{cursor: 'pointer', color: 'text.disabled'}}
             />
           </Tooltip>
         )}

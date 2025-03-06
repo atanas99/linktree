@@ -1,15 +1,15 @@
 'use client';
 
-import { m } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import {m} from 'framer-motion';
+import {useEffect, useRef, useState} from 'react';
 
 import Box from '@mui/material/Box';
 
-import { borderGradient } from 'src/theme/styles';
+import {borderGradient} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
-export function AnimateBorder({ animate, sx }) {
+export function AnimateBorder({animate, sx}) {
   const rootRef = useRef(null);
 
   const animateRef = useRef(null);
@@ -37,7 +37,7 @@ export function AnimateBorder({ animate, sx }) {
   useEffect(() => {
     if (!values.disable) {
       if (rootRef.current) {
-        const { width, height } = rootRef.current.getBoundingClientRect();
+        const {width, height} = rootRef.current.getBoundingClientRect();
 
         setAspectRatio(width / height);
       }
@@ -94,7 +94,7 @@ export function AnimateBorder({ animate, sx }) {
         position: 'relative',
         borderRadius: 'inherit',
         '&::before': {
-          ...borderGradient({ color: values.outline, padding: values.width }),
+          ...borderGradient({color: values.outline, padding: values.width}),
         },
         ...sx,
       }}
@@ -106,14 +106,14 @@ export function AnimateBorder({ animate, sx }) {
         animate={
           !values.disable
             ? {
-                background: background(
-                  typeof values.color === 'string' ? values.color : values.color[0]
-                ),
-              }
+              background: background(
+                typeof values.color === 'string' ? values.color : values.color[0]
+              ),
+            }
             : undefined
         }
         sx={{
-          ...borderGradient({ padding: values.width }),
+          ...borderGradient({padding: values.width}),
         }}
       />
 

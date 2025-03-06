@@ -1,11 +1,11 @@
 'use client';
 
-import { HomeHero } from '../home-hero';
+import {HomeHero} from '../home-hero';
 
 // ----------------------------------------------------------------------
 
 export function HomeView() {
   return (
-    <HomeHero />
+    <HomeHero/>
   );
 }

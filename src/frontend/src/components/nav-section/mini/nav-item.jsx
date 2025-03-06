@@ -1,16 +1,16 @@
-import { forwardRef } from 'react';
+import {forwardRef} from 'react';
 
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 
-import { stylesMode } from 'src/theme/styles';
+import {stylesMode} from 'src/theme/styles';
 
-import { useNavItem } from '../hooks';
-import { Iconify } from '../../iconify';
-import { navSectionClasses } from '../classes';
-import { stateClasses, sharedStyles } from '../styles';
+import {useNavItem} from '../hooks';
+import {Iconify} from '../../iconify';
+import {navSectionClasses} from '../classes';
+import {sharedStyles, stateClasses} from '../styles';
 
 // ----------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ export const NavItem = forwardRef(
           [`& .${navSectionClasses.item.info}`]: slotProps?.info,
           [`& .${navSectionClasses.item.arrow}`]: slotProps?.arrow,
         }}
-        className={stateClasses({ open: open && !active, active, disabled })}
+        className={stateClasses({open: open && !active, active, disabled})}
         {...navItem.baseProps}
         {...other}
       >
@@ -81,7 +81,7 @@ export const NavItem = forwardRef(
 
         {caption && (
           <Tooltip title={caption} arrow placement="right">
-            <Iconify icon="eva:info-outline" className={navSectionClasses.item.caption} />
+            <Iconify icon="eva:info-outline" className={navSectionClasses.item.caption}/>
           </Tooltip>
         )}
 
@@ -92,7 +92,7 @@ export const NavItem = forwardRef(
         )}
 
         {hasChild && (
-          <Iconify icon="eva:arrow-ios-forward-fill" className={navSectionClasses.item.arrow} />
+          <Iconify icon="eva:arrow-ios-forward-fill" className={navSectionClasses.item.arrow}/>
         )}
       </StyledNavItem>
     );
@@ -104,7 +104,7 @@ export const NavItem = forwardRef(
 const StyledNavItem = styled(ButtonBase, {
   shouldForwardProp: (prop) =>
     prop !== 'active' && prop !== 'open' && prop !== 'disabled' && prop !== 'depth',
-})(({ active, open, disabled, depth, theme }) => {
+})(({active, open, disabled, depth, theme}) => {
   const rootItem = depth === 1;
 
   const subItem = !rootItem;
@@ -133,8 +133,8 @@ const StyledNavItem = styled(ButtonBase, {
       height: 'var(--nav-icon-size)',
     },
 
-    arrow: { ...sharedStyles.arrow },
-    info: { ...sharedStyles.info },
+    arrow: {...sharedStyles.arrow},
+    info: {...sharedStyles.info},
   };
 
   return {
@@ -170,7 +170,7 @@ const StyledNavItem = styled(ButtonBase, {
         right: 6,
         position: 'absolute',
       },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
+      [`& .${navSectionClasses.item.info}`]: {...baseStyles.info},
       // State
       ...(active && {
         color: 'var(--nav-item-root-active-color)',
@@ -208,12 +208,12 @@ const StyledNavItem = styled(ButtonBase, {
           : theme.typography.fontWeightMedium,
         flex: '1 1 auto',
       },
-      [`& .${navSectionClasses.item.caption}`]: { ...baseStyles.caption },
+      [`& .${navSectionClasses.item.caption}`]: {...baseStyles.caption},
       [`& .${navSectionClasses.item.arrow}`]: {
         ...baseStyles.arrow,
         marginRight: theme.spacing(-0.5),
       },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
+      [`& .${navSectionClasses.item.info}`]: {...baseStyles.info},
       // State
       ...(active && {
         color: 'var(--nav-item-sub-active-color)',

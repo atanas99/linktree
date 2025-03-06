@@ -1,15 +1,12 @@
-import { CONFIG } from 'src/config-global';
-
-import { HomeView } from 'src/sections/home/view';
-import { LinktreeEditView } from 'src/sections/linktree/view/linktree-edit-view';
+import {CONFIG} from 'src/config-global';
 import {LinktreeViewView} from "../../../../sections/linktree-view/view/linktree-view-view";
 
 // ----------------------------------------------------------------------
 
-export const metadata = { title: `Create - ${CONFIG.site.name}` };
+export const metadata = {title: `Create - ${CONFIG.site.name}`};
 
-export default function Page({ params }) {
-  const { id } = params;
+export default function Page({params}) {
+  const {id} = params;
   return (
     <LinktreeViewView userId={id}/>
   );

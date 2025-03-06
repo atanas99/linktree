@@ -1,19 +1,19 @@
-import { cloneElement } from 'react';
+import {cloneElement} from 'react';
 
-import { RouterLink } from 'src/routes/components';
+import {RouterLink} from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
 export function useNavItem({
-  path,
-  icon,
-  info,
-  depth,
-  render,
-  hasChild,
-  externalLink,
-  enabledRootRedirect,
-}) {
+                             path,
+                             icon,
+                             info,
+                             depth,
+                             render,
+                             hasChild,
+                             externalLink,
+                             enabledRootRedirect,
+                           }) {
   const rootItem = depth === 1;
 
   const subItem = !rootItem;
@@ -21,10 +21,10 @@ export function useNavItem({
   const subDeepItem = Number(depth) > 2;
 
   const linkProps = externalLink
-    ? { href: path, target: '_blank', rel: 'noopener' }
-    : { component: RouterLink, href: path };
+    ? {href: path, target: '_blank', rel: 'noopener'}
+    : {component: RouterLink, href: path};
 
-  const baseProps = hasChild && !enabledRootRedirect ? { component: 'div' } : linkProps;
+  const baseProps = hasChild && !enabledRootRedirect ? {component: 'div'} : linkProps;
 
   /**
    * Render @icon

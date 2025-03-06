@@ -1,16 +1,8 @@
-import { useTheme } from '@mui/material/styles';
-import {Box, Stack, Container, Typography, Card} from '@mui/material';
+import {useTheme} from '@mui/material/styles';
+import {Container, Stack} from '@mui/material';
 
-import { varAlpha, textGradient } from 'src/theme/styles';
-
-import { AnimateAvatar } from 'src/components/animate';
-
-import { useAuthContext } from 'src/auth/hooks';
-
-import { HeroBackground } from './components/hero-background';
-import { Button } from '@mui/material';
-import { useRouter } from 'src/routes/hooks';
-import { paths } from 'src/routes/paths';
+import {HeroBackground} from './components/hero-background';
+import {useRouter} from 'src/routes/hooks';
 import {LinksDisplay} from "../linktree/linksDisplay";
 import {useEffect, useState} from "react";
 import axios, {endpoints} from "../../utils/axios";
@@ -18,10 +10,12 @@ import {toast} from "../../components/snackbar";
 
 // ----------------------------------------------------------------------
 
-export function LinktreeViewHero({ userId, sx, ...other }) {
+export function LinktreeHero({userId, sx, ...other}) {
+
   const theme = useTheme();
   const router = useRouter();
   const [links, setLinks] = useState([]);
+  const [profile, setProfile] = useState({});
   useEffect(() => {
     const fetchLinks = async () => {
       try {
@@ -33,7 +27,7 @@ export function LinktreeViewHero({ userId, sx, ...other }) {
     };
     const fetchProfileDetails = async () => {
       try {
-        const response = await axios.get(endpoints.users.getUser(userId));
+        const response = await axios.get(endpoints.users.getUserById(userId));
         setProfile(response.data);
       } catch (error) {
         toast.error("Failed to fetch profile details");
@@ -41,6 +35,7 @@ export function LinktreeViewHero({ userId, sx, ...other }) {
     }
     if (userId) {
       fetchLinks();
+      fetchProfileDetails();
     }
   }, [userId]);
 
@@ -70,9 +65,9 @@ export function LinktreeViewHero({ userId, sx, ...other }) {
         }}
       >
 
-        <LinksDisplay links={links}/>
+        <LinksDisplay profileData={profile} links={links}/>
       </Container>
-      <HeroBackground />
+      <HeroBackground/>
     </Stack>
   );
 }

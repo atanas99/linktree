@@ -1,8 +1,8 @@
 "use client";
 
-import {LinktreeViewHero} from "../linktree-view-hero";
+import {LinktreeHero} from "../linktree-view-hero";
 
 
 export function LinktreeViewView({userId}) {
-  return <LinktreeViewHero userId={userId}/>;
+  return <LinktreeHero userId={userId}/>;
 }

@@ -4,7 +4,7 @@ const MuiStack = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { useFlexGap: true },
+  defaultProps: {useFlexGap: true},
   /** **************************************
    * STYLE
    *************************************** */
@@ -13,4 +13,4 @@ const MuiStack = {
 
 // ----------------------------------------------------------------------
 
-export const stack = { MuiStack };
+export const stack = {MuiStack};

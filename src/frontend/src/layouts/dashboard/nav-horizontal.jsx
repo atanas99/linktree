@@ -1,27 +1,27 @@
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-import { varAlpha } from 'src/theme/styles';
+import {varAlpha} from 'src/theme/styles';
 
-import { NavSectionHorizontal } from 'src/components/nav-section';
+import {NavSectionHorizontal} from 'src/components/nav-section';
 
 // ----------------------------------------------------------------------
 
-export function NavHorizontal({ data, layoutQuery, sx, ...other }) {
+export function NavHorizontal({data, layoutQuery, sx, ...other}) {
   return (
     <Box
       sx={{
         width: 1,
         position: 'relative',
         flexDirection: 'column',
-        display: { xs: 'none', [layoutQuery]: 'flex' },
+        display: {xs: 'none', [layoutQuery]: 'flex'},
         borderBottom: (theme) =>
           `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
         ...sx,
       }}
     >
       <Divider
-        sx={{ top: 0, left: 0, width: 1, zIndex: 9, position: 'absolute', borderStyle: 'dashed' }}
+        sx={{top: 0, left: 0, width: 1, zIndex: 9, position: 'absolute', borderStyle: 'dashed'}}
       />
 
       <Box

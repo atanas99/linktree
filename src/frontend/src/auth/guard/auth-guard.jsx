@@ -1,26 +1,26 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
-import { paths } from 'src/routes/paths';
-import { useRouter, usePathname, useSearchParams } from 'src/routes/hooks';
+import {paths} from 'src/routes/paths';
+import {usePathname, useRouter, useSearchParams} from 'src/routes/hooks';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { SplashScreen } from 'src/components/loading-screen';
+import {SplashScreen} from 'src/components/loading-screen';
 
-import { useAuthContext } from '../hooks';
+import {useAuthContext} from '../hooks';
 
 // ----------------------------------------------------------------------
 
-export function AuthGuard({ children }) {
+export function AuthGuard({children}) {
   const router = useRouter();
 
   const pathname = usePathname();
 
   const searchParams = useSearchParams();
 
-  const { authenticated, loading } = useAuthContext();
+  const {authenticated, loading} = useAuthContext();
 
   const [isChecking, setIsChecking] = useState(true);
 
@@ -40,7 +40,7 @@ export function AuthGuard({ children }) {
     }
 
     if (!authenticated) {
-      const { method } = CONFIG.auth;
+      const {method} = CONFIG.auth;
 
       const signInPath = {
         jwt: paths.auth.signIn,
@@ -61,7 +61,7 @@ export function AuthGuard({ children }) {
   }, [authenticated, loading]);
 
   if (isChecking) {
-    return <SplashScreen />;
+    return <SplashScreen/>;
   }
 
   return <>{children}</>;

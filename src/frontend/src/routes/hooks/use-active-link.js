@@ -1,5 +1,5 @@
-import { usePathname } from './use-pathname';
-import { hasParams, removeParams, isExternalLink, removeLastSlash } from '../utils';
+import {usePathname} from './use-pathname';
+import {hasParams, isExternalLink, removeLastSlash, removeParams} from '../utils';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ export function useActiveLink(itemPath, deep = true) {
   if (isDeep) {
     /**
      * [1] Deep: default
-     * @itemPath 			 = '/dashboard/user'
+     * @itemPath       = '/dashboard/user'
      * @match pathname = '/dashboard/user'
      * @match pathname = '/dashboard/user/list'
      * @match pathname = '/dashboard/user/e99f09a7-dd88-49d5-b1c8-1daf80c2d7b15/edit'
@@ -35,7 +35,7 @@ export function useActiveLink(itemPath, deep = true) {
 
     /**
      * [1] Deep: has params
-     * @itemPath 			 = '/dashboard/test?id=e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1'
+     * @itemPath       = '/dashboard/test?id=e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1'
      * @match pathname = '/dashboard/test'
      */
 
@@ -48,7 +48,7 @@ export function useActiveLink(itemPath, deep = true) {
 
   /**
    * [1] Normal: active
-   * @itemPath 			 = '/dashboard/calendar'
+   * @itemPath       = '/dashboard/calendar'
    * @match pathname = '/dashboard/calendar'
    */
   return pathname === itemPath;

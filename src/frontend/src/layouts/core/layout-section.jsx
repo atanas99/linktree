@@ -3,18 +3,18 @@
 import Box from '@mui/material/Box';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
-import { layoutClasses } from '../classes';
+import {layoutClasses} from '../classes';
 
 // ----------------------------------------------------------------------
 
 export function LayoutSection({
-  sx,
-  cssVars,
-  children,
-  footerSection,
-  headerSection,
-  sidebarSection,
-}) {
+                                sx,
+                                cssVars,
+                                children,
+                                footerSection,
+                                headerSection,
+                                sidebarSection,
+                              }) {
   const inputGlobalStyles = (
     <GlobalStyles
       styles={{

@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 
-import { layoutClasses } from '../classes';
+import {layoutClasses} from '../classes';
 
 // ----------------------------------------------------------------------
 
-export function Main({ children, sx, ...other }) {
+export function Main({children, sx, ...other}) {
   return (
     <Box
       component="main"
@@ -24,7 +24,7 @@ export function Main({ children, sx, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function CompactContent({ children, sx, ...other }) {
+export function CompactContent({children, sx, ...other}) {
   return (
     <Box
       className={layoutClasses.content}
@@ -36,7 +36,7 @@ export function CompactContent({ children, sx, ...other }) {
         textAlign: 'center',
         flexDirection: 'column',
         justifyContent: 'center',
-        py: { xs: 5, md: 10, lg: 12 },
+        py: {xs: 5, md: 10, lg: 12},
         maxWidth: 'var(--layout-simple-content-compact-width)',
         ...sx,
       }}

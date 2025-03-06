@@ -4,7 +4,7 @@ export const varContainer = (props) => {
   const staggerOut = props?.staggerIn || 0.05;
 
   return {
-    animate: { transition: { staggerChildren: staggerIn, delayChildren: delayIn } },
-    exit: { transition: { staggerChildren: staggerOut, staggerDirection: -1 } },
+    animate: {transition: {staggerChildren: staggerIn, delayChildren: delayIn}},
+    exit: {transition: {staggerChildren: staggerOut, staggerDirection: -1}},
   };
 };

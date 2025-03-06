@@ -2,25 +2,25 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 
-import { fileThumbnailClasses } from './classes';
-import { fileData, fileThumb, fileFormat } from './utils';
-import { RemoveButton, DownloadButton } from './action-buttons';
+import {fileThumbnailClasses} from './classes';
+import {fileData, fileFormat, fileThumb} from './utils';
+import {DownloadButton, RemoveButton} from './action-buttons';
 
 // ----------------------------------------------------------------------
 
 export function FileThumbnail({
-  sx,
-  file,
-  tooltip,
-  onRemove,
-  imageView,
-  slotProps,
-  onDownload,
-  ...other
-}) {
+                                sx,
+                                file,
+                                tooltip,
+                                onRemove,
+                                imageView,
+                                slotProps,
+                                onDownload,
+                                ...other
+                              }) {
   const previewUrl = typeof file === 'string' ? file : URL.createObjectURL(file);
 
-  const { name, path } = fileData(file);
+  const {name, path} = fileData(file);
 
   const format = fileFormat(path || previewUrl);
 
@@ -44,7 +44,7 @@ export function FileThumbnail({
       component="img"
       src={fileThumb(format)}
       className={fileThumbnailClasses.icon}
-      sx={{ width: 1, height: 1, ...slotProps?.icon }}
+      sx={{width: 1, height: 1, ...slotProps?.icon}}
     />
   );
 
@@ -90,7 +90,7 @@ export function FileThumbnail({
       <Tooltip
         arrow
         title={name}
-        slotProps={{ popper: { modifiers: [{ name: 'offset', options: { offset: [0, -12] } }] } }}
+        slotProps={{popper: {modifiers: [{name: 'offset', options: {offset: [0, -12]}}]}}}
       >
         {renderContent}
       </Tooltip>

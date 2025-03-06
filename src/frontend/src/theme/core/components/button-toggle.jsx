@@ -1,6 +1,6 @@
-import { toggleButtonClasses } from '@mui/material/ToggleButton';
+import {toggleButtonClasses} from '@mui/material/ToggleButton';
 
-import { varAlpha } from '../../styles';
+import {varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ const MuiToggleButton = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme, ownerState }) => {
+    root: ({theme, ownerState}) => {
       const styled = {
         colors: styleColors(ownerState, (color) => ({
           '&:hover': {
@@ -52,7 +52,7 @@ const MuiToggleButton = {
         },
       };
 
-      return { ...styled.colors, ...styled.selected, ...styled.disabled };
+      return {...styled.colors, ...styled.selected, ...styled.disabled};
     },
   },
 };
@@ -64,18 +64,18 @@ const MuiToggleButtonGroup = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       gap: 4,
       padding: 4,
       border: `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
     }),
     grouped: {
-      [`&.${toggleButtonClasses.root}`]: { border: 'none', borderRadius: 'inherit' },
-      [`&.${toggleButtonClasses.selected}`]: { boxShadow: 'none' },
+      [`&.${toggleButtonClasses.root}`]: {border: 'none', borderRadius: 'inherit'},
+      [`&.${toggleButtonClasses.selected}`]: {boxShadow: 'none'},
     },
   },
 };
 
 // ----------------------------------------------------------------------
 
-export const toggleButton = { MuiToggleButton, MuiToggleButtonGroup };
+export const toggleButton = {MuiToggleButton, MuiToggleButtonGroup};

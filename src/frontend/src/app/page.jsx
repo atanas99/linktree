@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
-import { useRouter } from 'src/routes/hooks';
+import {useRouter} from 'src/routes/hooks';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
 // ----------------------------------------------------------------------
 
