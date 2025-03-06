@@ -1,5 +1,5 @@
 import COLORS from './colors.json';
-import {createPaletteChannel, varAlpha} from '../styles';
+import {varAlpha, createPaletteChannel} from '../styles';
 
 // ----------------------------------------------------------------------
 
