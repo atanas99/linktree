@@ -84,16 +84,6 @@ export function SettingsDrawer({
     />
   );
 
-  const renderContrast = (
-    <BaseOption
-      label="Contrast"
-      icon="contrast"
-      selected={settings.contrast === 'hight'}
-      onClick={() =>
-        settings.onUpdateField('contrast', settings.contrast === 'default' ? 'hight' : 'default')
-      }
-    />
-  );
 
   const renderRTL = (
     <BaseOption
@@ -103,16 +93,6 @@ export function SettingsDrawer({
       onClick={() =>
         settings.onUpdateField('direction', settings.direction === 'ltr' ? 'rtl' : 'ltr')
       }
-    />
-  );
-
-  const renderCompact = (
-    <BaseOption
-      tooltip="Dashboard only and available at large resolutions > 1600px (xl)"
-      label="Compact"
-      icon="autofit-width"
-      selected={settings.compactLayout}
-      onClick={() => settings.onUpdateField('compactLayout', !settings.compactLayout)}
     />
   );
 
@@ -131,24 +111,6 @@ export function SettingsDrawer({
     />
   );
 
-  const renderNav = (
-    <NavOptions
-      value={{
-        color: settings.navColor,
-        layout: settings.navLayout,
-      }}
-      onClickOption={{
-        color: (newValue) => settings.onUpdateField('navColor', newValue),
-        layout: (newValue) => settings.onUpdateField('navLayout', newValue),
-      }}
-      options={{
-        colors: ['integrate', 'apparent'],
-        layouts: ['vertical', 'horizontal', 'mini'],
-      }}
-      hideNavColor={hideNavColor}
-      hideNavLayout={hideNavLayout}
-    />
-  );
 
   const renderFont = (
     <FontOptions
@@ -181,11 +143,8 @@ export function SettingsDrawer({
         <Stack spacing={6} sx={{px: 2.5, pb: 5}}>
           <Box gap={2} display="grid" gridTemplateColumns="repeat(2, 1fr)">
             {!hideColorScheme && renderMode}
-            {!hideContrast && renderContrast}
             {!hideDirection && renderRTL}
-            {!hideCompact && renderCompact}
           </Box>
-          {!(hideNavLayout && hideNavColor) && renderNav}
           {!hidePresets && renderPresets}
           {!hideFont && renderFont}
         </Stack>
