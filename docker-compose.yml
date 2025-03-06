@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+  db:
+    image: "postgres:17-alpine"
+    container_name: db
+    restart: always
+
+    ports:
+      - 5432:5432
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    environment:
+      - POSTGRES_DB=linktree
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+
+  linktree:
+    build: ./
+    container_name: linktree
+    environment:
+      - DB_SERVER:db
+      - POSTGRES_DB=linktree
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+    ports:
+      - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+
+    depends_on:
+      - db
+
+
+
+volumes:
+  postgres_data:
