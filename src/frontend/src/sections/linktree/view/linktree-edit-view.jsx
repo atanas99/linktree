@@ -46,14 +46,7 @@ export function LinktreeEditView() {
 
   const handleSave = async () => {
     try {
-      const data = {
-        user_id: user.id,
-        links: links.map(({ name, url }) => ({ name, url })),
-      };
-
-      console.log(data);
-
-      await axios.patch(endpoints.links.updateLink, data);
+      await axios.post(endpoints.links.createLink(user.id), links.map(({ name, url }) => ({ name, url })));
 
       toast.success("Linktree saved successfully");
     } catch (error) {
