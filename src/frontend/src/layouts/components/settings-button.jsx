@@ -1,30 +1,30 @@
 'use client';
 
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
 import Badge from '@mui/material/Badge';
 import SvgIcon from '@mui/material/SvgIcon';
 import IconButton from '@mui/material/IconButton';
 
-import { useSettingsContext } from 'src/components/settings/context';
+import {useSettingsContext} from 'src/components/settings/context';
 
 // ----------------------------------------------------------------------
 
-export function SettingsButton({ sx, ...other }) {
+export function SettingsButton({sx, ...other}) {
   const settings = useSettingsContext();
 
   return (
     <IconButton
       aria-label="settings"
       onClick={settings.onToggleDrawer}
-      sx={{ p: 0, width: 40, height: 40, ...sx }}
+      sx={{p: 0, width: 40, height: 40, ...sx}}
       {...other}
     >
       <Badge color="error" variant="dot" invisible={!settings.canReset}>
         <SvgIcon
           component={m.svg}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 8, ease: 'linear', repeat: Infinity }}
+          animate={{rotate: 360}}
+          transition={{duration: 8, ease: 'linear', repeat: Infinity}}
         >
           {/* https://icon-sets.iconify.design/solar/settings-bold-duotone/ */}
           <path

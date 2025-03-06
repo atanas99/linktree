@@ -1,6 +1,6 @@
-import { switchClasses } from '@mui/material/Switch';
+import {switchClasses} from '@mui/material/Switch';
 
-import { varAlpha, stylesMode } from '../../styles';
+import {stylesMode, varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -9,14 +9,14 @@ const MuiSwitch = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: { alignItems: 'center' },
-    switchBase: ({ ownerState, theme }) => ({
+    root: {alignItems: 'center'},
+    switchBase: ({ownerState, theme}) => ({
       top: 'unset',
       transform: 'translateX(6px)',
       [`&.${switchClasses.checked}`]: {
         [`& .${switchClasses.thumb}`]: {
           ...(ownerState.color === 'default' && {
-            [stylesMode.dark]: { color: theme.vars.palette.grey[800] },
+            [stylesMode.dark]: {color: theme.vars.palette.grey[800]},
           }),
         },
         [`&+.${switchClasses.track}`]: {
@@ -27,27 +27,27 @@ const MuiSwitch = {
         },
       },
       [`&.${switchClasses.disabled}`]: {
-        [`& .${switchClasses.thumb}`]: { opacity: 1, [stylesMode.dark]: { opacity: 0.48 } },
-        [`&+.${switchClasses.track}`]: { opacity: 0.48 },
+        [`& .${switchClasses.thumb}`]: {opacity: 1, [stylesMode.dark]: {opacity: 0.48}},
+        [`&+.${switchClasses.track}`]: {opacity: 0.48},
       },
     }),
-    track: ({ theme }) => ({
+    track: ({theme}) => ({
       opacity: 1,
       borderRadius: 10,
       backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.48),
     }),
-    thumb: ({ theme }) => ({ color: theme.vars.palette.common.white }),
+    thumb: ({theme}) => ({color: theme.vars.palette.common.white}),
     sizeMedium: {
-      [`& .${switchClasses.track}`]: { height: 20 },
-      [`& .${switchClasses.thumb}`]: { width: 14, height: 14 },
+      [`& .${switchClasses.track}`]: {height: 20},
+      [`& .${switchClasses.thumb}`]: {width: 14, height: 14},
     },
     sizeSmall: {
-      [`& .${switchClasses.track}`]: { height: 16 },
-      [`& .${switchClasses.thumb}`]: { width: 10, height: 10 },
+      [`& .${switchClasses.track}`]: {height: 16},
+      [`& .${switchClasses.thumb}`]: {width: 10, height: 10},
     },
   },
 };
 
 // ----------------------------------------------------------------------
 
-export const switches = { MuiSwitch };
+export const switches = {MuiSwitch};

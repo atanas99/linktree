@@ -1,11 +1,11 @@
 'use client';
 
-import { useMemo, useState, useCallback, createContext } from 'react';
+import {createContext, useCallback, useMemo, useState} from 'react';
 
-import { useCookies } from 'src/hooks/use-cookies';
-import { useLocalStorage } from 'src/hooks/use-local-storage';
+import {useCookies} from 'src/hooks/use-cookies';
+import {useLocalStorage} from 'src/hooks/use-local-storage';
 
-import { STORAGE_KEY, defaultSettings } from '../config-settings';
+import {defaultSettings, STORAGE_KEY} from '../config-settings';
 
 // ----------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ export const SettingsConsumer = SettingsContext.Consumer;
 
 // ----------------------------------------------------------------------
 
-export function SettingsProvider({ children, settings, caches = 'localStorage' }) {
+export function SettingsProvider({children, settings, caches = 'localStorage'}) {
   const cookies = useCookies(STORAGE_KEY, settings, defaultSettings);
 
   const localStorage = useLocalStorage(STORAGE_KEY, settings);

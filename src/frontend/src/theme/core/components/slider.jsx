@@ -1,20 +1,20 @@
-import { sliderClasses } from '@mui/material/Slider';
+import {sliderClasses} from '@mui/material/Slider';
 
-import { varAlpha, stylesMode } from '../../styles';
+import {stylesMode, varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
 const SIZE = {
-  rail: { small: 6, medium: 10 },
-  thumb: { small: 16, medium: 20 },
-  mark: { small: 4, medium: 6 },
+  rail: {small: 6, medium: 10},
+  thumb: {small: 16, medium: 20},
+  mark: {small: 4, medium: 6},
 };
 
 const MuiSlider = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { size: 'small' },
+  defaultProps: {size: 'small'},
 
   /** **************************************
    * VARIANTS
@@ -24,8 +24,8 @@ const MuiSlider = {
      * @color inherit
      */
     {
-      props: ({ ownerState }) => ownerState.color === 'inherit',
-      style: ({ theme }) => ({
+      props: ({ownerState}) => ownerState.color === 'inherit',
+      style: ({theme}) => ({
         [`& .${sliderClasses.markActive}`]: {
           [stylesMode.dark]: {
             backgroundColor: varAlpha(theme.vars.palette.grey['800Channel'], 0.48),
@@ -37,8 +37,8 @@ const MuiSlider = {
      * @state disabled
      */
     {
-      props: ({ ownerState }) => !!ownerState.disabled,
-      style: ({ theme }) => ({
+      props: ({ownerState}) => !!ownerState.disabled,
+      style: ({theme}) => ({
         [`&.${sliderClasses.disabled}`]: {
           color: varAlpha(
             theme.vars.palette.grey['500Channel'],
@@ -53,7 +53,7 @@ const MuiSlider = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       [`& .${sliderClasses.thumb}`]: {
         borderWidth: 1,
         borderStyle: 'solid',
@@ -68,39 +68,39 @@ const MuiSlider = {
           width: 'calc(100% - 4px)',
           height: 'calc(100% - 4px)',
           backgroundImage: `linear-gradient(180deg, ${theme.vars.palette.grey[500]} 0%, ${varAlpha(theme.vars.palette.grey['500Channel'], 0)} 100%)`,
-          [stylesMode.dark]: { opacity: 0.8 },
+          [stylesMode.dark]: {opacity: 0.8},
         },
       },
     }),
-    rail: ({ theme }) => ({
+    rail: ({theme}) => ({
       opacity: 0.12,
       height: SIZE.rail.medium,
       backgroundColor: theme.vars.palette.grey[500],
     }),
-    track: { height: SIZE.rail.medium },
-    mark: ({ theme }) => ({
+    track: {height: SIZE.rail.medium},
+    mark: ({theme}) => ({
       width: 1,
       height: SIZE.mark.medium,
       backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.48),
-      '&[data-index="0"]': { display: 'none' },
+      '&[data-index="0"]': {display: 'none'},
     }),
-    markActive: ({ theme }) => ({
+    markActive: ({theme}) => ({
       backgroundColor: varAlpha(theme.vars.palette.common.whiteChannel, 0.64),
     }),
-    markLabel: ({ theme }) => ({
+    markLabel: ({theme}) => ({
       fontSize: theme.typography.pxToRem(13),
       color: theme.vars.palette.text.disabled,
     }),
-    valueLabel: ({ theme }) => ({
+    valueLabel: ({theme}) => ({
       borderRadius: 8,
       backgroundColor: theme.vars.palette.grey[800],
-      [stylesMode.dark]: { backgroundColor: theme.vars.palette.grey[700] },
+      [stylesMode.dark]: {backgroundColor: theme.vars.palette.grey[700]},
     }),
     sizeSmall: {
-      [`& .${sliderClasses.thumb}`]: { width: SIZE.thumb.small, height: SIZE.thumb.small },
-      [`& .${sliderClasses.rail}`]: { height: SIZE.rail.small },
-      [`& .${sliderClasses.track}`]: { height: SIZE.rail.small },
-      [`& .${sliderClasses.mark}`]: { height: SIZE.mark.small },
+      [`& .${sliderClasses.thumb}`]: {width: SIZE.thumb.small, height: SIZE.thumb.small},
+      [`& .${sliderClasses.rail}`]: {height: SIZE.rail.small},
+      [`& .${sliderClasses.track}`]: {height: SIZE.rail.small},
+      [`& .${sliderClasses.mark}`]: {height: SIZE.mark.small},
     },
   },
 };

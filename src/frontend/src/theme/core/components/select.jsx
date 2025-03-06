@@ -21,7 +21,7 @@ const MuiSelect = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { IconComponent: ArrowDownIcon },
+  defaultProps: {IconComponent: ArrowDownIcon},
 
   /** **************************************
    * STYLE
@@ -42,7 +42,7 @@ const MuiNativeSelect = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { IconComponent: ArrowDownIcon },
+  defaultProps: {IconComponent: ArrowDownIcon},
 
   /** **************************************
    * STYLE
@@ -59,4 +59,4 @@ const MuiNativeSelect = {
 
 // ----------------------------------------------------------------------
 
-export const select = { MuiSelect, MuiNativeSelect };
+export const select = {MuiSelect, MuiNativeSelect};

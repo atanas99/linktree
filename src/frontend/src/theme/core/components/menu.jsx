@@ -1,4 +1,4 @@
-import { menuItem } from '../../styles';
+import {menuItem} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -6,9 +6,9 @@ const MuiMenuItem = {
   /** **************************************
    * STYLE
    *************************************** */
-  styleOverrides: { root: ({ theme }) => ({ ...menuItem(theme) }) },
+  styleOverrides: {root: ({theme}) => ({...menuItem(theme)})},
 };
 
 // ----------------------------------------------------------------------
 
-export const menu = { MuiMenuItem };
+export const menu = {MuiMenuItem};

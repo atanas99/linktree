@@ -1,6 +1,6 @@
-import { useMemo, useState, useCallback } from 'react';
+import {useCallback, useMemo, useState} from 'react';
 
-import { isEqual } from 'src/utils/helper';
+import {isEqual} from 'src/utils/helper';
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ export function useSetState(initialState) {
   const canReset = !isEqual(state, initialState);
 
   const setState = useCallback((updateState) => {
-    set((prevValue) => ({ ...prevValue, ...updateState }));
+    set((prevValue) => ({...prevValue, ...updateState}));
   }, []);
 
   const setField = useCallback(

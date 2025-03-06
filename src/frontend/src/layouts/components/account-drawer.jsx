@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -9,19 +9,19 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 
-import { useTheme } from '@mui/material/styles';
-import { Scrollbar } from 'src/components/scrollbar';
-import { Iconify } from 'src/components/iconify';
-import { useAuthContext } from 'src/auth/hooks';
-import { AccountButton } from './account-button';
-import { SignOutButton } from './sign-out-button';
-import { useBoolean } from '../../hooks/use-boolean';
-import { ProfileUpdateView } from '../../sections/profile/view/update-profile-view';
+import {useTheme} from '@mui/material/styles';
+import {Scrollbar} from 'src/components/scrollbar';
+import {Iconify} from 'src/components/iconify';
+import {useAuthContext} from 'src/auth/hooks';
+import {AccountButton} from './account-button';
+import {SignOutButton} from './sign-out-button';
+import {useBoolean} from '../../hooks/use-boolean';
+import {ProfileUpdateView} from '../../sections/profile/view/update-profile-view';
 
-export function AccountDrawer({ sx, ...other }) {
+export function AccountDrawer({sx, ...other}) {
   const theme = useTheme();
   const profileUpdateOpen = useBoolean(false);
-  const { user } = useAuthContext();
+  const {user} = useAuthContext();
   const [open, setOpen] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
 
@@ -54,39 +54,39 @@ export function AccountDrawer({ sx, ...other }) {
         open={open}
         onClose={handleCloseDrawer}
         anchor="right"
-        PaperProps={{ sx: { width: 320 } }}
+        PaperProps={{sx: {width: 320}}}
       >
         <IconButton
           onClick={handleCloseDrawer}
-          sx={{ top: 12, left: 12, zIndex: 9, position: 'absolute' }}
+          sx={{top: 12, left: 12, zIndex: 9, position: 'absolute'}}
         >
-          <Iconify icon="mingcute:close-line" />
+          <Iconify icon="mingcute:close-line"/>
         </IconButton>
 
         <Scrollbar>
-          <Stack alignItems="center" sx={{ pt: 8 }}>
-            <Avatar src={avatarPreview} alt={user?.name} sx={{ width: 96, height: 96 }} />
+          <Stack alignItems="center" sx={{pt: 8}}>
+            <Avatar src={avatarPreview} alt={user?.name} sx={{width: 96, height: 96}}/>
 
-            <Typography variant="subtitle1" noWrap sx={{ mt: 2 }}>
+            <Typography variant="subtitle1" noWrap sx={{mt: 2}}>
               {user?.name} {user?.surname}
             </Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }} noWrap>
+            <Typography variant="body2" sx={{color: 'text.secondary', mt: 0.5}} noWrap>
               {user?.email}
             </Typography>
           </Stack>
         </Scrollbar>
 
-        <ProfileUpdateView open={profileUpdateOpen.value} currentUser={user} onClose={profileUpdateOpen.onFalse} />
+        <ProfileUpdateView open={profileUpdateOpen.value} currentUser={user} onClose={profileUpdateOpen.onFalse}/>
 
-        <Box sx={{ p: 2.5 }}>
+        <Box sx={{p: 2.5}}>
           <Button variant="outlined" fullWidth onClick={profileUpdateOpen.onTrue}>
             Edit Profile Details
           </Button>
         </Box>
 
-        <Box sx={{ p: 2.5 }}>
-          <SignOutButton onClose={handleCloseDrawer} />
+        <Box sx={{p: 2.5}}>
+          <SignOutButton onClose={handleCloseDrawer}/>
         </Box>
       </Drawer>
     </>

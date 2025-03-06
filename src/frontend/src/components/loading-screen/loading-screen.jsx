@@ -6,7 +6,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 // ----------------------------------------------------------------------
 
-export function LoadingScreen({ portal, sx, ...other }) {
+export function LoadingScreen({portal, sx, ...other}) {
   const content = (
     <Box
       sx={{
@@ -21,7 +21,7 @@ export function LoadingScreen({ portal, sx, ...other }) {
       }}
       {...other}
     >
-      <LinearProgress color="inherit" sx={{ width: 1, maxWidth: 360 }} />
+      <LinearProgress color="inherit" sx={{width: 1, maxWidth: 360}}/>
     </Box>
   );
 

@@ -1,5 +1,5 @@
-import { varAlpha } from '../styles';
-import { grey, common } from './palette';
+import {varAlpha} from '../styles';
+import {common, grey} from './palette';
 
 // ----------------------------------------------------------------------
 

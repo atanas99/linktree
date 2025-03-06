@@ -1,7 +1,7 @@
 import SvgIcon from '@mui/material/SvgIcon';
-import { alertClasses } from '@mui/material/Alert';
+import {alertClasses} from '@mui/material/Alert';
 
-import { varAlpha, stylesMode } from '../../styles';
+import {stylesMode, varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -79,10 +79,10 @@ const MuiAlert = {
    *************************************** */
   defaultProps: {
     iconMapping: {
-      error: <AlertErrorIcon />,
-      info: <AlertInfoIcon />,
-      success: <AlertSuccessIcon />,
-      warning: <AlertWarningIcon />,
+      error: <AlertErrorIcon/>,
+      info: <AlertInfoIcon/>,
+      success: <AlertSuccessIcon/>,
+      warning: <AlertWarningIcon/>,
     },
   },
 
@@ -90,11 +90,11 @@ const MuiAlert = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    icon: { opacity: 1 },
+    icon: {opacity: 1},
     /**
      * @variant standard
      */
-    standard: ({ ownerState, theme }) => {
+    standard: ({ownerState, theme}) => {
       const styled = {
         colors: styleColors(ownerState, (color) => ({
           color: theme.vars.palette[color].darker,
@@ -105,40 +105,40 @@ const MuiAlert = {
           },
           [`& .${alertClasses.icon}`]: {
             color: theme.vars.palette[color].main,
-            [stylesMode.dark]: { color: theme.vars.palette[color].light },
+            [stylesMode.dark]: {color: theme.vars.palette[color].light},
           },
         })),
       };
 
-      return { ...styled.colors };
+      return {...styled.colors};
     },
     /**
      * @variant filled
      */
-    filled: ({ ownerState, theme }) => {
+    filled: ({ownerState, theme}) => {
       const styled = {
         colors: styleColors(ownerState, (color) => ({
           color: theme.vars.palette[color].contrastText,
         })),
       };
 
-      return { ...styled.colors };
+      return {...styled.colors};
     },
     /**
      * @variant outlined
      */
-    outlined: ({ ownerState, theme }) => {
+    outlined: ({ownerState, theme}) => {
       const styled = {
         colors: styleColors(ownerState, (color) => ({
           backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.08),
           color: theme.vars.palette[color].dark,
           border: `solid 1px ${varAlpha(theme.vars.palette[color].mainChannel, 0.16)}`,
-          [stylesMode.dark]: { color: theme.vars.palette[color].light },
-          [`& .${alertClasses.icon}`]: { color: theme.vars.palette[color].main },
+          [stylesMode.dark]: {color: theme.vars.palette[color].light},
+          [`& .${alertClasses.icon}`]: {color: theme.vars.palette[color].main},
         })),
       };
 
-      return { ...styled.colors };
+      return {...styled.colors};
     },
   },
 };
@@ -150,7 +150,7 @@ const MuiAlertTitle = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       marginBottom: theme.spacing(0.5),
       fontWeight: theme.typography.fontWeightSemiBold,
     }),
@@ -159,4 +159,4 @@ const MuiAlertTitle = {
 
 // ----------------------------------------------------------------------
 
-export const alert = { MuiAlert, MuiAlertTitle };
+export const alert = {MuiAlert, MuiAlertTitle};

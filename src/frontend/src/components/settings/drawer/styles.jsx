@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
-import { Iconify } from 'src/components/iconify';
+import {Iconify} from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export function Block({ title, tooltip, children, sx }) {
+export function Block({title, tooltip, children, sx}) {
   return (
     <Box
       sx={{
@@ -36,7 +36,7 @@ export function Block({ title, tooltip, children, sx }) {
           display: 'inline-flex',
           bgcolor: 'text.primary',
           fontWeight: 'fontWeightSemiBold',
-          [stylesMode.dark]: { color: 'grey.800' },
+          [stylesMode.dark]: {color: 'grey.800'},
         }}
       >
         {title}
@@ -46,7 +46,7 @@ export function Block({ title, tooltip, children, sx }) {
             <Iconify
               width={14}
               icon="eva:info-outline"
-              sx={{ ml: 0.5, mr: -0.5, opacity: 0.48, cursor: 'pointer' }}
+              sx={{ml: 0.5, mr: -0.5, opacity: 0.48, cursor: 'pointer'}}
             />
           </Tooltip>
         )}

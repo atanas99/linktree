@@ -1,7 +1,7 @@
-import { useMemo, useState, useEffect, useCallback } from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 
-import { isEqual } from 'src/utils/helper';
-import { localStorageGetItem } from 'src/utils/storage-available';
+import {isEqual} from 'src/utils/helper';
+import {localStorageGetItem} from 'src/utils/storage-available';
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ export function useLocalStorage(key, initialState) {
 
     if (restoredValue) {
       if (multiValue) {
-        set((prevValue) => ({ ...prevValue, ...restoredValue }));
+        set((prevValue) => ({...prevValue, ...restoredValue}));
       } else {
         set(restoredValue);
       }
@@ -28,8 +28,8 @@ export function useLocalStorage(key, initialState) {
     (updateState) => {
       if (multiValue) {
         set((prevValue) => {
-          setStorage(key, { ...prevValue, ...updateState });
-          return { ...prevValue, ...updateState };
+          setStorage(key, {...prevValue, ...updateState});
+          return {...prevValue, ...updateState};
         });
       } else {
         setStorage(key, updateState);

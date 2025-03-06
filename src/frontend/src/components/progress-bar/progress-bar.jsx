@@ -3,15 +3,15 @@
 import './styles.css';
 
 import NProgress from 'nprogress';
-import { Suspense, useEffect } from 'react';
+import {Suspense, useEffect} from 'react';
 
-import { useRouter, usePathname, useSearchParams } from 'src/routes/hooks';
+import {usePathname, useRouter, useSearchParams} from 'src/routes/hooks';
 
 // ----------------------------------------------------------------------
 
 export function ProgressBar() {
   useEffect(() => {
-    NProgress.configure({ showSpinner: false });
+    NProgress.configure({showSpinner: false});
 
     const handleAnchorClick = (event) => {
       const targetUrl = event.currentTarget.href;
@@ -41,7 +41,7 @@ export function ProgressBar() {
 
     const mutationObserver = new MutationObserver(handleMutation);
 
-    mutationObserver.observe(document, { childList: true, subtree: true });
+    mutationObserver.observe(document, {childList: true, subtree: true});
 
     window.history.pushState = new Proxy(window.history.pushState, {
       apply: (target, thisArg, argArray) => {
@@ -53,7 +53,7 @@ export function ProgressBar() {
 
   return (
     <Suspense fallback={null}>
-      <NProgressDone />
+      <NProgressDone/>
     </Suspense>
   );
 }

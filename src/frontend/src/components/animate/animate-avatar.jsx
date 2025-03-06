@@ -1,11 +1,11 @@
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 
 // ----------------------------------------------------------------------
 
-export function AnimateAvatar({ sx, slotProps, children, width = 40, ...other }) {
+export function AnimateAvatar({sx, slotProps, children, width = 40, ...other}) {
   const borderWidth = slotProps?.overlay?.border ?? 2;
 
   const spacing = slotProps?.overlay?.spacing ?? 2;
@@ -41,7 +41,7 @@ export function AnimateAvatar({ sx, slotProps, children, width = 40, ...other })
 
       <Box
         component={m.span}
-        animate={{ rotate: 360 }}
+        animate={{rotate: 360}}
         transition={{
           duration: 8,
           ease: 'linear',

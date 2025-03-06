@@ -1,20 +1,20 @@
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { useResponsive } from 'src/hooks/use-responsive';
+import {useResponsive} from 'src/hooks/use-responsive';
 
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
-import { MotionContainer } from 'src/components/animate';
+import {MotionContainer} from 'src/components/animate';
 
-import { Dots, Lines, Texts, Circles, PlusIcon } from './hero-svg';
+import {Circles, Dots, Lines, PlusIcon, Texts} from './hero-svg';
 
 // ----------------------------------------------------------------------
 
-export function HeroBackground({ sx }) {
+export function HeroBackground({sx}) {
   const theme = useTheme();
 
   const upMd = useResponsive('up', 'md');
@@ -56,9 +56,9 @@ export function HeroBackground({ sx }) {
         ...sx,
       }}
     >
-      <Dots />
+      <Dots/>
 
-      {upMd && <Texts />}
+      {upMd && <Texts/>}
 
       <Box
         component={m.svg}
@@ -69,7 +69,7 @@ export function HeroBackground({ sx }) {
         viewBox="0 0 1440 1080"
         initial="hidden"
         animate="visible"
-        sx={{ width: 1, height: 1 }}
+        sx={{width: 1, height: 1}}
       >
         <defs>
           <radialGradient
@@ -80,26 +80,26 @@ export function HeroBackground({ sx }) {
             gradientTransform="matrix(720 0 0 420 720 560)"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity={1} />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.08} />
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity={1}/>
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.08}/>
           </radialGradient>
 
           <mask id="mask_id">
-            <ellipse cx="50%" cy="50%" rx="50%" ry="36%" fill="url(#mask_gradient_id)" />
+            <ellipse cx="50%" cy="50%" rx="50%" ry="36%" fill="url(#mask_gradient_id)"/>
           </mask>
         </defs>
 
         <g mask="url(#mask_id)">
-          <Circles />
-          <PlusIcon />
-          <Lines strokeCount={strokeCount} />
+          <Circles/>
+          <PlusIcon/>
+          <Lines strokeCount={strokeCount}/>
         </g>
       </Box>
 
       <Box
         component={m.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
         sx={{
           top: 0,
           left: 0,

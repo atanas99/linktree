@@ -1,19 +1,19 @@
 'use client';
 
-import { useId, forwardRef } from 'react';
+import {forwardRef, useId} from 'react';
 
 import Box from '@mui/material/Box';
 import NoSsr from '@mui/material/NoSsr';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { RouterLink } from 'src/routes/components';
+import {RouterLink} from 'src/routes/components';
 
-import { logoClasses } from './classes';
+import {logoClasses} from './classes';
 
 // ----------------------------------------------------------------------
 
 export const Logo = forwardRef(
-  ({ width = 100, height = 100, disableLink = false, className, href = '/', sx, ...other }, ref) => {
+  ({width = 100, height = 100, disableLink = false, className, href = '/', sx, ...other}, ref) => {
     const theme = useTheme();
 
     const gradientId = useId();
@@ -24,8 +24,7 @@ export const Logo = forwardRef(
 
     const PRIMARY_DARK = theme.vars.palette.primary.dark;
 
-    const logo = (<Box alt="logo" component="img" src={`/logo/logo.png`} width={width} height={height} />);
-
+    const logo = (<Box alt="logo" component="img" src={`/logo/logo.png`} width={width} height={height}/>);
 
 
     return (
@@ -56,7 +55,7 @@ export const Logo = forwardRef(
             flexShrink: 0,
             display: 'inline-flex',
             verticalAlign: 'middle',
-            ...(disableLink && { pointerEvents: 'none' }),
+            ...(disableLink && {pointerEvents: 'none'}),
             ...sx,
           }}
           {...other}

@@ -1,5 +1,3 @@
-
-
 export const socialMediaLinks = [
   {
     name: "GitHub",

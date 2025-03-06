@@ -1,14 +1,14 @@
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 import IconButton from '@mui/material/IconButton';
 
-import { bgBlur, varAlpha } from 'src/theme/styles';
+import {bgBlur, varAlpha} from 'src/theme/styles';
 
-import { Iconify } from '../iconify';
+import {Iconify} from '../iconify';
 
 // ----------------------------------------------------------------------
 
-export function DownloadButton({ sx, ...other }) {
+export function DownloadButton({sx, ...other}) {
   const theme = useTheme();
 
   return (
@@ -26,21 +26,21 @@ export function DownloadButton({ sx, ...other }) {
         borderRadius: 'inherit',
         transition: theme.transitions.create(['opacity']),
         '&:hover': {
-          ...bgBlur({ color: varAlpha(theme.vars.palette.grey['900Channel'], 0.64) }),
+          ...bgBlur({color: varAlpha(theme.vars.palette.grey['900Channel'], 0.64)}),
           opacity: 1,
         },
         ...sx,
       }}
       {...other}
     >
-      <Iconify icon="eva:arrow-circle-down-fill" width={24} />
+      <Iconify icon="eva:arrow-circle-down-fill" width={24}/>
     </ButtonBase>
   );
 }
 
 // ----------------------------------------------------------------------
 
-export function RemoveButton({ sx, ...other }) {
+export function RemoveButton({sx, ...other}) {
   return (
     <IconButton
       size="small"
@@ -51,12 +51,12 @@ export function RemoveButton({ sx, ...other }) {
         position: 'absolute',
         color: 'common.white',
         bgcolor: (theme) => varAlpha(theme.vars.palette.grey['900Channel'], 0.48),
-        '&:hover': { bgcolor: (theme) => varAlpha(theme.vars.palette.grey['900Channel'], 0.72) },
+        '&:hover': {bgcolor: (theme) => varAlpha(theme.vars.palette.grey['900Channel'], 0.72)},
         ...sx,
       }}
       {...other}
     >
-      <Iconify icon="mingcute:close-line" width={12} />
+      <Iconify icon="mingcute:close-line" width={12}/>
     </IconButton>
   );
 }

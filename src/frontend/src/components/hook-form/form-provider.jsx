@@ -1,8 +1,8 @@
-import { FormProvider as RHFForm } from 'react-hook-form';
+import {FormProvider as RHFForm} from 'react-hook-form';
 
 // ----------------------------------------------------------------------
 
-export function Form({ children, onSubmit, methods }) {
+export function Form({children, onSubmit, methods}) {
   return (
     <RHFForm {...methods}>
       <form onSubmit={onSubmit} noValidate autoComplete="off">

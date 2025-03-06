@@ -1,4 +1,4 @@
-import { varTranExit, varTranEnter } from './transition';
+import {varTranEnter, varTranExit} from './transition';
 
 // ----------------------------------------------------------------------
 
@@ -11,33 +11,33 @@ export const varScale = (props) => {
   return {
     // IN
     in: {
-      initial: { scale: 0, opacity: 0 },
-      animate: { scale: 1, opacity: 1, transition: varTranEnter({ durationIn, easeIn }) },
-      exit: { scale: 0, opacity: 0, transition: varTranExit({ durationOut, easeOut }) },
+      initial: {scale: 0, opacity: 0},
+      animate: {scale: 1, opacity: 1, transition: varTranEnter({durationIn, easeIn})},
+      exit: {scale: 0, opacity: 0, transition: varTranExit({durationOut, easeOut})},
     },
     inX: {
-      initial: { scaleX: 0, opacity: 0 },
-      animate: { scaleX: 1, opacity: 1, transition: varTranEnter({ durationIn, easeIn }) },
-      exit: { scaleX: 0, opacity: 0, transition: varTranExit({ durationOut, easeOut }) },
+      initial: {scaleX: 0, opacity: 0},
+      animate: {scaleX: 1, opacity: 1, transition: varTranEnter({durationIn, easeIn})},
+      exit: {scaleX: 0, opacity: 0, transition: varTranExit({durationOut, easeOut})},
     },
     inY: {
-      initial: { scaleY: 0, opacity: 0 },
-      animate: { scaleY: 1, opacity: 1, transition: varTranEnter({ durationIn, easeIn }) },
-      exit: { scaleY: 0, opacity: 0, transition: varTranExit({ durationOut, easeOut }) },
+      initial: {scaleY: 0, opacity: 0},
+      animate: {scaleY: 1, opacity: 1, transition: varTranEnter({durationIn, easeIn})},
+      exit: {scaleY: 0, opacity: 0, transition: varTranExit({durationOut, easeOut})},
     },
 
     // OUT
     out: {
-      initial: { scale: 1, opacity: 1 },
-      animate: { scale: 0, opacity: 0, transition: varTranEnter({ durationIn, easeIn }) },
+      initial: {scale: 1, opacity: 1},
+      animate: {scale: 0, opacity: 0, transition: varTranEnter({durationIn, easeIn})},
     },
     outX: {
-      initial: { scaleX: 1, opacity: 1 },
-      animate: { scaleX: 0, opacity: 0, transition: varTranEnter({ durationIn, easeIn }) },
+      initial: {scaleX: 1, opacity: 1},
+      animate: {scaleX: 0, opacity: 0, transition: varTranEnter({durationIn, easeIn})},
     },
     outY: {
-      initial: { scaleY: 1, opacity: 1 },
-      animate: { scaleY: 0, opacity: 0, transition: varTranEnter({ durationIn, easeIn }) },
+      initial: {scaleY: 1, opacity: 1},
+      animate: {scaleY: 0, opacity: 0, transition: varTranEnter({durationIn, easeIn})},
     },
   };
 };

@@ -1,22 +1,22 @@
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 
-import { CONFIG } from 'src/config-global';
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import {CONFIG} from 'src/config-global';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
 export const StyledArrow = styled('span', {
   shouldForwardProp: (prop) => prop !== 'size' && prop !== 'placement' && prop !== 'offset',
-})(({ placement, offset = 0, size = 0, theme }) => {
+})(({placement, offset = 0, size = 0, theme}) => {
   const POSITION = -(size / 2) + 0.5;
 
   const alignmentStyles = {
-    top: { top: POSITION, transform: 'rotate(135deg)' },
-    bottom: { bottom: POSITION, transform: 'rotate(-45deg)' },
-    left: { left: POSITION, transform: 'rotate(45deg)' },
-    right: { right: POSITION, transform: 'rotate(-135deg)' },
-    hCenter: { left: 0, right: 0, margin: 'auto' },
-    vCenter: { top: 0, bottom: 0, margin: 'auto' },
+    top: {top: POSITION, transform: 'rotate(135deg)'},
+    bottom: {bottom: POSITION, transform: 'rotate(-45deg)'},
+    left: {left: POSITION, transform: 'rotate(45deg)'},
+    right: {right: POSITION, transform: 'rotate(-135deg)'},
+    hCenter: {left: 0, right: 0, margin: 'auto'},
+    vCenter: {top: 0, bottom: 0, margin: 'auto'},
   };
 
   const backgroundStyles = (color) => ({

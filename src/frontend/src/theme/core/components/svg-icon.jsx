@@ -4,9 +4,9 @@ const MuiSvgIcon = {
   /** **************************************
    * STYLE
    *************************************** */
-  styleOverrides: { fontSizeLarge: { width: 32, height: 32, fontSize: 'inherit' } },
+  styleOverrides: {fontSizeLarge: {width: 32, height: 32, fontSize: 'inherit'}},
 };
 
 // ----------------------------------------------------------------------
 
-export const svgIcon = { MuiSvgIcon };
+export const svgIcon = {MuiSvgIcon};

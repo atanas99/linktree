@@ -1,9 +1,9 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { Iconify } from "../../components/iconify";
-import { getColorByName, getIconByName } from "./socialMediaStyles";
+import {Avatar, Box, Button, Typography} from "@mui/material";
+import {Iconify} from "../../components/iconify";
+import {getColorByName, getIconByName} from "./socialMediaStyles";
 import {useEffect, useState} from "react";
 
-export function LinksDisplay({ links, profileData }) {
+export function LinksDisplay({links, profileData}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export function LinksDisplay({ links, profileData }) {
     }
   }, [profileData?.content]);
   return (
-    <Box sx={{ width: "100%", maxWidth: "307px", position: "relative" }}>
+    <Box sx={{width: "100%", maxWidth: "307px", position: "relative"}}>
       <img
         src="/assets/illustrations/illustration-phone-mockup.svg"
         alt="Linktree"
@@ -39,7 +39,7 @@ export function LinksDisplay({ links, profileData }) {
         <Avatar
           src={avatarPreview}
           alt={profileData?.firstName}
-          sx={{ width: 100, height: 100, mb: 1.7 }}
+          sx={{width: 100, height: 100, mb: 1.7}}
         />
         <Typography variant="h5" color={"#000000"} fontWeight="bold" sx={{backgroundColor: "#FFFFFF"}}>
           {profileData?.name} {profileData?.surname}
@@ -70,7 +70,7 @@ export function LinksDisplay({ links, profileData }) {
               color="primary"
               variant="contained"
               href={link.url}
-              startIcon={<Iconify icon={getIconByName(link.name)} />}
+              startIcon={<Iconify icon={getIconByName(link.name)}/>}
               sx={{
                 backgroundColor: getColorByName(link.name),
                 position: "relative",

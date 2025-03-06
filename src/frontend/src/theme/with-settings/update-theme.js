@@ -1,9 +1,9 @@
 import COLORS from '../core/colors.json';
 import PRIMARY_COLOR from './primary-color.json';
-import { components as coreComponents } from '../core/components';
-import { hexToRgbChannel, createPaletteChannel } from '../styles';
-import { grey as coreGreyPalette, primary as corePrimaryPalette } from '../core/palette';
-import { createShadowColor, customShadows as coreCustomShadows } from '../core/custom-shadows';
+import {components as coreComponents} from '../core/components';
+import {createPaletteChannel, hexToRgbChannel} from '../styles';
+import {grey as coreGreyPalette, primary as corePrimaryPalette} from '../core/palette';
+import {createShadowColor, customShadows as coreCustomShadows} from '../core/custom-shadows';
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ import { createShadowColor, customShadows as coreCustomShadows } from '../core/c
  */
 
 export function updateCoreWithSettings(theme, settings) {
-  const { colorSchemes, customShadows } = theme;
+  const {colorSchemes, customShadows} = theme;
 
   return {
     ...theme,
@@ -60,7 +60,7 @@ export function updateComponentsWithSettings(settings) {
   if (settings.contrast === 'hight') {
     const MuiCard = {
       styleOverrides: {
-        root: ({ theme, ownerState }) => {
+        root: ({theme, ownerState}) => {
           let rootStyles = {};
           if (typeof coreComponents?.MuiCard?.styleOverrides?.root === 'function') {
             rootStyles =
@@ -81,7 +81,7 @@ export function updateComponentsWithSettings(settings) {
     components.MuiCard = MuiCard;
   }
 
-  return { components };
+  return {components};
 }
 
 // ----------------------------------------------------------------------

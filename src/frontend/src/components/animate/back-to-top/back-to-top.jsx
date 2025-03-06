@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
+import {useState} from 'react';
+import {useMotionValueEvent, useScroll} from 'framer-motion';
 
 import Fab from '@mui/material/Fab';
 
-import { Iconify } from 'src/components/iconify';
+import {Iconify} from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export function BackToTop({ value = 90, sx, ...other }) {
-  const { scrollYProgress } = useScroll();
+export function BackToTop({value = 90, sx, ...other}) {
+  const {scrollYProgress} = useScroll();
 
   const [show, setShow] = useState(false);
 
   const backToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
@@ -30,16 +30,16 @@ export function BackToTop({ value = 90, sx, ...other }) {
         height: 48,
         position: 'fixed',
         transform: 'scale(0)',
-        right: { xs: 24, md: 32 },
-        bottom: { xs: 24, md: 32 },
+        right: {xs: 24, md: 32},
+        bottom: {xs: 24, md: 32},
         zIndex: (theme) => theme.zIndex.speedDial,
         transition: (theme) => theme.transitions.create(['transform']),
-        ...(show && { transform: 'scale(1)' }),
+        ...(show && {transform: 'scale(1)'}),
         ...sx,
       }}
       {...other}
     >
-      <Iconify width={24} icon="solar:double-alt-arrow-up-bold-duotone" />
+      <Iconify width={24} icon="solar:double-alt-arrow-up-bold-duotone"/>
     </Fab>
   );
 }

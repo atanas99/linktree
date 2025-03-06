@@ -2,18 +2,18 @@
 
 import Alert from '@mui/material/Alert';
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import {useBoolean} from 'src/hooks/use-boolean';
 
-import { CONFIG } from 'src/config-global';
-import { stylesMode } from 'src/theme/styles';
+import {CONFIG} from 'src/config-global';
+import {stylesMode} from 'src/theme/styles';
 
-import { Main } from './main';
-import { HeaderBase } from '../core/header-base';
-import { LayoutSection } from '../core/layout-section';
+import {Main} from './main';
+import {HeaderBase} from '../core/header-base';
+import {LayoutSection} from '../core/layout-section';
 
 // ----------------------------------------------------------------------
 
-export function AuthCenteredLayout({ sx, children }) {
+export function AuthCenteredLayout({sx, children}) {
   const mobileNavOpen = useBoolean();
 
   const layoutQuery = 'md';
@@ -41,13 +41,13 @@ export function AuthCenteredLayout({ sx, children }) {
           }}
           slots={{
             topArea: (
-              <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
+              <Alert severity="info" sx={{display: 'none', borderRadius: 0}}>
                 This is an info Alert.
               </Alert>
             ),
           }}
-          slotProps={{ container: { maxWidth: false } }}
-          sx={{ position: { [layoutQuery]: 'fixed' } }}
+          slotProps={{container: {maxWidth: false}}}
+          sx={{position: {[layoutQuery]: 'fixed'}}}
         />
       }
       /** **************************************
@@ -72,7 +72,7 @@ export function AuthCenteredLayout({ sx, children }) {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           backgroundImage: `url(${CONFIG.site.basePath}/assets/background/background-3-blur.webp)`,
-          [stylesMode.dark]: { opacity: 0.08 },
+          [stylesMode.dark]: {opacity: 0.08},
         },
         ...sx,
       }}

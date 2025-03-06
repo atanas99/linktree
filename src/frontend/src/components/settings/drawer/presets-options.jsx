@@ -1,15 +1,15 @@
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
-import { alpha as hexAlpha } from '@mui/material/styles';
+import {alpha as hexAlpha} from '@mui/material/styles';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { Block } from './styles';
-import { SvgColor } from '../../svg-color';
+import {Block} from './styles';
+import {SvgColor} from '../../svg-color';
 
 // ----------------------------------------------------------------------
 
-export function PresetsOptions({ value, options, onClickOption }) {
+export function PresetsOptions({value, options, onClickOption}) {
   return (
     <Block title="Presets">
       <Box component="ul" gap={1.5} display="grid" gridTemplateColumns="repeat(3, 1fr)">
@@ -17,7 +17,7 @@ export function PresetsOptions({ value, options, onClickOption }) {
           const selected = value === option.name;
 
           return (
-            <Box component="li" key={option.name} sx={{ display: 'flex' }}>
+            <Box component="li" key={option.name} sx={{display: 'flex'}}>
               <ButtonBase
                 onClick={() => onClickOption(option.name)}
                 sx={{
@@ -32,7 +32,7 @@ export function PresetsOptions({ value, options, onClickOption }) {
               >
                 <SvgColor
                   src={`${CONFIG.site.basePath}/assets/icons/setting/ic-siderbar-duotone.svg`}
-                  sx={{ width: 28, height: 28, color: 'currentColor' }}
+                  sx={{width: 28, height: 28, color: 'currentColor'}}
                 />
               </ButtonBase>
             </Box>

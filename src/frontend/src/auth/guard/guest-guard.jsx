@@ -1,23 +1,23 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
 
-import { useRouter, useSearchParams } from 'src/routes/hooks';
+import {useRouter, useSearchParams} from 'src/routes/hooks';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { SplashScreen } from 'src/components/loading-screen';
+import {SplashScreen} from 'src/components/loading-screen';
 
-import { useAuthContext } from '../hooks';
+import {useAuthContext} from '../hooks';
 
 // ----------------------------------------------------------------------
 
-export function GuestGuard({ children }) {
+export function GuestGuard({children}) {
   const router = useRouter();
 
   const searchParams = useSearchParams();
 
-  const { loading, authenticated } = useAuthContext();
+  const {loading, authenticated} = useAuthContext();
 
   const [isChecking, setIsChecking] = useState(true);
 
@@ -42,7 +42,7 @@ export function GuestGuard({ children }) {
   }, [authenticated, loading]);
 
   if (isChecking) {
-    return <SplashScreen />;
+    return <SplashScreen/>;
   }
 
   return <>{children}</>;

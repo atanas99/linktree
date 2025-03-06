@@ -1,7 +1,7 @@
-import SvgIcon, { svgIconClasses } from '@mui/material/SvgIcon';
-import { autocompleteClasses } from '@mui/material/Autocomplete';
+import SvgIcon, {svgIconClasses} from '@mui/material/SvgIcon';
+import {autocompleteClasses} from '@mui/material/Autocomplete';
 
-import { paper, varAlpha, menuItem } from '../../styles';
+import {menuItem, paper, varAlpha} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -24,13 +24,13 @@ const MuiAutocomplete = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { popupIcon: <ArrowDownIcon /> },
+  defaultProps: {popupIcon: <ArrowDownIcon/>},
 
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       [`& span.${autocompleteClasses.tag}`]: {
         ...theme.typography.subtitle2,
         height: 24,
@@ -43,15 +43,15 @@ const MuiAutocomplete = {
         backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
       },
     }),
-    paper: ({ theme }) => ({ ...paper({ theme, dropdown: true }) }),
-    listbox: ({ theme }) => ({
+    paper: ({theme}) => ({...paper({theme, dropdown: true})}),
+    listbox: ({theme}) => ({
       padding: 0,
-      [`& .${autocompleteClasses.option}`]: { ...menuItem(theme) },
+      [`& .${autocompleteClasses.option}`]: {...menuItem(theme)},
     }),
-    endAdornment: { [`& .${svgIconClasses.root}`]: { width: 18, height: 18 } },
+    endAdornment: {[`& .${svgIconClasses.root}`]: {width: 18, height: 18}},
   },
 };
 
 // ----------------------------------------------------------------------
 
-export const autocomplete = { MuiAutocomplete };
+export const autocomplete = {MuiAutocomplete};

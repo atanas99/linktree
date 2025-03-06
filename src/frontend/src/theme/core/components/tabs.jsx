@@ -1,4 +1,4 @@
-import { tabClasses } from '@mui/material/Tab';
+import {tabClasses} from '@mui/material/Tab';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ const MuiTabs = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    flexContainer: ({ ownerState, theme }) => ({
+    flexContainer: ({ownerState, theme}) => ({
       ...(ownerState.variant !== 'fullWidth' && {
         gap: '24px',
         [theme.breakpoints.up('sm')]: {
@@ -24,7 +24,7 @@ const MuiTabs = {
         },
       }),
     }),
-    indicator: { backgroundColor: 'currentColor' },
+    indicator: {backgroundColor: 'currentColor'},
   },
 };
 
@@ -34,13 +34,13 @@ const MuiTab = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { disableRipple: true, iconPosition: 'start' },
+  defaultProps: {disableRipple: true, iconPosition: 'start'},
 
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       opacity: 1,
       minWidth: 48,
       minHeight: 48,
@@ -58,4 +58,4 @@ const MuiTab = {
 
 // ----------------------------------------------------------------------
 
-export const tabs = { MuiTabs, MuiTab };
+export const tabs = {MuiTabs, MuiTab};

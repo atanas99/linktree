@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { layoutClasses } from 'src/layouts/classes';
+import {layoutClasses} from 'src/layouts/classes';
 
 // ----------------------------------------------------------------------
 
-export function Main({ sx, children, layoutQuery, ...other }) {
+export function Main({sx, children, layoutQuery, ...other}) {
   const theme = useTheme();
 
   const renderContent = (

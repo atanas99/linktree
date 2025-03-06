@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import {useCallback, useState} from 'react';
 
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { SvgColor, svgColorClasses } from '../../svg-color';
+import {SvgColor, svgColorClasses} from '../../svg-color';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ export function FullScreenButton() {
       >
         <SvgColor
           src={`${CONFIG.site.basePath}/assets/icons/setting/${fullscreen ? 'ic-exit-full-screen' : 'ic-full-screen'}.svg`}
-          sx={{ width: 18, height: 18 }}
+          sx={{width: 18, height: 18}}
         />
       </IconButton>
     </Tooltip>

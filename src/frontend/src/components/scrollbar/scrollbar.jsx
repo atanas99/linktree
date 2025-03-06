@@ -1,17 +1,17 @@
-import { forwardRef } from 'react';
+import {forwardRef} from 'react';
 import SimpleBar from 'simplebar-react';
 
 import Box from '@mui/material/Box';
 
-import { scrollbarClasses } from './classes';
+import {scrollbarClasses} from './classes';
 
 // ----------------------------------------------------------------------
 
 export const Scrollbar = forwardRef(
-  ({ slotProps, children, fillContent, naturalScroll, sx, ...other }, ref) => (
+  ({slotProps, children, fillContent, naturalScroll, sx, ...other}, ref) => (
     <Box
       component={SimpleBar}
-      scrollableNodeProps={{ ref }}
+      scrollableNodeProps={{ref}}
       clickOnTrack={false}
       className={scrollbarClasses.root}
       sx={{

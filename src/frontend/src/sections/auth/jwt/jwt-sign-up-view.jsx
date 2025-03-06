@@ -1,9 +1,9 @@
 'use client';
 
-import { z as zod } from 'zod';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import {z as zod} from 'zod';
+import {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert';
@@ -13,17 +13,17 @@ import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { paths } from 'src/routes/paths';
-import { useRouter } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
+import {paths} from 'src/routes/paths';
+import {useRouter} from 'src/routes/hooks';
+import {RouterLink} from 'src/routes/components';
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import {useBoolean} from 'src/hooks/use-boolean';
 
-import { Iconify } from 'src/components/iconify';
-import { Form, Field } from 'src/components/hook-form';
+import {Iconify} from 'src/components/iconify';
+import {Field, Form} from 'src/components/hook-form';
 
-import { signUp } from 'src/auth/context/jwt';
-import { useAuthContext } from 'src/auth/hooks';
+import {signUp} from 'src/auth/context/jwt';
+import {useAuthContext} from 'src/auth/hooks';
 import {toast} from "sonner";
 
 // ----------------------------------------------------------------------
@@ -33,18 +33,18 @@ export const SignUpSchema = zod.object({
   lastName: zod.string().optional(),
   email: zod
     .string()
-    .min(1, { message: 'Email is required!' })
-    .email({ message: 'Email must be a valid email address!' }),
+    .min(1, {message: 'Email is required!'})
+    .email({message: 'Email must be a valid email address!'}),
   password: zod
     .string()
-    .min(1, { message: 'Password is required!' })
-    .min(6, { message: 'Password must be at least 6 characters!' }),
+    .min(1, {message: 'Password is required!'})
+    .min(6, {message: 'Password must be at least 6 characters!'}),
 });
 
 // ----------------------------------------------------------------------
 
 export function JwtSignUpView() {
-  const { checkUserSession } = useAuthContext();
+  const {checkUserSession} = useAuthContext();
 
   const router = useRouter();
 
@@ -66,7 +66,7 @@ export function JwtSignUpView() {
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: {isSubmitting},
   } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
@@ -86,11 +86,11 @@ export function JwtSignUpView() {
   });
 
   const renderHead = (
-    <Stack spacing={1.5} sx={{ mb: 5 }}>
+    <Stack spacing={1.5} sx={{mb: 5}}>
       <Typography variant="h5">Get started</Typography>
 
       <Stack direction="row" spacing={0.5}>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{color: 'text.secondary'}}>
           Already have an account?
         </Typography>
 
@@ -103,24 +103,24 @@ export function JwtSignUpView() {
 
   const renderForm = (
     <Stack spacing={3}>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <Field.Text name="firstName" label="First name" InputLabelProps={{ shrink: true }} />
-        <Field.Text name="lastName" label="Last name" InputLabelProps={{ shrink: true }} />
+      <Stack direction={{xs: 'column', sm: 'row'}} spacing={2}>
+        <Field.Text name="firstName" label="First name" InputLabelProps={{shrink: true}}/>
+        <Field.Text name="lastName" label="Last name" InputLabelProps={{shrink: true}}/>
       </Stack>
 
-      <Field.Text name="email" label="Email address" InputLabelProps={{ shrink: true }} />
+      <Field.Text name="email" label="Email address" InputLabelProps={{shrink: true}}/>
 
       <Field.Text
         name="password"
         label="Password"
         placeholder="6+ characters"
         type={password.value ? 'text' : 'password'}
-        InputLabelProps={{ shrink: true }}
+        InputLabelProps={{shrink: true}}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={password.onToggle} edge="end">
-                <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
+                <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'}/>
               </IconButton>
             </InputAdornment>
           ),
@@ -147,7 +147,7 @@ export function JwtSignUpView() {
       {renderHead}
 
       {!!errorMsg && (
-        <Alert severity="error" sx={{ mb: 3 }}>
+        <Alert severity="error" sx={{mb: 3}}>
           {errorMsg}
         </Alert>
       )}

@@ -4,9 +4,9 @@ const MuiStepConnector = {
   /** **************************************
    * STYLE
    *************************************** */
-  styleOverrides: { line: ({ theme }) => ({ borderColor: theme.vars.palette.divider }) },
+  styleOverrides: {line: ({theme}) => ({borderColor: theme.vars.palette.divider})},
 };
 
 // ----------------------------------------------------------------------
 
-export const stepper = { MuiStepConnector };
+export const stepper = {MuiStepConnector};

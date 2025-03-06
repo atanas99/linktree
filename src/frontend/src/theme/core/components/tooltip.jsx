@@ -1,6 +1,6 @@
-import { tooltipClasses } from '@mui/material/Tooltip';
+import {tooltipClasses} from '@mui/material/Tooltip';
 
-import { stylesMode } from '../../styles';
+import {stylesMode} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -9,13 +9,13 @@ const MuiTooltip = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    tooltip: ({ theme }) => ({
+    tooltip: ({theme}) => ({
       backgroundColor: theme.vars.palette.grey[800],
       [stylesMode.dark]: {
         backgroundColor: theme.vars.palette.grey[700],
       },
     }),
-    arrow: ({ theme }) => ({
+    arrow: ({theme}) => ({
       color: theme.vars.palette.grey[800],
       [stylesMode.dark]: {
         color: theme.vars.palette.grey[700],
@@ -40,4 +40,4 @@ const MuiTooltip = {
 
 // ----------------------------------------------------------------------
 
-export const tooltip = { MuiTooltip };
+export const tooltip = {MuiTooltip};

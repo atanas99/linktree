@@ -1,6 +1,6 @@
-import { avatarGroupClasses } from '@mui/material/AvatarGroup';
+import {avatarGroupClasses} from '@mui/material/AvatarGroup';
 
-import { varAlpha } from '../../styles';
+import {varAlpha} from '../../styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
@@ -20,16 +20,16 @@ const colorByName = (name) => {
 
 const avatarColors = {
   colors: COLORS.map((color) => ({
-    props: ({ ownerState }) => ownerState.color === color,
-    style: ({ theme }) => ({
+    props: ({ownerState}) => ownerState.color === color,
+    style: ({theme}) => ({
       color: theme.vars.palette[color].contrastText,
       backgroundColor: theme.vars.palette[color].main,
     }),
   })),
   defaultColor: [
     {
-      props: ({ ownerState }) => ownerState.color === 'default',
-      style: ({ theme }) => ({
+      props: ({ownerState}) => ownerState.color === 'default',
+      style: ({theme}) => ({
         color: theme.vars.palette.text.secondary,
         backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.24),
       }),
@@ -47,21 +47,21 @@ const MuiAvatar = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    rounded: ({ theme }) => ({ borderRadius: theme.shape.borderRadius * 1.5 }),
-    colorDefault: ({ ownerState, theme }) => {
+    rounded: ({theme}) => ({borderRadius: theme.shape.borderRadius * 1.5}),
+    colorDefault: ({ownerState, theme}) => {
       const color = colorByName(`${ownerState.alt}`);
 
       return {
         ...(!!ownerState.alt && {
           ...(color !== 'default'
             ? {
-                color: theme.vars.palette[color].contrastText,
-                backgroundColor: theme.vars.palette[color].main,
-              }
+              color: theme.vars.palette[color].contrastText,
+              backgroundColor: theme.vars.palette[color].main,
+            }
             : {
-                color: theme.vars.palette.text.secondary,
-                backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.24),
-              }),
+              color: theme.vars.palette.text.secondary,
+              backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.24),
+            }),
         }),
       };
     },
@@ -74,13 +74,13 @@ const MuiAvatarGroup = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { max: 4 },
+  defaultProps: {max: 4},
 
   /** **************************************
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ ownerState }) => ({
+    root: ({ownerState}) => ({
       justifyContent: 'flex-end',
       ...(ownerState.variant === 'compact' && {
         width: 40,
@@ -91,12 +91,12 @@ const MuiAvatarGroup = {
           width: 28,
           height: 28,
           position: 'absolute',
-          '&:first-of-type': { left: 0, bottom: 0, zIndex: 9 },
-          '&:last-of-type': { top: 0, right: 0 },
+          '&:first-of-type': {left: 0, bottom: 0, zIndex: 9},
+          '&:last-of-type': {top: 0, right: 0},
         },
       }),
     }),
-    avatar: ({ theme }) => ({
+    avatar: ({theme}) => ({
       fontSize: 16,
       fontWeight: theme.typography.fontWeightSemiBold,
       '&:first-of-type': {
@@ -110,4 +110,4 @@ const MuiAvatarGroup = {
 
 // ----------------------------------------------------------------------
 
-export const avatar = { MuiAvatar, MuiAvatarGroup };
+export const avatar = {MuiAvatar, MuiAvatarGroup};

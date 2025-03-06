@@ -1,16 +1,16 @@
 'use client';
 
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import Container from '@mui/material/Container';
 
-import { layoutClasses } from 'src/layouts/classes';
+import {layoutClasses} from 'src/layouts/classes';
 
-import { useSettingsContext } from 'src/components/settings';
+import {useSettingsContext} from 'src/components/settings';
 
 // ----------------------------------------------------------------------
 
-export function Main({ children, sx, ...other }) {
+export function Main({children, sx, ...other}) {
   return (
     <Box
       component="main"
@@ -30,7 +30,7 @@ export function Main({ children, sx, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }) {
+export function DashboardContent({sx, children, disablePadding, maxWidth = 'lg', ...other}) {
   const theme = useTheme();
 
   const settings = useSettingsContext();

@@ -1,8 +1,8 @@
 'use client';
 
-import { useContext } from 'react';
+import {useContext} from 'react';
 
-import { SettingsContext } from './settings-provider';
+import {SettingsContext} from './settings-provider';
 
 // ----------------------------------------------------------------------
 

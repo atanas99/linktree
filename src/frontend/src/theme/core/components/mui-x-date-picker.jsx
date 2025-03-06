@@ -1,8 +1,8 @@
 import SvgIcon from '@mui/material/SvgIcon';
-import { buttonClasses } from '@mui/material/Button';
-import { dialogActionsClasses } from '@mui/material/DialogActions';
+import {buttonClasses} from '@mui/material/Button';
+import {dialogActionsClasses} from '@mui/material/DialogActions';
 
-import { stylesMode } from '../../styles';
+import {stylesMode} from '../../styles';
 
 // ----------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ export const PickerCalendarIcon = (props) => (
       d="M22 14v-2c0-.839-.013-2.335-.026-3H2.006c-.013.665 0 2.161 0 3v2c0 3.771 0 5.657 1.17 6.828C4.349 22 6.234 22 10.004 22h4c3.77 0 5.654 0 6.826-1.172C22 19.657 22 17.771 22 14"
       opacity="0.5"
     />
-    <path fill="currentColor" d="M18 16.5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0" />
+    <path fill="currentColor" d="M18 16.5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0"/>
   </SvgIcon>
 );
 
@@ -85,77 +85,77 @@ const MuiDatePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiDateTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiStaticDatePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiDesktopDatePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiDesktopDateTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiMobileDatePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiMobileDateTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.date },
+  defaultProps: {slots: defaultProps.date},
 };
 
 const MuiTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.time },
+  defaultProps: {slots: defaultProps.time},
 };
 
 const MuiMobileTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.time },
+  defaultProps: {slots: defaultProps.time},
 };
 
 const MuiStaticTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.time },
+  defaultProps: {slots: defaultProps.time},
 };
 
 const MuiDesktopTimePicker = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { slots: defaultProps.time },
+  defaultProps: {slots: defaultProps.time},
 };
 
 const MuiPickersLayout = {
@@ -163,13 +163,13 @@ const MuiPickersLayout = {
    * STYLE
    *************************************** */
   styleOverrides: {
-    root: ({ theme }) => ({
+    root: ({theme}) => ({
       [`& .${dialogActionsClasses.root}`]: {
         [`& .${buttonClasses.root}`]: {
           [`&:last-of-type`]: {
             color: theme.vars.palette.common.white,
             backgroundColor: theme.vars.palette.text.primary,
-            [stylesMode.dark]: { color: theme.vars.palette.grey[800] },
+            [stylesMode.dark]: {color: theme.vars.palette.grey[800]},
           },
         },
       },
@@ -182,7 +182,7 @@ const MuiPickersPopper = {
    * DEFAULT PROPS
    *************************************** */
   styleOverrides: {
-    paper: ({ theme }) => ({
+    paper: ({theme}) => ({
       boxShadow: theme.customShadows.dropdown,
       borderRadius: theme.shape.borderRadius * 1.5,
     }),

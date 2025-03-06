@@ -2,17 +2,17 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import { styled, useTheme } from '@mui/material/styles';
+import {styled, useTheme} from '@mui/material/styles';
 
-import { useScrollOffSetTop } from 'src/hooks/use-scroll-offset-top';
+import {useScrollOffSetTop} from 'src/hooks/use-scroll-offset-top';
 
-import { bgBlur, varAlpha } from 'src/theme/styles';
+import {bgBlur, varAlpha} from 'src/theme/styles';
 
-import { layoutClasses } from '../classes';
+import {layoutClasses} from '../classes';
 
 // ----------------------------------------------------------------------
 
-const StyledElevation = styled('span')(({ theme }) => ({
+const StyledElevation = styled('span')(({theme}) => ({
   left: 0,
   right: 0,
   bottom: 0,
@@ -29,17 +29,17 @@ const StyledElevation = styled('span')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function HeaderSection({
-  sx,
-  slots,
-  slotProps,
-  disableOffset,
-  disableElevation,
-  layoutQuery = 'md',
-  ...other
-}) {
+                                sx,
+                                slots,
+                                slotProps,
+                                disableOffset,
+                                disableElevation,
+                                layoutQuery = 'md',
+                                ...other
+                              }) {
   const theme = useTheme();
 
-  const { offsetTop } = useScrollOffSetTop();
+  const {offsetTop} = useScrollOffSetTop();
 
   const toolbarStyles = {
     default: {
@@ -95,7 +95,7 @@ export function HeaderSection({
         >
           {slots?.leftArea}
 
-          <Box sx={{ display: 'flex', flex: '1 1 auto', justifyContent: 'center' }}>
+          <Box sx={{display: 'flex', flex: '1 1 auto', justifyContent: 'center'}}>
             {slots?.centerArea}
           </Box>
 
@@ -105,7 +105,7 @@ export function HeaderSection({
 
       {slots?.bottomArea}
 
-      {!disableElevation && offsetTop && <StyledElevation />}
+      {!disableElevation && offsetTop && <StyledElevation/>}
     </AppBar>
   );
 }

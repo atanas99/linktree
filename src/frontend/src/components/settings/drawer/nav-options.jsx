@@ -1,17 +1,17 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 
-import { CONFIG } from 'src/config-global';
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import {CONFIG} from 'src/config-global';
+import {stylesMode, varAlpha} from 'src/theme/styles';
 
-import { Block } from './styles';
-import { SvgColor, svgColorClasses } from '../../svg-color';
+import {Block} from './styles';
+import {SvgColor, svgColorClasses} from '../../svg-color';
 
 // ----------------------------------------------------------------------
 
-export function NavOptions({ options, value, onClickOption, hideNavColor, hideNavLayout }) {
+export function NavOptions({options, value, onClickOption, hideNavColor, hideNavLayout}) {
   const theme = useTheme();
 
   const cssVars = {
@@ -42,7 +42,7 @@ export function NavOptions({ options, value, onClickOption, hideNavColor, hideNa
       <Box component="span" sx={labelStyles}>
         Layout
       </Box>
-      <Box gap={1.5} display="flex" sx={{ mt: 1.5 }}>
+      <Box gap={1.5} display="flex" sx={{mt: 1.5}}>
         {options.layouts.map((option) => (
           <LayoutOption
             key={option}
@@ -60,7 +60,7 @@ export function NavOptions({ options, value, onClickOption, hideNavColor, hideNa
       <Box component="span" sx={labelStyles}>
         Color
       </Box>
-      <Box gap={1.5} display="flex" sx={{ mt: 1.5 }}>
+      <Box gap={1.5} display="flex" sx={{mt: 1.5}}>
         {options.colors.map((option) => (
           <ColorOption
             key={option}
@@ -74,7 +74,7 @@ export function NavOptions({ options, value, onClickOption, hideNavColor, hideNa
   );
 
   return (
-    <Block title="Nav" tooltip="Dashboard only" sx={{ ...cssVars, gap: 2.5 }}>
+    <Block title="Nav" tooltip="Dashboard only" sx={{...cssVars, gap: 2.5}}>
       {!hideNavLayout && renderLayout}
       {!hideNavColor && renderColor}
     </Block>
@@ -83,7 +83,7 @@ export function NavOptions({ options, value, onClickOption, hideNavColor, hideNa
 
 // ----------------------------------------------------------------------
 
-export function LayoutOption({ option, selected, sx, ...other }) {
+export function LayoutOption({option, selected, sx, ...other}) {
   const renderNav = () => {
     const baseStyles = {
       flexShrink: 0,
@@ -113,8 +113,8 @@ export function LayoutOption({ option, selected, sx, ...other }) {
           width: 1,
           height: 4,
           opacity: 0.48,
-          ...(option === 'horizontal' && { width: 16 }),
-          ...(selected && { background: 'var(--item-active-color)' }),
+          ...(option === 'horizontal' && {width: 16}),
+          ...(selected && {background: 'var(--item-active-color)'}),
         }}
       />
     );
@@ -127,8 +127,8 @@ export function LayoutOption({ option, selected, sx, ...other }) {
           height: 4,
           maxWidth: 14,
           opacity: 0.24,
-          ...(option === 'horizontal' && { maxWidth: 10 }),
-          ...(selected && { background: 'var(--item-active-color)' }),
+          ...(option === 'horizontal' && {maxWidth: 10}),
+          ...(selected && {background: 'var(--item-active-color)'}),
         }}
       />
     );
@@ -167,7 +167,7 @@ export function LayoutOption({ option, selected, sx, ...other }) {
   };
 
   const renderContent = (
-    <Box sx={{ p: 0.5, width: 1, height: 1, flexGrow: 1 }}>
+    <Box sx={{p: 0.5, width: 1, height: 1, flexGrow: 1}}>
       <Box
         sx={{
           width: 1,
@@ -175,7 +175,7 @@ export function LayoutOption({ option, selected, sx, ...other }) {
           opacity: 0.2,
           borderRadius: 0.75,
           bgcolor: 'var(--item-bg)',
-          ...(selected && { background: 'var(--item-active-color)' }),
+          ...(selected && {background: 'var(--item-active-color)'}),
         }}
       />
     </Box>
@@ -191,7 +191,7 @@ export function LayoutOption({ option, selected, sx, ...other }) {
         borderStyle: 'solid',
         borderRadius: 'var(--item-radius)',
         borderColor: 'var(--item-border-color)',
-        ...(option === 'horizontal' && { flexDirection: 'column' }),
+        ...(option === 'horizontal' && {flexDirection: 'column'}),
         ...(selected && {
           boxShadow: 'var(--item-active-shadow-light)',
           [stylesMode.dark]: {
@@ -210,7 +210,7 @@ export function LayoutOption({ option, selected, sx, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function ColorOption({ option, selected, sx, ...other }) {
+export function ColorOption({option, selected, sx, ...other}) {
   return (
     <ButtonBase
       disableRipple

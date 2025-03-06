@@ -1,6 +1,6 @@
-import { fabClasses } from '@mui/material/Fab';
+import {fabClasses} from '@mui/material/Fab';
 
-import { varAlpha, stylesMode } from '../../styles';
+import {stylesMode, varAlpha} from '../../styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
@@ -14,37 +14,37 @@ const SOFT_VARIANT = ['soft', 'softExtended'];
 
 const filledVariant = {
   colors: COLORS.map((color) => ({
-    props: ({ ownerState }) =>
+    props: ({ownerState}) =>
       !ownerState.disabled &&
       FILLED_VARIANT.includes(ownerState.variant) &&
       ownerState.color === color,
-    style: ({ theme }) => ({
+    style: ({theme}) => ({
       boxShadow: theme.customShadows[color],
-      '&:hover': { boxShadow: 'none' },
+      '&:hover': {boxShadow: 'none'},
     }),
   })),
   base: [
     {
-      props: ({ ownerState }) =>
+      props: ({ownerState}) =>
         FILLED_VARIANT.includes(ownerState.variant) && DEFAULT_COLORS.includes(ownerState.color),
-      style: ({ theme }) => ({
+      style: ({theme}) => ({
         boxShadow: theme.customShadows.z8,
         /**
          * @color default
          */
         color: theme.vars.palette.grey[800],
         backgroundColor: theme.vars.palette.grey[300],
-        '&:hover': { boxShadow: 'none', backgroundColor: theme.vars.palette.grey[400] },
+        '&:hover': {boxShadow: 'none', backgroundColor: theme.vars.palette.grey[400]},
         /**
          * @color inherit
          */
         [`&.${fabClasses.colorInherit}`]: {
           color: theme.vars.palette.common.white,
           backgroundColor: theme.vars.palette.text.primary,
-          '&:hover': { backgroundColor: theme.vars.palette.grey[700] },
+          '&:hover': {backgroundColor: theme.vars.palette.grey[700]},
           [stylesMode.dark]: {
             color: theme.vars.palette.grey[800],
-            '&:hover': { backgroundColor: theme.vars.palette.grey[400] },
+            '&:hover': {backgroundColor: theme.vars.palette.grey[400]},
           },
         },
       }),
@@ -54,20 +54,20 @@ const filledVariant = {
 
 const outlinedVariant = {
   colors: COLORS.map((color) => ({
-    props: ({ ownerState }) =>
+    props: ({ownerState}) =>
       !ownerState.disabled &&
       OUTLINED_VARIANT.includes(ownerState.variant) &&
       ownerState.color === color,
-    style: ({ theme }) => ({
+    style: ({theme}) => ({
       color: theme.vars.palette[color].main,
       border: `solid 1px ${varAlpha(theme.vars.palette[color].mainChannel, 0.48)}`,
-      '&:hover': { backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.08) },
+      '&:hover': {backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.08)},
     }),
   })),
   base: [
     {
-      props: ({ ownerState }) => OUTLINED_VARIANT.includes(ownerState.variant),
-      style: ({ theme }) => ({
+      props: ({ownerState}) => OUTLINED_VARIANT.includes(ownerState.variant),
+      style: ({theme}) => ({
         boxShadow: 'none',
         backgroundColor: 'transparent',
         color: theme.vars.palette.text.secondary,
@@ -77,7 +77,7 @@ const outlinedVariant = {
           boxShadow: '0 0 0 0.75px currentColor',
           backgroundColor: theme.vars.palette.action.hover,
         },
-        [`&.${fabClasses.colorInherit}`]: { color: theme.vars.palette.text.primary },
+        [`&.${fabClasses.colorInherit}`]: {color: theme.vars.palette.text.primary},
         [`&.${fabClasses.disabled}`]: {
           backgroundColor: 'transparent',
           border: `1px solid ${theme.vars.palette.action.disabledBackground}`,
@@ -89,11 +89,11 @@ const outlinedVariant = {
 
 const softVariant = {
   colors: COLORS.map((color) => ({
-    props: ({ ownerState }) =>
+    props: ({ownerState}) =>
       !ownerState.disabled &&
       SOFT_VARIANT.includes(ownerState.variant) &&
       ownerState.color === color,
-    style: ({ theme }) => ({
+    style: ({theme}) => ({
       boxShadow: 'none',
       color: theme.vars.palette[color].dark,
       backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.16),
@@ -101,28 +101,28 @@ const softVariant = {
         boxShadow: 'none',
         backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.32),
       },
-      [stylesMode.dark]: { color: theme.vars.palette[color].light },
+      [stylesMode.dark]: {color: theme.vars.palette[color].light},
     }),
   })),
   base: [
     {
-      props: ({ ownerState }) =>
+      props: ({ownerState}) =>
         SOFT_VARIANT.includes(ownerState.variant) && DEFAULT_COLORS.includes(ownerState.color),
-      style: ({ theme }) => ({
+      style: ({theme}) => ({
         /**
          * @color default
          */
         boxShadow: 'none',
         color: theme.vars.palette.grey[800],
         backgroundColor: theme.vars.palette.grey[300],
-        '&:hover': { boxShadow: 'none', backgroundColor: theme.vars.palette.grey[400] },
+        '&:hover': {boxShadow: 'none', backgroundColor: theme.vars.palette.grey[400]},
         /**
          * @color inherit
          */
         [`&.${fabClasses.colorInherit}`]: {
           color: theme.vars.palette.text.primary,
           backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.08),
-          '&:hover': { backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.24) },
+          '&:hover': {backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.24)},
         },
       }),
     },
@@ -131,8 +131,8 @@ const softVariant = {
 
 const sizes = [
   {
-    props: ({ ownerState }) => EXTENDED_VARIANT.includes(ownerState.variant),
-    style: ({ theme }) => ({
+    props: ({ownerState}) => EXTENDED_VARIANT.includes(ownerState.variant),
+    style: ({theme}) => ({
       height: 48,
       width: 'auto',
       minHeight: 48,
@@ -146,7 +146,7 @@ const sizes = [
         gap: theme.spacing(0.5),
         padding: theme.spacing(0, 1),
       },
-      [`&.${fabClasses.sizeMedium}`]: { height: 40, minHeight: 40, borderRadius: 40 / 2 },
+      [`&.${fabClasses.sizeMedium}`]: {height: 40, minHeight: 40, borderRadius: 40 / 2},
     }),
   },
 ];
@@ -155,7 +155,7 @@ const MuiFab = {
   /** **************************************
    * DEFAULT PROPS
    *************************************** */
-  defaultProps: { color: 'primary' },
+  defaultProps: {color: 'primary'},
 
   /** **************************************
    * VARIANTS
@@ -187,4 +187,4 @@ const MuiFab = {
 
 // ----------------------------------------------------------------------
 
-export const fab = { MuiFab };
+export const fab = {MuiFab};

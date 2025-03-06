@@ -1,26 +1,26 @@
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { stylesMode } from 'src/theme/styles';
+import {stylesMode} from 'src/theme/styles';
 
-import { varFade } from 'src/components/animate';
+import {varFade} from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export function Lines({ strokeCount }) {
+export function Lines({strokeCount}) {
   const draw = {
     x: {
-      hidden: { x2: 0, strokeOpacity: 0 },
+      hidden: {x2: 0, strokeOpacity: 0},
       visible: (i) => {
         const delay = 1 + i * 0.5;
         return {
           x2: '100%',
           strokeOpacity: 1,
           transition: {
-            strokeOpacity: { delay, duration: 0.01 },
+            strokeOpacity: {delay, duration: 0.01},
             x2: {
               delay,
               bounce: 0,
@@ -32,14 +32,14 @@ export function Lines({ strokeCount }) {
       },
     },
     y: {
-      hidden: { y2: 0, strokeOpacity: 0 },
+      hidden: {y2: 0, strokeOpacity: 0},
       visible: (i) => {
         const delay = 1 + i * 0.5;
         return {
           y2: '100%',
           strokeOpacity: 1,
           transition: {
-            strokeOpacity: { delay, duration: 0.01 },
+            strokeOpacity: {delay, duration: 0.01},
             y2: {
               delay,
               bounce: 0,
@@ -116,10 +116,10 @@ export function Lines({ strokeCount }) {
 
 export function Circles() {
   const drawCircle = {
-    hidden: { opacity: 0 },
+    hidden: {opacity: 0},
     visible: (i) => {
       const delay = 1 + i * 0.5;
-      return { opacity: 1, transition: { opacity: { delay, duration: 0.01 } } };
+      return {opacity: 1, transition: {opacity: {delay, duration: 0.01}}};
     },
   };
 
@@ -151,9 +151,9 @@ export function Circles() {
         cx="50%"
         cy="50%"
         fill="var(--hero-circle-stroke-color)"
-        style={{ transform: 'translate(calc(0% - 200px), calc(0% + 200px))' }}
-        initial={{ r: 0 }}
-        animate={{ r: 5 }}
+        style={{transform: 'translate(calc(0% - 200px), calc(0% + 200px))'}}
+        initial={{r: 0}}
+        animate={{r: 5}}
       />
     </>
   );
@@ -163,14 +163,14 @@ export function Circles() {
 
 export function PlusIcon() {
   const drawPlus = {
-    hidden: { opacity: 0, pathLength: 0 },
+    hidden: {opacity: 0, pathLength: 0},
     visible: (i) => {
       const delay = 1 + i * 0.5;
       return {
         opacity: 1,
         pathLength: 1,
         transition: {
-          opacity: { delay, duration: 0.01 },
+          opacity: {delay, duration: 0.01},
           pathLength: {
             delay,
             bounce: 0,
@@ -188,14 +188,14 @@ export function PlusIcon() {
         variants={drawPlus}
         d="M8 0V16M16 8.08889H0"
         stroke="var(--hero-plus-stroke-color)"
-        style={{ transform: 'translate(calc(50% - 448px), calc(50% - 128px))' }}
+        style={{transform: 'translate(calc(50% - 448px), calc(50% - 128px))'}}
       />
 
       <m.path
         variants={drawPlus}
         d="M8 0V16M16 8.08889H0"
         stroke="var(--hero-plus-stroke-color)"
-        style={{ transform: 'translate(calc(50% + 432px), calc(50% + 192px))' }}
+        style={{transform: 'translate(calc(50% + 432px), calc(50% + 192px))'}}
       />
     </>
   );
@@ -203,7 +203,7 @@ export function PlusIcon() {
 
 // ----------------------------------------------------------------------
 
-export function Texts({ sx, ...other }) {
+export function Texts({sx, ...other}) {
   return (
     <Stack
       component={m.div}
@@ -240,8 +240,8 @@ export function Texts({ sx, ...other }) {
           x="0"
           y="12px"
           dominantBaseline="hanging"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 64, ease: 'linear', repeat: Infinity }}
+          animate={{x: ['0%', '-50%']}}
+          transition={{duration: 64, ease: 'linear', repeat: Infinity}}
         >
           linkme
         </m.text>
@@ -250,15 +250,15 @@ export function Texts({ sx, ...other }) {
   );
 }
 
-function Dot({ color = 'primary', animate, transition, sx, ...other }) {
+function Dot({color = 'primary', animate, transition, sx, ...other}) {
   const theme = useTheme();
 
   return (
     <Box
       component={m.div}
       variants={{
-        initial: { opacity: 0 },
-        animate: { opacity: 1, transition: { duration: 0.64, ease: [0.43, 0.13, 0.23, 0.96] } },
+        initial: {opacity: 0},
+        animate: {opacity: 1, transition: {duration: 0.64, ease: [0.43, 0.13, 0.23, 0.96]}},
       }}
       sx={{
         width: 12,
@@ -304,32 +304,32 @@ export function Dots() {
     <>
       <Dot
         color="error"
-        animate={{ x: 24 }}
-        sx={{ width: 14, height: 14, transform: 'translate(calc(50% - 457px), calc(50% - 259px))' }}
+        animate={{x: 24}}
+        sx={{width: 14, height: 14, transform: 'translate(calc(50% - 457px), calc(50% - 259px))'}}
       />
 
       <Dot
         color="warning"
-        animate={{ y: 24 }}
-        sx={{ transform: 'translate(calc(50% - 356px), calc(50% + 37px))' }}
+        animate={{y: 24}}
+        sx={{transform: 'translate(calc(50% - 356px), calc(50% + 37px))'}}
       />
 
       <Dot
         color="info"
-        animate={{ x: 24 }}
-        sx={{ transform: 'translate(calc(50% + 332px), calc(50% + 135px))' }}
+        animate={{x: 24}}
+        sx={{transform: 'translate(calc(50% + 332px), calc(50% + 135px))'}}
       />
 
       <Dot
         color="secondary"
-        animate={{ x: 24 }}
-        sx={{ transform: 'translate(calc(50% + 430px), calc(50% - 160px))' }}
+        animate={{x: 24}}
+        sx={{transform: 'translate(calc(50% + 430px), calc(50% - 160px))'}}
       />
 
       <Dot
         color="success"
-        animate={{ y: 24 }}
-        sx={{ transform: 'translate(calc(50% + 136px), calc(50% + 332px))' }}
+        animate={{y: 24}}
+        sx={{transform: 'translate(calc(50% + 136px), calc(50% + 332px))'}}
       />
     </>
   );

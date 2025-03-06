@@ -1,10 +1,10 @@
-import { useRef, useEffect } from 'react';
-import { m, useInView, useAnimation } from 'framer-motion';
+import {useEffect, useRef} from 'react';
+import {m, useAnimation, useInView} from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { varFade, varContainer } from './variants';
+import {varContainer, varFade} from './variants';
 
 // ----------------------------------------------------------------------
 
@@ -20,22 +20,22 @@ export const animateTextClasses = {
 };
 
 export function AnimateText({
-  sx,
-  text,
-  variants,
-  once = true,
-  amount = 1 / 3,
-  component = 'p',
-  repeatDelay = 500, // 1000 = 1s
-  ...other
-}) {
+                              sx,
+                              text,
+                              variants,
+                              once = true,
+                              amount = 1 / 3,
+                              component = 'p',
+                              repeatDelay = 500, // 1000 = 1s
+                              ...other
+                            }) {
   const ref = useRef(null);
 
   const controls = useAnimation();
 
   const textArray = Array.isArray(text) ? text : [text];
 
-  const isInView = useInView(ref, { once, amount });
+  const isInView = useInView(ref, {once, amount});
 
   useEffect(() => {
     let timeout;
@@ -104,7 +104,7 @@ export function AnimateText({
             key={`${line}-${lineIndex}`}
             data-index={lineIndex}
             className={animateTextClasses.line}
-            sx={{ display: 'block' }}
+            sx={{display: 'block'}}
           >
             {line.split(' ').map((word, wordIndex) => {
               const lastWordInline = line.split(' ')[line.split(' ').length - 1];
@@ -115,7 +115,7 @@ export function AnimateText({
                   key={`${word}-${wordIndex}`}
                   data-index={wordIndex}
                   className={animateTextClasses.word}
-                  sx={{ display: 'inline-block' }}
+                  sx={{display: 'inline-block'}}
                 >
                   {word.split('').map((char, charIndex) => (
                     <Box
@@ -124,7 +124,7 @@ export function AnimateText({
                       variants={variants ?? varFade().in}
                       data-index={charIndex}
                       className={animateTextClasses.char}
-                      sx={{ display: 'inline-block' }}
+                      sx={{display: 'inline-block'}}
                     >
                       {char}
                     </Box>
@@ -134,7 +134,7 @@ export function AnimateText({
                     <Box
                       component="span"
                       className={animateTextClasses.space}
-                      sx={{ display: 'inline-block' }}
+                      sx={{display: 'inline-block'}}
                     >
                       &nbsp;
                     </Box>

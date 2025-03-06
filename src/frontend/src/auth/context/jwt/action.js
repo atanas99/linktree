@@ -1,19 +1,18 @@
 'use client';
 
-import axios, { endpoints } from 'src/utils/axios';
+import axios, {endpoints} from 'src/utils/axios';
 
-import { setSession } from './utils';
-import { STORAGE_KEY } from './constant';
+import {setSession} from './utils';
 
 /** **************************************
  * Sign in
  *************************************** */
-export const signInWithPassword = async ({ email, password }) => {
+export const signInWithPassword = async ({email, password}) => {
   try {
-    const params = { email, password };
+    const params = {email, password};
 
     const res = await axios.post(endpoints.auth.signIn, params);
-    const { token } = res.data;
+    const {token} = res.data;
 
     if (!token) {
       throw new Error('Access token not found in response');
@@ -30,7 +29,7 @@ export const signInWithPassword = async ({ email, password }) => {
 /** **************************************
  * Sign up
  *************************************** */
-export const signUp = async ({ email, password, name, surname }) => {
+export const signUp = async ({email, password, name, surname}) => {
   const params = {
     email,
     password,
