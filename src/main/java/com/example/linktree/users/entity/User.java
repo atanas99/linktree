@@ -1,6 +1,7 @@
 package com.example.linktree.users.entity;
 
 import com.example.linktree.links.entity.Link;
+import com.example.linktree.products.entity.Product;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,4 +45,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Link> links;
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Product> products;
 }

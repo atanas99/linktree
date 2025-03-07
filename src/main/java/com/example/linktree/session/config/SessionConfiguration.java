@@ -36,7 +36,12 @@ public class SessionConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/session/login","/users/create")
+                        .requestMatchers(
+                                "/session/login",
+                                "/users/create",
+                                "/links/get/byUser/{id}",
+                                "/users/get/byId/{id}",
+                                "/products/get/byId/{id}")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
