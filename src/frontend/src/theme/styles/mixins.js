@@ -176,7 +176,6 @@ export function paper({theme, color, dropdown}) {
       color: color ?? varAlpha(theme.vars.palette.background.paperChannel, 0.9),
       blur: 20,
     }),
-    backgroundImage: `url(${CONFIG.site.basePath}/assets/cyan-blur.png), url(${CONFIG.site.basePath}/assets/red-blur.png)`,
     backgroundRepeat: 'no-repeat, no-repeat',
     backgroundPosition: 'top right, left bottom',
     backgroundSize: '50%, 50%',
