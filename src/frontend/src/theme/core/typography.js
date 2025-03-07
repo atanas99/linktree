@@ -1,4 +1,4 @@
-import {pxToRem, responsiveFontSizes, setFont} from '../styles/utils';
+import {pxToRem, setFont, responsiveFontSizes} from '../styles/utils';
 
 // ----------------------------------------------------------------------
 

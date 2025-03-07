@@ -5,7 +5,7 @@ import {autocompleteClasses} from '@mui/material/Autocomplete';
 
 import {CONFIG} from 'src/config-global';
 
-import {mediaQueries, remToPx, varAlpha} from './utils';
+import {remToPx, varAlpha, mediaQueries} from './utils';
 
 // ----------------------------------------------------------------------
 
