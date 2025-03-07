@@ -47,8 +47,8 @@ export function JwtSignInView() {
   const password = useBoolean();
 
   const defaultValues = {
-    email: 'admin',
-    password: 'admin',
+    email: '',
+    password: '',
   };
 
   const methods = useForm({
@@ -81,7 +81,7 @@ export function JwtSignInView() {
     </Stack>
   );
   const renderBottom = (
-    <Stack spacing={1.5} sx={{mb: 1}}>
+    <Stack spacing={1.5} sx={{mt: 1}}>
       <Typography variant="body2" sx={{color: 'text.secondary'}}>
         Don’t have an account? &nbsp;
         <Link href={paths.auth.signUp} component={RouterLink} variant="subtitle2"> Create Account</Link>

@@ -7,6 +7,9 @@ import {LinksDisplay} from "../linktree/linksDisplay";
 import {useEffect, useState} from "react";
 import axios, {endpoints} from "../../utils/axios";
 import {toast} from "../../components/snackbar";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import {paths} from "../../routes/paths";
 
 // ----------------------------------------------------------------------
 
@@ -66,6 +69,14 @@ export function LinktreeHero({userId, sx, ...other}) {
       >
 
         <LinksDisplay profileData={profile} links={links}/>
+        <Stack sx={{ mt: -1, textAlign: "center" }}>
+          <Typography variant="body2" sx={{ color: "text.secondary", fontSize: 14 }}>
+            Want to create your own Linktree?
+          </Typography>
+          <Link href={paths.dashboard.root} sx={{ fontSize: 14, fontWeight: 600, color: "primary.main", textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
+            Click here
+          </Link>
+        </Stack>
       </Container>
       <HeroBackground/>
     </Stack>
