@@ -41,7 +41,7 @@ export function LinksDisplay({links, profileData}) {
           alt={profileData?.firstName}
           sx={{width: 100, height: 100, mb: 1.7}}
         />
-        <Typography variant="h5" color={"#000000"} fontWeight="bold" sx={{backgroundColor: "#FFFFFF"}}>
+        <Typography variant="h5" color="#000000" fontWeight="bold" sx={{backgroundColor: "#FFFFFF"}}>
           {profileData?.name} {profileData?.surname}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{backgroundColor: "#FFFFFF"}}>

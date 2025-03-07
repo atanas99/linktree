@@ -24,7 +24,7 @@ export const Logo = forwardRef(
 
     const PRIMARY_DARK = theme.vars.palette.primary.dark;
 
-    const logo = (<Box alt="logo" component="img" src={`/logo/logo.png`} width={width} height={height}/>);
+    const logo = (<Box alt="logo" component="img" src="/logo/logo.png" width={width} height={height}/>);
 
 
     return (
