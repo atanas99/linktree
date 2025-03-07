@@ -12,6 +12,7 @@ import {Main} from './main';
 import {layoutClasses} from '../classes';
 import {HeaderBase} from '../core/header-base';
 import {LayoutSection} from '../core/layout-section';
+import {text as bulletColor} from "../../theme/core";
 
 // ----------------------------------------------------------------------
 

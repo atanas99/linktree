@@ -43,12 +43,12 @@ export const socialMediaLinks = [
 
 
 export const getIconByName = (name) => {
-  const link = socialMediaLinks.find((link) => link.name === name);
-  return link ? link.icon : null;
+  const iconLink = socialMediaLinks.find((link) => link.name === name);
+  return iconLink ? iconLink.icon : null;
 };
 
 export const getColorByName = (name) => {
-  const link = socialMediaLinks.find((link) => link.name === name);
-  return link ? link.color : null;
+  const colorLink = socialMediaLinks.find((link) => link.name === name);
+  return colorLink ? colorLink.color : null;
 }
 
