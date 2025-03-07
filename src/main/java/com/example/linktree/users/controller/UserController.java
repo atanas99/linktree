@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @PatchMapping(path = "/update", consumes = "multipart/form-data")
-    public ResponseEntity<String> updateUser(@RequestParam Map<String, String> user, @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<String> updateUser(@RequestParam Map<String, String> user, @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
         userService.updateUser(objectMapper.convertValue(user, UserUpdateDto.class), file);
         return ResponseEntity.ok("User updated successfully");
     }
