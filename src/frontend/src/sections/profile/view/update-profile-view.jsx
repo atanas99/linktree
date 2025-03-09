@@ -18,8 +18,8 @@ import axios, {endpoints} from "../../../utils/axios";
 // ----------------------------------------------------------------------
 
 export const ProfileUpdateSchema = zod.object({
-  firstname: zod.string().optional(),
-  lastname: zod.string().optional(),
+  firstname: zod.string().min(2, {message: 'First Name is required!'}),
+  lastname: zod.string().min(4, {message: 'Last Name is required!'}),
   email: zod.string().min(1, {message: 'Email is required!'}).email({message: 'Email is not valid!'}),
 });
 
@@ -77,7 +77,8 @@ export function ProfileUpdateView({currentUser, open, onClose}) {
       formData.append("surname", data.lastname);
       formData.append("email", data.email);
       formData.append("id", currentUser.id);
-      formData.append("file", selectedFile);
+      if (selectedFile)
+        formData.append("file", selectedFile);
 
       await axios.patch(endpoints.users.updateUser, formData, {
         headers: {

@@ -2,9 +2,12 @@ import {Avatar, Box, Button, Typography} from "@mui/material";
 import {Iconify} from "../../components/iconify";
 import {getColorByName, getIconByName} from "./socialMediaStyles";
 import {useEffect, useState} from "react";
+import {useRouter} from "../../routes/hooks";
+import {paths} from "../../routes/paths";
 
 export function LinksDisplay({links, profileData}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (profileData?.content) {
@@ -69,7 +72,7 @@ export function LinksDisplay({links, profileData}) {
               fullWidth
               color="primary"
               variant="contained"
-              href={link.url}
+              onClick={() => window.open(link.url, '_blank')}
               startIcon={<Iconify icon={getIconByName(link.name)}/>}
               sx={{
                 backgroundColor: getColorByName(link.name),
