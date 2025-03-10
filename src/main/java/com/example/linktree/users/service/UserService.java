@@ -41,6 +41,10 @@ public class UserService {
         return getUserUpdateDto(user);
     }
 
+    public BigInteger getAllUsers() {
+        return BigInteger.valueOf(userRepository.count());
+    }
+
     public BigInteger findUserIdByEmail(String email) {
         User user = userRepository.findByEmail(email);
         return user != null ? user.getId() : null;
@@ -60,6 +64,8 @@ public class UserService {
         userDto.setContent(user.getContent());
         return userDto;
     }
+
+
 
 
     public User updateUser(UserUpdateDto dto, MultipartFile file) throws IOException {

@@ -33,7 +33,7 @@ export function ProductsEditView() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(endpoints.products.getProducts(user.id));
+        const response = await axios.get(endpoints.products.getProductsById(user.id));
         setProducts(response.data);
       } catch (error) {
         toast.error("Failed to fetch products");
