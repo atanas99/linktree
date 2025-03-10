@@ -44,7 +44,7 @@ import {useAuthContext} from 'src/auth/hooks';
 
 
 const TABLE_HEAD = [
-  {id: 'img', label: 'Image', width: 240},
+  {id: 'img', label: 'Image', width: 140},
   {id: 'name', label: 'Name', width: 140},
   {id: 'category', label: 'Category', width: 140},
   {id: 'url', label: 'URL', width: 140},
@@ -52,9 +52,9 @@ const TABLE_HEAD = [
 
 // ----------------------------------------------------------------------
 
-export function ProductTable({products}) {
+export function ProductTable({products, profile}) {
 
-  const table = useTable({defaultOrderBy: 'username'});
+  const table = useTable({defaultOrderBy: 'productname'});
 
   const router = useRouter();
 
@@ -91,11 +91,12 @@ export function ProductTable({products}) {
 
   const renderContent = () => {
     return (
-          <Card sx={{pt: 3, mt: 3}}>
+          <Card sx={{pt: 3, minWidth: 1000, mt: 3}}>
             <ProductTableToolbar
               filters={filters}
               onResetPage={table.onResetPage}
               dateError={dateError}
+              profile={profile}
             />
 
             {canReset && (
@@ -125,10 +126,7 @@ export function ProductTable({products}) {
                         table.page * table.rowsPerPage + table.rowsPerPage
                       )
                       .map((row) => (
-                        <ProductTableRow
-                          key={row.username}
-                          row={row}
-                        />
+                        <ProductTableRow key={`${row.productname}-${row.id}`} row={row} />
                       ))}
 
                     <TableEmptyRows
@@ -174,7 +172,7 @@ function applyFilter({inputData, comparator, filters, dateError}) {
 
   if (name) {
     inputData = inputData.filter(
-      (order) => order.username.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      (order) => order.productname.toLowerCase().indexOf(name.toLowerCase()) !== -1
     );
   }
 

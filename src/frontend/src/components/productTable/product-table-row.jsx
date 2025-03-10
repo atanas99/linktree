@@ -6,6 +6,8 @@ import Avatar from '@mui/material/Avatar';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Image from "next/image";
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 
 
 // ----------------------------------------------------------------------
@@ -24,15 +26,15 @@ export function ProductTableRow({row}) {
                 alignItems: 'flex-start',
               }}
             >
-              {row.image &&
-              <Image src={row.image} alt={null} width={50} height={50} />
+              {row.content &&
+                <img src={row.content} alt="Product" style={{width: "100px", height: "100px", objectFit: "cover"}}/>
               }
             </Stack>
           </Stack>
         </TableCell>
         <TableCell>{row.name}</TableCell>
         <TableCell> {row.category} </TableCell>
-        <TableCell> {row.url} </TableCell>
+        <TableCell> <Button href={row.url}> Visit Product </Button> </TableCell>
       </TableRow>
     );
 }

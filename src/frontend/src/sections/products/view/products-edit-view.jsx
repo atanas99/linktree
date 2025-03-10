@@ -23,7 +23,8 @@ export function ProductsEditView() {
   const [products, setProducts] = useState([]);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const {user} = useAuthContext();
-  const tabs = useTabs('edit');
+  const tabs = useTabs({ defaultValue: "edit" });
+
 
   const TABS = [
     {label: 'Edit Products', value: 'edit'},
@@ -34,7 +35,11 @@ export function ProductsEditView() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(endpoints.products.getProductsById(user.id));
-        setProducts(response.data);
+        const updatedProducts = response.data.map(product => ({
+          ...product,
+          content: product.content ? `data:image/png;base64,${product.content}` : product.content
+        }));
+        setProducts(updatedProducts);
       } catch (error) {
         toast.error("Failed to fetch products");
       }
@@ -133,7 +138,7 @@ export function ProductsEditView() {
 
   return (
     <DashboardContent>
-      <Stack spacing={2} direction={"row"} justifyContent={"space-between"}>
+      <Stack spacing={2} direction={"row"} justifyContent={"space-between"} sx={{mt: 2}}>
         <Typography variant="h4" gutterBottom>
           Manage Your Products
         </Typography>
