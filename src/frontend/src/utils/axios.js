@@ -45,7 +45,9 @@ export const endpoints = {
     getUser: (username) => `/users/get/byEmail/${username}`,
     updateUser: '/users/update',
     getUserById: (userId) => `/users/get/byId/${userId}`,
-
-
+  },
+  products: {
+    createProduct: (userId) => `/products/create/byUser/${userId}`,
+    getProductById: (userId) => `/products/get/byUser/${userId}`,
   }
 };
