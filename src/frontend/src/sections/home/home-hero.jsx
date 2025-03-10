@@ -12,9 +12,9 @@ import {m} from 'framer-motion';
 
 import {HeroBackground} from './components/hero-background';
 import {Iconify} from "../../components/iconify";
+import Link from "@mui/material/Link";
 
 export function HomeHero({sx, ...other}) {
-  const theme = useTheme();
   const router = useRouter();
 
   return (
@@ -45,6 +45,18 @@ export function HomeHero({sx, ...other}) {
 
         <Box sx={{mt: 6, mb: 4}}>
           <AnimatedButton onClick={() => router.push(paths.linkTree.root)} big/>
+
+          <Typography variant="body1" sx={{mt: 3}}>
+            Check our new{' '}
+            <Link
+              sx={{color: 'green', cursor: 'pointer', fontWeight: 'bold'}}
+              underline="hover"
+              onClick={() => router.push(paths.products.edit)}
+            >
+              product page!
+            </Link>
+          </Typography>
+
         </Box>
 
 
