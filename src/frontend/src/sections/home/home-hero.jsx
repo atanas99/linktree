@@ -110,7 +110,7 @@ function FeaturesCarousel() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 mx: 'auto',
-                border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`, // Dynamische Umrandung
+                border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`,
               }}
             >
               <CardContent sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
@@ -164,7 +164,8 @@ const socialLinks = [
 ];
 
 function SocialLinks() {
-  const theme = useTheme(); // Theme Hook für Light/Dark Mode
+  const theme = useTheme();
+
 
   return (
     <Box sx={{textAlign: 'center', mt: 6}}>
@@ -173,7 +174,7 @@ function SocialLinks() {
         sx={{
           mb: 3,
           fontWeight: 'bold',
-          color: theme.palette.mode === 'dark' ? 'white' : 'black', // Dynamische Farbe
+          color: theme.palette.mode === 'dark' ? 'white' : 'black',
           letterSpacing: 1,
           fontSize: {xs: '1.5rem', sm: '1.8rem', md: '2rem'},
         }}
