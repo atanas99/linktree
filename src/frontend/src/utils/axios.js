@@ -48,6 +48,6 @@ export const endpoints = {
   },
   products: {
     createProduct: (userId) => `/products/create/byUser/${userId}`,
-    getProductById: (userId) => `/products/get/byUser/${userId}`,
+    getProductsById: (userId) => `/products/get/byUser/${userId}`,
   }
 };
