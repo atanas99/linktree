@@ -23,7 +23,7 @@ export function ProductsEditView() {
   const [products, setProducts] = useState([]);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const {user} = useAuthContext();
-  const tabs = useTabs();
+  const tabs = useTabs('edit');
 
   const TABS = [
     {label: 'Edit Products', value: 'edit'},
@@ -59,7 +59,7 @@ export function ProductsEditView() {
   };
 
   const addProduct = () => {
-    setProducts([...products, {id: Date.now(), name: "", url: "", image: "", category: ""}]);
+    setProducts([...products, {id: Date.now(), name: "", url: "", content: "", category: ""}]);
   };
 
   const removeProduct = (id) => {
@@ -72,7 +72,15 @@ export function ProductsEditView() {
 
   const handleSave = async () => {
     try {
-      await axios.post(endpoints.products.createProduct(user.id), products);
+      await axios.post(
+        endpoints.products.createProduct(user.id),
+        products.map(({ name, url, content, category }) => ({
+          name,
+          url,
+          content: content.replace(/^data:image\/\w+;base64,/, ''), // Base64-Präfix entfernen
+          category,
+        }))
+      );
       toast.success("Products saved successfully");
     } catch (error) {
       toast.error("An error occurred while saving products");

@@ -3,15 +3,15 @@ import { Iconify } from "src/components/iconify";
 import { useState } from "react";
 
 export function ProductItem({ id, product, index, onRemove, onChange }) {
-  const [image, setImage] = useState(product.image || "");
+  const [content, setContent] = useState(product.content || "");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImage(e.target.result);
-        onChange(id, { ...product, image: e.target.result });
+        setContent(e.target.result);
+        onChange(id, { ...product, content: e.target.result });
       };
       reader.readAsDataURL(file);
     }
@@ -26,7 +26,7 @@ export function ProductItem({ id, product, index, onRemove, onChange }) {
         </IconButton>
       </Stack>
       <input type="file" accept="image/*" onChange={handleFileChange} />
-      {image && <img src={image} alt="Product" style={{ width: "100px", height: "100px", objectFit: "cover" }} />}
+      {content && <img src={content} alt="Product" style={{ width: "100px", height: "100px", objectFit: "cover" }} />}
       <TextField
         fullWidth
         label="Product Name"
