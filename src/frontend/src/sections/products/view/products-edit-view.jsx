@@ -22,6 +22,7 @@ import {ProductTable} from "../../../components/productTable/productTable";
 export function ProductsEditView() {
   const [products, setProducts] = useState([]);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
+  const [profile, setProfile] = useState(null);
   const {user} = useAuthContext();
   const tabs = useTabs({ defaultValue: "edit" });
 
@@ -44,8 +45,17 @@ export function ProductsEditView() {
         toast.error("Failed to fetch products");
       }
     };
+    const fetchProfileDetails = async () => {
+      try {
+        const response = await axios.get(endpoints.users.getUserById(user.id));
+        setProfile(response.data);
+      } catch (error) {
+        toast.error("Failed to fetch profile details");
+      }
+    }
     if (user?.id) {
       fetchProducts();
+      fetchProfileDetails();
     }
   }, [user?.id]);
 
@@ -155,7 +165,7 @@ export function ProductsEditView() {
       {renderTabs}
 
       {tabs.value === 'edit' && renderEdit()}
-      {tabs.value === 'table' && <ProductTable products={products} />}
+      {tabs.value === 'table' && <ProductTable products={products} profile={profile} />}
     </DashboardContent>
   );
 }

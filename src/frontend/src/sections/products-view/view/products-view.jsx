@@ -19,7 +19,11 @@ export function ProductsView({userId}) {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(endpoints.products.getProductsById(userId));
-        setProducts(response.data);
+        const updatedProducts = response.data.map(product => ({
+          ...product,
+          content: product.content ? `data:image/png;base64,${product.content}` : product.content
+        }));
+        setProducts(updatedProducts);
 
       } catch (error) {
         toast.error("Failed to fetch links");
@@ -41,15 +45,21 @@ export function ProductsView({userId}) {
 
   return (
     <DashboardContent>
-    <ProductTable products={products} profile={profile}/>
-  <Stack sx={{ mt: 3, textAlign: "center" }}>
-    <Typography variant="body2" sx={{ color: "text.secondary", fontSize: 14 }}>
-      Want to create your own Product Page?
-    </Typography>
-    <Link href={paths.dashboard.root} sx={{ fontSize: 14, fontWeight: 600, color: "primary.main", textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
-      Click here
-    </Link>
-  </Stack>
+      <ProductTable products={products} profile={profile}/>
+      <Stack sx={{mt: 3, textAlign: "center"}}>
+        <Typography variant="body2" sx={{color: "text.secondary", fontSize: 14}}>
+          Want to create your own Product Page?
+        </Typography>
+        <Link href={paths.dashboard.root} sx={{
+          fontSize: 14,
+          fontWeight: 600,
+          color: "primary.main",
+          textDecoration: "none",
+          '&:hover': {textDecoration: "underline"}
+        }}>
+          Click here
+        </Link>
+      </Stack>
     </DashboardContent>
   );
 }

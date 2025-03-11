@@ -41,7 +41,7 @@ export function LinktreeEditView() {
 
   const isValidUrl = (url) => {
     try {
-      new URL(url);
+      URL(url);
       return true;
     } catch {
       return false;

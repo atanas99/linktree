@@ -4,6 +4,7 @@ import {getColorByName, getIconByName} from "./socialMediaStyles";
 import {useEffect, useState} from "react";
 import {useRouter} from "../../routes/hooks";
 import {paths} from "../../routes/paths";
+import Link from "@mui/material/Link";
 
 export function LinksDisplay({links, profileData}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
@@ -50,6 +51,9 @@ export function LinksDisplay({links, profileData}) {
         <Typography variant="body2" color="text.secondary" sx={{backgroundColor: "#FFFFFF"}}>
           {profileData?.email}
         </Typography>
+        <Link href={paths.products.view(profileData.id)} sx={{ fontSize: 14, mt: 2, fontWeight: 600, color: "primary.main", textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
+          Visit the products from {profileData?.name}
+        </Link>
       </Box>
 
       {/* Links */}

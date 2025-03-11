@@ -54,11 +54,7 @@ const TABLE_HEAD = [
 
 export function ProductTable({products, profile}) {
 
-  const table = useTable({defaultOrderBy: 'productname'});
-
-  const router = useRouter();
-
-  const confirm = useBoolean();
+  const table = useTable({defaultOrderBy: 'name'});
 
   const [tableData, setTableData] = useState(products || []);
 
@@ -126,7 +122,7 @@ export function ProductTable({products, profile}) {
                         table.page * table.rowsPerPage + table.rowsPerPage
                       )
                       .map((row) => (
-                        <ProductTableRow key={`${row.productname}-${row.id}`} row={row} />
+                        <ProductTableRow key={`${row.name}-${row.id}`} row={row} />
                       ))}
 
                     <TableEmptyRows
@@ -172,7 +168,7 @@ function applyFilter({inputData, comparator, filters, dateError}) {
 
   if (name) {
     inputData = inputData.filter(
-      (order) => order.productname.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      (order) => order.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
     );
   }
 

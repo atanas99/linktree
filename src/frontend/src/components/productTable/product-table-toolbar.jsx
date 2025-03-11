@@ -9,6 +9,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import { Iconify } from 'src/components/iconify';
 import {Avatar, Typography} from "@mui/material";
+import Link from "@mui/material/Link";
+import {paths} from "../../routes/paths";
 
 // ----------------------------------------------------------------------
 
@@ -52,6 +54,7 @@ export function ProductTableToolbar({ filters, onResetPage, profile }) {
           </Typography>
         </Stack>
       </Stack>
+
 
       <TextField
         value={filters.state.name}
