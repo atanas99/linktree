@@ -105,7 +105,7 @@ function AmountOfLinktrees() {
 
 function FeaturesCarousel() {
   const theme = useTheme();
-  const router = useRouter(); // ✅ Hier useRouter() definieren!
+  const router = useRouter();
 
   const features = [
     { title: 'Effortless Management', description: 'Create and manage all your links in one place – efficiently and intuitively.' },
@@ -157,7 +157,7 @@ function FeaturesCarousel() {
                       color: 'white',
                       '&:hover': { backgroundColor: 'darkgreen' },
                     }}
-                    onClick={() => router.push(paths.products.edit)} // ✅ Jetzt mit router.push!
+                    onClick={() => router.push(paths.products.edit)}
                   >
                     Visit Product Page
                   </Button>
