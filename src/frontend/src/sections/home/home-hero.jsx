@@ -93,12 +93,13 @@ function AmountOfLinktrees() {
 
   return (
     <>
-      <Typography variant="body1" sx={{mt: 1, fontSize: '1rem', fontWeight: 'bold'}}>
-        {amountOfUsers !== null ? amountOfUsers : 'Loading...'}{' '}
-        <Typography component="span" sx={{fontWeight: 'normal'}}>
-          linktrees created
-        </Typography>
+      <Typography variant="body1" sx={{ mt: 1, fontSize: '1rem', fontWeight: 'bold', display: 'inline' }}>
+        {amountOfUsers !== null ? amountOfUsers : 'Loading...'}
       </Typography>
+      <Typography variant="body1" sx={{ fontSize: '1rem', fontWeight: 'normal', display: 'inline' }}>
+        {' '}linktrees created
+      </Typography>
+
     </>
   );
 }
