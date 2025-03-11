@@ -12,9 +12,9 @@ import {m} from 'framer-motion';
 
 import {HeroBackground} from './components/hero-background';
 import {Iconify} from "../../components/iconify";
+import Link from "@mui/material/Link";
 
 export function HomeHero({sx, ...other}) {
-  const theme = useTheme();
   const router = useRouter();
 
   return (
@@ -45,6 +45,18 @@ export function HomeHero({sx, ...other}) {
 
         <Box sx={{mt: 6, mb: 4}}>
           <AnimatedButton onClick={() => router.push(paths.linkTree.root)} big/>
+
+          <Typography variant="body1" sx={{mt: 3}}>
+            Check our new{' '}
+            <Link
+              sx={{color: 'green', cursor: 'pointer', fontWeight: 'bold'}}
+              underline="hover"
+              onClick={() => router.push(paths.products.edit)}
+            >
+              product page!
+            </Link>
+          </Typography>
+
         </Box>
 
 
@@ -110,7 +122,7 @@ function FeaturesCarousel() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 mx: 'auto',
-                border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`, // Dynamische Umrandung
+                border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`,
               }}
             >
               <CardContent sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
@@ -164,7 +176,8 @@ const socialLinks = [
 ];
 
 function SocialLinks() {
-  const theme = useTheme(); // Theme Hook für Light/Dark Mode
+  const theme = useTheme();
+
 
   return (
     <Box sx={{textAlign: 'center', mt: 6}}>
@@ -173,7 +186,7 @@ function SocialLinks() {
         sx={{
           mb: 3,
           fontWeight: 'bold',
-          color: theme.palette.mode === 'dark' ? 'white' : 'black', // Dynamische Farbe
+          color: theme.palette.mode === 'dark' ? 'white' : 'black',
           letterSpacing: 1,
           fontSize: {xs: '1.5rem', sm: '1.8rem', md: '2rem'},
         }}

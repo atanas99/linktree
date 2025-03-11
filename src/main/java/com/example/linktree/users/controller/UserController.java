@@ -53,4 +53,8 @@ public class UserController {
         userService.updateUser(objectMapper.convertValue(user, UserUpdateDto.class), file);
         return ResponseEntity.ok("User updated successfully");
     }
+    @GetMapping("/all")
+    public BigInteger getAmountOfAllUsers() {
+        return userService.getAllUsers();
+    }
 }

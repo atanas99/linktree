@@ -4,6 +4,7 @@ const ROOTS = {
   AUTH: '/auth',
   DASHBOARD: '/home',
   LINKTREE: '/linktree',
+  PRODUCTS: '/products'
 };
 
 // ----------------------------------------------------------------------
@@ -22,5 +23,10 @@ export const paths = {
   linkTree: {
     root: `${ROOTS.LINKTREE}/edit`,
     view: (id) => `${ROOTS.LINKTREE}/view/${id}`,
+  },
+
+  products: {
+    edit: `${ROOTS.PRODUCTS}/edit`,
+    view: (id) => `${ROOTS.PRODUCTS}/view/${id}`
   },
 };

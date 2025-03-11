@@ -3,6 +3,6 @@
 import {LinktreeHero} from "../linktree-view-hero";
 
 
-export function LinktreeViewView({userId}) {
+export function LinktreeView({userId}) {
   return <LinktreeHero userId={userId}/>;
 }
