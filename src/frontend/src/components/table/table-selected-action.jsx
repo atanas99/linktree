@@ -5,14 +5,14 @@ import Typography from '@mui/material/Typography';
 // ----------------------------------------------------------------------
 
 export function TableSelectedAction({
-  dense,
-  action,
-  rowCount,
-  numSelected,
-  onSelectAllRows,
-  sx,
-  ...other
-}) {
+                                      dense,
+                                      action,
+                                      rowCount,
+                                      numSelected,
+                                      onSelectAllRows,
+                                      sx,
+                                      ...other
+                                    }) {
   if (!numSelected) {
     return null;
   }
@@ -31,7 +31,7 @@ export function TableSelectedAction({
         height: 58,
         position: 'absolute',
         bgcolor: 'primary.lighter',
-        ...(dense && { height: 38 }),
+        ...(dense && {height: 38}),
         ...sx,
       }}
       {...other}
@@ -48,7 +48,7 @@ export function TableSelectedAction({
           ml: 2,
           flexGrow: 1,
           color: 'primary.main',
-          ...(dense && { ml: 3 }),
+          ...(dense && {ml: 3}),
         }}
       >
         {numSelected} selected

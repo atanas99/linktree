@@ -1,6 +1,6 @@
 'use client';
 
-import {useRef, useMemo} from 'react';
+import {useMemo, useRef} from 'react';
 import {useScroll} from 'framer-motion';
 
 // ----------------------------------------------------------------------

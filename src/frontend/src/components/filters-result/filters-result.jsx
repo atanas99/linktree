@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-import { Iconify } from 'src/components/iconify';
+import {Iconify} from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -10,12 +10,12 @@ export const chipProps = {
   variant: 'soft',
 };
 
-export function FiltersResult({ totalResults, onReset, sx, children }) {
+export function FiltersResult({totalResults, onReset, sx, children}) {
   return (
     <Box sx={sx}>
-      <Box sx={{ mb: 1.5, typography: 'body2' }}>
+      <Box sx={{mb: 1.5, typography: 'body2'}}>
         <strong>{totalResults}</strong>
-        <Box component="span" sx={{ color: 'text.secondary', ml: 0.25 }}>
+        <Box component="span" sx={{color: 'text.secondary', ml: 0.25}}>
           results found
         </Box>
       </Box>
@@ -26,7 +26,7 @@ export function FiltersResult({ totalResults, onReset, sx, children }) {
         <Button
           color="error"
           onClick={onReset}
-          startIcon={<Iconify icon="solar:trash-bin-trash-bold" />}
+          startIcon={<Iconify icon="solar:trash-bin-trash-bold"/>}
         >
           Clear
         </Button>

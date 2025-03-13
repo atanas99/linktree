@@ -2,8 +2,8 @@ import {experimental_extendTheme as extendTheme} from '@mui/material/styles';
 
 import {setFont} from './styles/utils';
 import {overridesTheme} from './overrides-theme';
-import {shadows, components, typography, colorSchemes, customShadows} from './core';
-import {updateCoreWithSettings, updateComponentsWithSettings} from './with-settings/update-theme';
+import {colorSchemes, components, customShadows, shadows, typography} from './core';
+import {updateComponentsWithSettings, updateCoreWithSettings} from './with-settings/update-theme';
 
 // ----------------------------------------------------------------------
 

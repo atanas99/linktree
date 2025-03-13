@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 
 // ----------------------------------------------------------------------
 
-export function TableSkeleton({ ...other }) {
+export function TableSkeleton({...other}) {
   return (
     <TableRow {...other}>
       <TableCell colSpan={12}>
@@ -18,11 +18,11 @@ export function TableSkeleton({ ...other }) {
               flexShrink: 0,
             }}
           />
-          <Skeleton sx={{ width: 1, height: 12 }} />
-          <Skeleton sx={{ width: 180, height: 12 }} />
-          <Skeleton sx={{ width: 160, height: 12 }} />
-          <Skeleton sx={{ width: 140, height: 12 }} />
-          <Skeleton sx={{ width: 120, height: 12 }} />
+          <Skeleton sx={{width: 1, height: 12}}/>
+          <Skeleton sx={{width: 180, height: 12}}/>
+          <Skeleton sx={{width: 160, height: 12}}/>
+          <Skeleton sx={{width: 140, height: 12}}/>
+          <Skeleton sx={{width: 120, height: 12}}/>
         </Stack>
       </TableCell>
     </TableRow>

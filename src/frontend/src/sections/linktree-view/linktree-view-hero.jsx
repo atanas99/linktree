@@ -69,11 +69,17 @@ export function LinktreeHero({userId, sx, ...other}) {
       >
 
         <LinksDisplay profileData={profile} links={links}/>
-        <Stack sx={{ mt: -1, textAlign: "center" }}>
-          <Typography variant="body2" sx={{ color: "text.secondary", fontSize: 14 }}>
+        <Stack sx={{mt: -1, textAlign: "center"}}>
+          <Typography variant="body2" sx={{color: "text.secondary", fontSize: 14}}>
             Want to create your own Linktree?
           </Typography>
-          <Link href={paths.dashboard.root} sx={{ fontSize: 14, fontWeight: 600, color: "primary.main", textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
+          <Link href={paths.dashboard.root} sx={{
+            fontSize: 14,
+            fontWeight: 600,
+            color: "primary.main",
+            textDecoration: "none",
+            '&:hover': {textDecoration: "underline"}
+          }}>
             Click here
           </Link>
         </Stack>

@@ -93,10 +93,10 @@ function AmountOfLinktrees() {
 
   return (
     <>
-      <Typography variant="body1" sx={{ mt: 1, fontSize: '1rem', fontWeight: 'bold', display: 'inline' }}>
+      <Typography variant="body1" sx={{mt: 1, fontSize: '1rem', fontWeight: 'bold', display: 'inline'}}>
         {amountOfUsers !== null ? amountOfUsers : 'Loading...'}
       </Typography>
-      <Typography variant="body1" sx={{ fontSize: '1rem', fontWeight: 'normal', display: 'inline' }}>
+      <Typography variant="body1" sx={{fontSize: '1rem', fontWeight: 'normal', display: 'inline'}}>
         {' '}linktrees created
       </Typography>
 
@@ -109,21 +109,31 @@ function FeaturesCarousel() {
   const router = useRouter();
 
   const features = [
-    { title: 'Effortless Management', description: 'Create and manage all your links in one place – efficiently and intuitively.' },
-    { title: 'Customize Your Design', description: 'Choose your own colors, layouts, and backgrounds to showcase your style.' },
-    { title: 'Analytics & Insights', description: 'Track clicks, visitor numbers, and engagement in real time.' },
-    { title: 'Social Media Integration', description: 'Seamlessly connect your Instagram, TikTok, Twitter, and other platforms.' },
-    { title: 'Security & Privacy', description: 'All data is encrypted – your privacy remains protected.' },
-    { title: 'Dedicated Product Page', description: 'Create a unique page for your products and increase engagement.' },
+    {
+      title: 'Effortless Management',
+      description: 'Create and manage all your links in one place – efficiently and intuitively.'
+    },
+    {
+      title: 'Customize Your Design',
+      description: 'Choose your own colors, layouts, and backgrounds to showcase your style.'
+    },
+    {title: 'Analytics & Insights', description: 'Track clicks, visitor numbers, and engagement in real time.'},
+    {
+      title: 'Social Media Integration',
+      description: 'Seamlessly connect your Instagram, TikTok, Twitter, and other platforms.'
+    },
+    {title: 'Security & Privacy', description: 'All data is encrypted – your privacy remains protected.'},
+    {title: 'Dedicated Product Page', description: 'Create a unique page for your products and increase engagement.'},
   ];
 
   return (
-    <Container sx={{ my: 5, position: 'relative' }}>
+    <Container sx={{my: 5, position: 'relative'}}>
       <Typography variant="h4" align="center" gutterBottom>
         functions:
       </Typography>
 
-      <Swiper modules={[Pagination, Autoplay]} spaceBetween={20} slidesPerView={1} pagination={{ clickable: true }} autoplay={{ delay: 3000 }} style={{ maxWidth: '800px', margin: 'auto' }} className="custom-swiper">
+      <Swiper modules={[Pagination, Autoplay]} spaceBetween={20} slidesPerView={1} pagination={{clickable: true}}
+              autoplay={{delay: 3000}} style={{maxWidth: '800px', margin: 'auto'}} className="custom-swiper">
         {features.map((feature, index) => (
           <SwiperSlide key={index}>
             <Card
@@ -142,7 +152,7 @@ function FeaturesCarousel() {
                 border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`,
               }}
             >
-              <CardContent sx={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <CardContent sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <Typography variant="h6">{feature.title}</Typography>
                 <Typography variant="body2" color="text.secondary">
                   {feature.description}
@@ -156,7 +166,7 @@ function FeaturesCarousel() {
                       fontWeight: 'bold',
                       backgroundColor: 'green',
                       color: 'white',
-                      '&:hover': { backgroundColor: 'darkgreen' },
+                      '&:hover': {backgroundColor: 'darkgreen'},
                     }}
                     onClick={() => router.push(paths.products.edit)}
                   >

@@ -24,7 +24,7 @@ export function ProductsEditView() {
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const [profile, setProfile] = useState(null);
   const {user} = useAuthContext();
-  const tabs = useTabs({ defaultValue: "edit" });
+  const tabs = useTabs({defaultValue: "edit"});
 
 
   const TABS = [
@@ -66,7 +66,7 @@ export function ProductsEditView() {
 
   const isValidUrl = (url) => {
     try {
-      new URL(url);
+      URL(url);
       return true;
     } catch {
       return false;
@@ -89,7 +89,7 @@ export function ProductsEditView() {
     try {
       await axios.post(
         endpoints.products.createProduct(user.id),
-        products.map(({ name, url, content, category }) => ({
+        products.map(({name, url, content, category}) => ({
           name,
           url,
           content: content.replace(/^data:image\/\w+;base64,/, ''), // Base64-Präfix entfernen
@@ -148,7 +148,7 @@ export function ProductsEditView() {
 
   return (
     <DashboardContent>
-      <Stack spacing={2} direction={"row"} justifyContent={"space-between"} sx={{mt: 2}}>
+      <Stack spacing={2} direction="row" justifyContent="space-between" sx={{mt: 2}}>
         <Typography variant="h4" gutterBottom>
           Manage Your Products
         </Typography>
@@ -165,7 +165,7 @@ export function ProductsEditView() {
       {renderTabs}
 
       {tabs.value === 'edit' && renderEdit()}
-      {tabs.value === 'table' && <ProductTable products={products} profile={profile} />}
+      {tabs.value === 'table' && <ProductTable products={products} profile={profile}/>}
     </DashboardContent>
   );
 }

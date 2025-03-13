@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 
 // ----------------------------------------------------------------------
 
-export function FiltersBlock({ label, children, isShow, sx }) {
+export function FiltersBlock({label, children, isShow, sx}) {
   if (!isShow) {
     return null;
   }

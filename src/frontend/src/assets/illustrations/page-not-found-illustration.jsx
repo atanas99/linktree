@@ -1,15 +1,15 @@
-import { memo } from 'react';
+import {memo} from 'react';
 
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { BackgroundShape } from './background-shape';
+import {BackgroundShape} from './background-shape';
 
 // ----------------------------------------------------------------------
 
-function PageNotFoundIllustration({ hideBackground, sx, ...other }) {
+function PageNotFoundIllustration({hideBackground, sx, ...other}) {
   const theme = useTheme();
 
   const PRIMARY_LIGHT = theme.vars.palette.primary.light;
@@ -27,10 +27,10 @@ function PageNotFoundIllustration({ hideBackground, sx, ...other }) {
       height="100%"
       viewBox="0 0 480 360"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: 320, maxWidth: 1, flexShrink: 0, height: 'auto', ...sx }}
+      sx={{width: 320, maxWidth: 1, flexShrink: 0, height: 'auto', ...sx}}
       {...other}
     >
-      {!hideBackground && <BackgroundShape />}
+      {!hideBackground && <BackgroundShape/>}
 
       <image
         href={`${CONFIG.site.basePath}/assets/illustrations/characters/character-6.webp`}
@@ -45,7 +45,7 @@ function PageNotFoundIllustration({ hideBackground, sx, ...other }) {
         opacity="0.12"
       />
 
-      <path fill="#FFD666" d="M111.1 120c30.8-.5 30.8-46.3 0-46.8-30.8.5-30.8 46.3 0 46.8z" />
+      <path fill="#FFD666" d="M111.1 120c30.8-.5 30.8-46.3 0-46.8-30.8.5-30.8 46.3 0 46.8z"/>
       <path
         fill={PRIMARY_DARKER}
         d="M244.9 182.5c82.3 1.4 82.2 123.8 0 125.2-82.3-1.5-82.3-123.8 0-125.2zm0 23.1c-51.8.9-51.8 77.9 0 78.8 51.8-.9 51.7-77.9 0-78.8z"
@@ -71,8 +71,8 @@ function PageNotFoundIllustration({ hideBackground, sx, ...other }) {
           y2="305.935"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor={PRIMARY_LIGHT} />
-          <stop offset="1" stopColor={PRIMARY_DARK} />
+          <stop stopColor={PRIMARY_LIGHT}/>
+          <stop offset="1" stopColor={PRIMARY_DARK}/>
         </linearGradient>
       </defs>
     </Box>

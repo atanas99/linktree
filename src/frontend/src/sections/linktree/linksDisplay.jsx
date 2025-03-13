@@ -51,7 +51,14 @@ export function LinksDisplay({links, profileData}) {
         <Typography variant="body2" color="text.secondary" sx={{backgroundColor: "#FFFFFF"}}>
           {profileData?.email}
         </Typography>
-        <Link href={paths.products.view(profileData.id)} sx={{ fontSize: 14, mt: 2, fontWeight: 600, color: "primary.main", textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
+        <Link href={paths.products.view(profileData.id)} sx={{
+          fontSize: 14,
+          mt: 2,
+          fontWeight: 600,
+          color: "primary.main",
+          textDecoration: "none",
+          '&:hover': {textDecoration: "underline"}
+        }}>
           Visit the products from {profileData?.name}
         </Link>
       </Box>
