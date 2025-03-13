@@ -66,7 +66,8 @@ export function ProductsEditView() {
 
   const isValidUrl = (url) => {
     try {
-      URL(url);
+      // eslint-disable-next-line no-new
+      new URL(url);
       return true;
     } catch {
       return false;
