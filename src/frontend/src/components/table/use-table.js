@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import {useCallback, useState} from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ export function useTable(props) {
   );
 
   const onUpdatePageDeleteRows = useCallback(
-    ({ totalRowsInPage, totalRowsFiltered }) => {
+    ({totalRowsInPage, totalRowsFiltered}) => {
       const totalSelected = selected.length;
 
       setSelected([]);

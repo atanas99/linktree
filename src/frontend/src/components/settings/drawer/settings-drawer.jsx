@@ -16,7 +16,6 @@ import PRIMARY_COLOR from 'src/theme/with-settings/primary-color.json';
 
 import {Iconify} from '../../iconify';
 import {BaseOption} from './base-option';
-import {NavOptions} from './nav-options';
 import {Scrollbar} from '../../scrollbar';
 import {FontOptions} from './font-options';
 import {useSettingsContext} from '../context';

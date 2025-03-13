@@ -1,33 +1,17 @@
 'use client';
 
-import {useCallback, useEffect, useState} from 'react';
-
-import Tab from '@mui/material/Tab';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
-import Button from '@mui/material/Button';
 import TableBody from '@mui/material/TableBody';
-
-import {paths} from 'src/routes/paths';
-import {useRouter} from 'src/routes/hooks';
-
-import {useBoolean} from 'src/hooks/use-boolean';
 import {useSetState} from 'src/hooks/use-set-state';
 
 import {fIsAfter, fIsBetween} from 'src/utils/format-time';
-
-import {varAlpha} from 'src/theme/styles';
-import {DashboardContent} from 'src/layouts/dashboard';
-
-import {Label} from 'src/components/label';
-import {Iconify} from 'src/components/iconify';
 import {Scrollbar} from 'src/components/scrollbar';
 import {
   emptyRows,
   getComparator,
-  rowInPage,
   TableEmptyRows,
   TableHeadCustom,
   TableNoData,
@@ -38,7 +22,6 @@ import {
 import {ProductTableRow} from './product-table-row';
 import {ProductTableToolbar} from './product-table-toolbar';
 import {ProductTableFiltersResult} from './product-table-filters-result';
-import {useAuthContext} from 'src/auth/hooks';
 
 // ----------------------------------------------------------------------
 
@@ -85,71 +68,71 @@ export function ProductTable({products, profile}) {
 
   const notFound = (!dataFiltered.length && canReset) || !dataFiltered.length;
 
-  const renderContent = () => {
-    return (
-          <Card sx={{pt: 3, minWidth: 1000, mt: 3}}>
-            <ProductTableToolbar
-              filters={filters}
-              onResetPage={table.onResetPage}
-              dateError={dateError}
-              profile={profile}
-            />
+  const renderContent = (
 
-            {canReset && (
-              <ProductTableFiltersResult
-                filters={filters}
-                totalResults={dataFiltered.length}
-                onResetPage={table.onResetPage}
-                sx={{p: 2.5, pt: 0}}
+      <Card sx={{pt: 3, minWidth: 1000, mt: 3}}>
+        <ProductTableToolbar
+          filters={filters}
+          onResetPage={table.onResetPage}
+          dateError={dateError}
+          profile={profile}
+        />
+
+        {canReset && (
+          <ProductTableFiltersResult
+            filters={filters}
+            totalResults={dataFiltered.length}
+            onResetPage={table.onResetPage}
+            sx={{p: 2.5, pt: 0}}
+          />
+        )}
+
+        <Box sx={{position: 'relative'}}>
+          <Scrollbar sx={{minHeight: 444}}>
+            <Table size={table.dense ? 'small' : 'medium'} sx={{minWidth: 960}}>
+              <TableHeadCustom
+                order={table.order}
+                orderBy={table.orderBy}
+                headLabel={TABLE_HEAD}
+                rowCount={dataFiltered.length}
+                onSort={table.onSort}
               />
-            )}
 
-            <Box sx={{position: 'relative'}}>
-              <Scrollbar sx={{minHeight: 444}}>
-                <Table size={table.dense ? 'small' : 'medium'} sx={{minWidth: 960}}>
-                  <TableHeadCustom
-                    order={table.order}
-                    orderBy={table.orderBy}
-                    headLabel={TABLE_HEAD}
-                    rowCount={dataFiltered.length}
-                    onSort={table.onSort}
-                  />
+              <TableBody>
+                {dataFiltered
+                  .slice(
+                    table.page * table.rowsPerPage,
+                    table.page * table.rowsPerPage + table.rowsPerPage
+                  )
+                  .map((row) => (
+                    <ProductTableRow key={`${row.name}-${row.id}`} row={row}/>
+                  ))}
 
-                  <TableBody>
-                    {dataFiltered
-                      .slice(
-                        table.page * table.rowsPerPage,
-                        table.page * table.rowsPerPage + table.rowsPerPage
-                      )
-                      .map((row) => (
-                        <ProductTableRow key={`${row.name}-${row.id}`} row={row} />
-                      ))}
+                <TableEmptyRows
+                  height={table.dense ? 56 : 56 + 20}
+                  emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
+                />
 
-                    <TableEmptyRows
-                      height={table.dense ? 56 : 56 + 20}
-                      emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
-                    />
+                <TableNoData notFound={notFound}/>
+              </TableBody>
+            </Table>
+          </Scrollbar>
+        </Box>
 
-                    <TableNoData notFound={notFound}/>
-                  </TableBody>
-                </Table>
-              </Scrollbar>
-            </Box>
+        <TablePaginationCustom
+          page={table.page}
+          dense={table.dense}
+          count={dataFiltered.length}
+          rowsPerPage={table.rowsPerPage}
+          onPageChange={table.onChangePage}
+          onChangeDense={table.onChangeDense}
+          onRowsPerPageChange={table.onChangeRowsPerPage}
+        />
+      </Card>
+    )
 
-            <TablePaginationCustom
-              page={table.page}
-              dense={table.dense}
-              count={dataFiltered.length}
-              rowsPerPage={table.rowsPerPage}
-              onPageChange={table.onChangePage}
-              onChangeDense={table.onChangeDense}
-              onRowsPerPageChange={table.onChangeRowsPerPage}
-            />
-          </Card>
-    );
-  }
   return (
-    renderContent()
+    renderContent
   );
 }
 

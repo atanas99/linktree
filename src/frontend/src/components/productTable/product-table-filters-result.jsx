@@ -1,22 +1,20 @@
-import { useCallback } from 'react';
+import {useCallback} from 'react';
 
 import Chip from '@mui/material/Chip';
 
-import { fDateRangeShortLabel } from 'src/utils/format-time';
-
-import { chipProps, FiltersBlock, FiltersResult } from 'src/components/filters-result';
+import {chipProps, FiltersBlock, FiltersResult} from 'src/components/filters-result';
 
 // ----------------------------------------------------------------------
 
-export function ProductTableFiltersResult({ filters, totalResults, onResetPage, sx }) {
+export function ProductTableFiltersResult({filters, totalResults, onResetPage, sx}) {
   const handleRemoveKeyword = useCallback(() => {
     onResetPage();
-    filters.setState({ name: '' });
+    filters.setState({name: ''});
   }, [filters, onResetPage]);
 
   const handleRemoveStatus = useCallback(() => {
     onResetPage();
-    filters.setState({ status: 'all' });
+    filters.setState({status: 'all'});
   }, [filters, onResetPage]);
 
   const handleReset = useCallback(() => {
@@ -31,12 +29,12 @@ export function ProductTableFiltersResult({ filters, totalResults, onResetPage, 
           {...chipProps}
           label={filters.state.status}
           onDelete={handleRemoveStatus}
-          sx={{ textTransform: 'capitalize' }}
+          sx={{textTransform: 'capitalize'}}
         />
       </FiltersBlock>
 
       <FiltersBlock label="Keyword:" isShow={!!filters.state.name}>
-        <Chip {...chipProps} label={filters.state.name} onDelete={handleRemoveKeyword} />
+        <Chip {...chipProps} label={filters.state.name} onDelete={handleRemoveKeyword}/>
       </FiltersBlock>
     </FiltersResult>
   );

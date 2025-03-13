@@ -1,20 +1,15 @@
 import {useCallback, useEffect, useState} from 'react';
 
 import Stack from '@mui/material/Stack';
-import MenuList from '@mui/material/MenuList';
-import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { Iconify } from 'src/components/iconify';
+import {Iconify} from 'src/components/iconify';
 import {Avatar, Typography} from "@mui/material";
-import Link from "@mui/material/Link";
-import {paths} from "../../routes/paths";
 
 // ----------------------------------------------------------------------
 
-export function ProductTableToolbar({ filters, onResetPage, profile }) {
+export function ProductTableToolbar({filters, onResetPage, profile}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
 
   useEffect(() => {
@@ -26,7 +21,7 @@ export function ProductTableToolbar({ filters, onResetPage, profile }) {
   const handleFilterName = useCallback(
     (event) => {
       onResetPage();
-      filters.setState({ name: event.target.value });
+      filters.setState({name: event.target.value});
     },
     [filters, onResetPage]
   );
@@ -37,13 +32,13 @@ export function ProductTableToolbar({ filters, onResetPage, profile }) {
       spacing={2}
       alignItems="center"
       justifyContent="space-between"
-      sx={{ p: 2.5 }}
+      sx={{p: 2.5}}
     >
       <Stack direction="row" spacing={1} alignItems="center">
         <Avatar
           src={avatarPreview}
           alt={null}
-          sx={{ width: 100, height: 100}}
+          sx={{width: 100, height: 100}}
         />
         <Stack spacing={0.5}>
           <Typography variant="h5" fontWeight="bold">
@@ -63,11 +58,11 @@ export function ProductTableToolbar({ filters, onResetPage, profile }) {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled' }} />
+              <Iconify icon="eva:search-fill" sx={{color: 'text.disabled'}}/>
             </InputAdornment>
           ),
         }}
-        sx={{ width: 250 }}
+        sx={{width: 250}}
       />
     </Stack>
 

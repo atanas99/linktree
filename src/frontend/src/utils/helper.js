@@ -1,5 +1,3 @@
-
-
 export function isEqual(a, b) {
   if (a === null || a === undefined || b === null || b === undefined) {
     return a === b;

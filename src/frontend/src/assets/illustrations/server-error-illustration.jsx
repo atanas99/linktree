@@ -1,15 +1,15 @@
-import { memo } from 'react';
+import {memo} from 'react';
 
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-import { CONFIG } from 'src/config-global';
+import {CONFIG} from 'src/config-global';
 
-import { BackgroundShape } from './background-shape';
+import {BackgroundShape} from './background-shape';
 
 // ----------------------------------------------------------------------
 
-function ServerErrorIllustration({ hideBackground, sx, ...other }) {
+function ServerErrorIllustration({hideBackground, sx, ...other}) {
   const theme = useTheme();
 
   const PRIMARY_LIGHTER = theme.vars.palette.primary.lighter;
@@ -29,10 +29,10 @@ function ServerErrorIllustration({ hideBackground, sx, ...other }) {
       height="100%"
       viewBox="0 0 480 360"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: 320, maxWidth: 1, flexShrink: 0, height: 'auto', ...sx }}
+      sx={{width: 320, maxWidth: 1, flexShrink: 0, height: 'auto', ...sx}}
       {...other}
     >
-      {!hideBackground && <BackgroundShape />}
+      {!hideBackground && <BackgroundShape/>}
 
       <image
         href={`${CONFIG.site.basePath}/assets/illustrations/characters/character-8.webp`}
@@ -133,8 +133,8 @@ function ServerErrorIllustration({ hideBackground, sx, ...other }) {
           y2="187.057"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor={PRIMARY_MAIN} />
-          <stop offset="1" stopColor={PRIMARY_DARK} />
+          <stop stopColor={PRIMARY_MAIN}/>
+          <stop offset="1" stopColor={PRIMARY_DARK}/>
         </linearGradient>
 
         <linearGradient
@@ -145,8 +145,8 @@ function ServerErrorIllustration({ hideBackground, sx, ...other }) {
           y2="287.9"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor={PRIMARY_LIGHT} />
-          <stop offset="1" stopColor={PRIMARY_DARK} />
+          <stop stopColor={PRIMARY_LIGHT}/>
+          <stop offset="1" stopColor={PRIMARY_DARK}/>
         </linearGradient>
       </defs>
     </Box>

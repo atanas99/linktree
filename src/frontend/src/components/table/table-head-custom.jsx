@@ -22,15 +22,15 @@ const visuallyHidden = {
 // ----------------------------------------------------------------------
 
 export function TableHeadCustom({
-  sx,
-  order,
-  onSort,
-  orderBy,
-  headLabel,
-  rowCount = 0,
-  numSelected = 0,
-  onSelectAllRows,
-}) {
+                                  sx,
+                                  order,
+                                  onSort,
+                                  orderBy,
+                                  headLabel,
+                                  rowCount = 0,
+                                  numSelected = 0,
+                                  onSelectAllRows,
+                                }) {
   return (
     <TableHead sx={sx}>
       <TableRow>
@@ -53,7 +53,7 @@ export function TableHeadCustom({
             key={headCell.id}
             align={headCell.align || 'left'}
             sortDirection={orderBy === headCell.id ? order : false}
-            sx={{ width: headCell.width, minWidth: headCell.minWidth }}
+            sx={{width: headCell.width, minWidth: headCell.minWidth}}
           >
             {onSort ? (
               <TableSortLabel
@@ -65,7 +65,7 @@ export function TableHeadCustom({
                 {headCell.label}
 
                 {orderBy === headCell.id ? (
-                  <Box sx={{ ...visuallyHidden }}>
+                  <Box sx={{...visuallyHidden}}>
                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                   </Box>
                 ) : null}
