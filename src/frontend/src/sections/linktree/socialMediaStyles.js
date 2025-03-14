@@ -21,7 +21,7 @@ export const socialMediaLinks = [
   },
   {
     name: "Instagram",
-    color: "#E4405F",
+    color:" linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)",
     icon: "mdi:instagram"
   },
   {

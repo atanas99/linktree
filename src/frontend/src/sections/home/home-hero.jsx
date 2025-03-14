@@ -1,23 +1,23 @@
-import {useEffect, useState} from 'react';
-import {useTheme} from '@mui/material/styles';
-import {Box, Button, Card, CardActionArea, CardContent, Container, Grid, Stack, Typography} from '@mui/material';
-import {useRouter} from 'src/routes/hooks';
-import {paths} from 'src/routes/paths';
+import { useEffect, useState } from 'react';
+import { useTheme } from '@mui/material/styles';
+import { Box, Button, Card, CardActionArea, CardContent, Container, Grid, Stack, Typography } from '@mui/material';
+import { useRouter } from 'src/routes/hooks';
+import { paths } from 'src/routes/paths';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import {Autoplay, Pagination} from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
-import {m} from 'framer-motion';
+import { m } from 'framer-motion';
 
-import {HeroBackground} from './components/hero-background';
-import {Iconify} from '../../components/iconify';
+import { HeroBackground } from './components/hero-background';
+import { Iconify } from '../../components/iconify';
 import Link from '@mui/material/Link';
 
-import axiosInstance, {endpoints} from 'src/utils/axios';
+import axiosInstance, { endpoints } from 'src/utils/axios';
 
-export function HomeHero({sx, ...other}) {
+export function HomeHero({ sx, ...other }) {
   const router = useRouter();
 
   return (
@@ -46,33 +46,48 @@ export function HomeHero({sx, ...other}) {
           position: 'relative',
         }}
       >
-        <Box sx={{mt: 6, mb: 4}}>
-          <AnimatedButton onClick={() => router.push(paths.linkTree.root)} big/>
+        <Box sx={{ mt: 6, mb: 4 }}>
+          <AnimatedButton onClick={() => router.push(paths.linkTree.root)} big />
 
-          <Typography variant="body1" sx={{mt: 3, fontSize: '1.25rem'}}>
+          <Typography variant="body1" sx={{ mt: 3, fontSize: '1.25rem' }}>
             Check our new{' '}
             <Link
-              sx={{color: 'green', cursor: 'pointer', fontWeight: 'bold'}}
+              sx={{ color: 'primary.main', cursor: 'pointer', fontWeight: 'bold' }}
               underline="hover"
               onClick={() => router.push(paths.products.edit)}
             >
               product page!
             </Link>
           </Typography>
-
-          <Typography variant="body1" sx={{mt: 1, fontSize: '1.25rem'}}>
-            <AmountOfLinktrees/>
-
+          <AmountOfLinktrees />
+        </Box>
+        <FeaturesCarousel />
+        <SocialLinks />
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+          <Typography variant="body1" sx={{ fontSize: '1.00rem', mr: 2 }}>
+            {' '}
+            <Link
+              sx={{ color: 'primary.main', cursor: 'pointer', fontWeight: 'bold' }}
+              underline="hover"
+              onClick={() => router.push(paths.legalNotice)}
+            >
+              Legal notice
+            </Link>
+          </Typography>
+          <Typography variant="body1" sx={{ fontSize: '1.00rem' }}>
+            {' '}
+            <Link
+              sx={{ color: 'primary.main', cursor: 'pointer', fontWeight: 'bold' }}
+              underline="hover"
+              onClick={() => router.push(paths.dataProtection)}
+            >
+              Data protection
+            </Link>
           </Typography>
         </Box>
-
-        <FeaturesCarousel/>
-
-        <SocialLinks/>
-
       </Container>
 
-      <HeroBackground sx={{zIndex: 1}}/>
+      <HeroBackground sx={{ zIndex: 1 }} />
     </Stack>
   );
 }
@@ -93,13 +108,12 @@ function AmountOfLinktrees() {
 
   return (
     <>
-      <Typography variant="body1" sx={{mt: 1, fontSize: '1rem', fontWeight: 'bold', display: 'inline'}}>
+      <Typography variant="body1" sx={{ mt: 1, fontSize: '1rem', fontWeight: 'bold', display: 'inline' }}>
         {amountOfUsers !== null ? amountOfUsers : 'Loading...'}
       </Typography>
-      <Typography variant="body1" sx={{fontSize: '1rem', fontWeight: 'normal', display: 'inline'}}>
+      <Typography variant="body1" sx={{ fontSize: '1rem', fontWeight: 'normal', display: 'inline' }}>
         {' '}linktrees created
       </Typography>
-
     </>
   );
 }
@@ -117,23 +131,34 @@ function FeaturesCarousel() {
       title: 'Customize Your Design',
       description: 'Choose your own colors, layouts, and backgrounds to showcase your style.'
     },
-    {title: 'Analytics & Insights', description: 'Track clicks, visitor numbers, and engagement in real time.'},
+    { title: 'Analytics & Insights', description: 'Track clicks, visitor numbers, and engagement in real time.' },
     {
       title: 'Social Media Integration',
       description: 'Seamlessly connect your Instagram, TikTok, Twitter, and other platforms.'
     },
-    {title: 'Security & Privacy', description: 'All data is encrypted – your privacy remains protected.'},
-    {title: 'Dedicated Product Page', description: 'Create a unique page for your products and increase engagement.'},
+    {
+      title: 'Security & Privacy', description: 'All data is encrypted – your privacy remains protected.'
+    },
+    {
+      title: 'Dedicated Product Page', description: 'Create a unique page for your products and increase engagement.'
+    },
   ];
 
   return (
-    <Container sx={{my: 5, position: 'relative'}}>
+    <Container sx={{ my: 5, position: 'relative' }}>
       <Typography variant="h4" align="center" gutterBottom>
-        functions:
+        Functions:
       </Typography>
 
-      <Swiper modules={[Pagination, Autoplay]} spaceBetween={20} slidesPerView={1} pagination={{clickable: true}}
-              autoplay={{delay: 3000}} style={{maxWidth: '800px', margin: 'auto'}} className="custom-swiper">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+        style={{ maxWidth: '800px', margin: 'auto' }}
+        className="custom-swiper"
+      >
         {features.map((feature, index) => (
           <SwiperSlide key={index}>
             <Card
@@ -152,7 +177,7 @@ function FeaturesCarousel() {
                 border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`,
               }}
             >
-              <CardContent sx={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              <CardContent sx={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Typography variant="h6">{feature.title}</Typography>
                 <Typography variant="body2" color="text.secondary">
                   {feature.description}
@@ -166,7 +191,7 @@ function FeaturesCarousel() {
                       fontWeight: 'bold',
                       backgroundColor: 'green',
                       color: 'white',
-                      '&:hover': {backgroundColor: 'darkgreen'},
+                      '&:hover': { backgroundColor: 'darkgreen' },
                     }}
                     onClick={() => router.push(paths.products.edit)}
                   >
@@ -186,7 +211,7 @@ export function SocialLinks() {
   const theme = useTheme();
 
   return (
-    <Box sx={{textAlign: 'center', mt: 6}}>
+    <Box sx={{ textAlign: 'center', mt: 6 }}>
       <Typography
         variant="h4"
         sx={{
@@ -194,20 +219,19 @@ export function SocialLinks() {
           fontWeight: 'bold',
           color: theme.palette.mode === 'dark' ? 'white' : 'black',
           letterSpacing: 1,
-          fontSize: {xs: '1.5rem', sm: '1.8rem', md: '2rem'},
+          fontSize: { xs: '1.5rem', sm: '1.8rem', md: '2rem' },
         }}
       >
         Get your links:
       </Typography>
 
-      <Grid container spacing={2} justifyContent="center"
-            sx={{position: 'relative', zIndex: 10, pointerEvents: 'auto'}}>
+      <Grid container spacing={2} justifyContent="center" sx={{ position: 'relative', zIndex: 10, pointerEvents: 'auto' }}>
         {socialLinks.map((link) => (
           <Grid item key={link.name}>
-            <Card sx={{backgroundColor: '#181818', borderRadius: 2}}>
+            <Card sx={{ backgroundColor: '#181818', borderRadius: 2 }}>
               <CardActionArea onClick={() => window.open(link.url, '_blank')}>
-                <CardContent sx={{display: 'flex', alignItems: 'center', gap: 2}}>
-                  <Iconify icon={link.icon} width="28" height="28" color="white"/>
+                <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Iconify icon={link.icon} width="28" height="28" color="white" />
                   <Typography color="white">{link.name}</Typography>
                 </CardContent>
               </CardActionArea>
@@ -219,9 +243,9 @@ export function SocialLinks() {
   );
 }
 
-function AnimatedButton({onClick, big = false}) {
+function AnimatedButton({ onClick, big = false }) {
   return (
-    <m.div whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
+    <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <Button
         onClick={onClick}
         variant="contained"
@@ -240,12 +264,11 @@ function AnimatedButton({onClick, big = false}) {
 }
 
 const socialLinks = [
-  {name: 'Instagram', url: 'https://instagram.com', icon: 'fa6-brands:instagram'},
-  {name: 'TikTok', url: 'https://www.tiktok.com', icon: 'fa6-brands:tiktok'},
-  {name: 'X', url: 'https://twitter.com', icon: 'fa6-brands:x-twitter'},
-  {name: 'Pinterest', url: 'https://www.pinterest.com', icon: 'fa6-brands:pinterest'},
-  {name: 'LinkedIn', url: 'https://linkedin.com', icon: 'fa6-brands:linkedin'},
-  {name: 'Xing', url: 'https://www.xing.com', icon: 'fa6-brands:xing'},
-  {name: 'YouTube', url: 'https://www.youtube.com', icon: 'fa6-brands:youtube'},
+  { name: 'Instagram', url: 'https://instagram.com', icon: 'fa6-brands:instagram' },
+  { name: 'TikTok', url: 'https://www.tiktok.com', icon: 'fa6-brands:tiktok' },
+  { name: 'X', url: 'https://twitter.com', icon: 'fa6-brands:x-twitter' },
+  { name: 'Pinterest', url: 'https://www.pinterest.com', icon: 'fa6-brands:pinterest' },
+  { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'fa6-brands:linkedin' },
+  { name: 'Xing', url: 'https://www.xing.com', icon: 'fa6-brands:xing' },
+  { name: 'YouTube', url: 'https://www.youtube.com', icon: 'fa6-brands:youtube' },
 ];
-

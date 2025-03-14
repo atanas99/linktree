@@ -1,7 +1,7 @@
 import {useTheme} from '@mui/material/styles';
 import {Container, Stack} from '@mui/material';
 
-import {HeroBackground} from './components/hero-background';
+import {HeroBackground} from '../home/components/hero-background';
 import {useRouter} from 'src/routes/hooks';
 import {LinksDisplay} from "../linktree/linksDisplay";
 import {useEffect, useState} from "react";
