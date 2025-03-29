@@ -6,9 +6,10 @@ import {useRouter} from "../../routes/hooks";
 import {paths} from "../../routes/paths";
 import Link from "@mui/material/Link";
 
+//Phone mockup with links
+
 export function LinksDisplay({links, profileData}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
     if (profileData?.content) {

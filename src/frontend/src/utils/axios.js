@@ -14,22 +14,7 @@ axiosInstance.interceptors.response.use(
 export default axiosInstance;
 
 // ----------------------------------------------------------------------
-
-export const fetcher = async (args) => {
-  try {
-    const [url, config] = Array.isArray(args) ? args : [args];
-
-    const res = await axiosInstance.get(url, {...config});
-
-    return res.data;
-  } catch (error) {
-    console.error('Failed to fetch:', error);
-    throw error;
-  }
-};
-
-// ----------------------------------------------------------------------
-
+//ALL API ENDPOINTS
 export const endpoints = {
   auth: {
     signIn: '/session/login',

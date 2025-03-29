@@ -3,7 +3,7 @@ import {ProductsEditView} from "../../../sections/products/view/products-edit-vi
 
 // ----------------------------------------------------------------------
 
-export const metadata = {title: `Create - ${CONFIG.site.name}`};
+export const metadata = {title: `Edit products - ${CONFIG.site.name}`};
 
 export default function Page() {
   return (

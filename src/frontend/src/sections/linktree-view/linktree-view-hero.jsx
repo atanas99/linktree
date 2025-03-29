@@ -1,8 +1,6 @@
-import {useTheme} from '@mui/material/styles';
 import {Container, Stack} from '@mui/material';
 
 import {HeroBackground} from '../home/components/hero-background';
-import {useRouter} from 'src/routes/hooks';
 import {LinksDisplay} from "../linktree/linksDisplay";
 import {useEffect, useState} from "react";
 import axios, {endpoints} from "../../utils/axios";
@@ -12,15 +10,13 @@ import Link from "@mui/material/Link";
 import {paths} from "../../routes/paths";
 
 // ----------------------------------------------------------------------
-
+//Hero for the background effects
 export function LinktreeHero({userId, sx, ...other}) {
 
-  const theme = useTheme();
-  const router = useRouter();
   const [links, setLinks] = useState([]);
   const [profile, setProfile] = useState({});
   useEffect(() => {
-    const fetchLinks = async () => {
+    const fetchLinks = async () => { //fetch user links
       try {
         const response = await axios.get(endpoints.links.getLinks(userId));
         setLinks(response.data);
@@ -78,6 +74,7 @@ export function LinktreeHero({userId, sx, ...other}) {
             fontWeight: 600,
             color: "primary.main",
             textDecoration: "none",
+            zIndex: 10,
             '&:hover': {textDecoration: "underline"}
           }}>
             Click here

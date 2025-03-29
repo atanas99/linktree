@@ -29,7 +29,7 @@ export function Main({children, sx, ...other}) {
 }
 
 // ----------------------------------------------------------------------
-
+//Component to render the content of the dashboard and respect the settings of the user
 export function DashboardContent({sx, children, disablePadding, maxWidth = 'lg', ...other}) {
   const theme = useTheme();
 

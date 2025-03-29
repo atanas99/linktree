@@ -3,7 +3,7 @@ import {LinktreeView} from "../../../../sections/linktree-view/view/linktree-vie
 
 // ----------------------------------------------------------------------
 
-export const metadata = {title: `Create - ${CONFIG.site.name}`};
+export const metadata = {title: `View linktree - ${CONFIG.site.name}`};
 
 export default function Page({params}) {
   const {id} = params;

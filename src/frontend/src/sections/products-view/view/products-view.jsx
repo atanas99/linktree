@@ -16,7 +16,7 @@ export function ProductsView({userId}) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProducts = async () => { //fetch user products
       try {
         const response = await axios.get(endpoints.products.getProductsById(userId));
         const updatedProducts = response.data.map(product => ({

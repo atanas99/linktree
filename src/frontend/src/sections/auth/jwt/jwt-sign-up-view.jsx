@@ -23,7 +23,6 @@ import {Iconify} from 'src/components/iconify';
 import {Field, Form} from 'src/components/hook-form';
 
 import {signUp} from 'src/auth/context/jwt';
-import {useAuthContext} from 'src/auth/hooks';
 import {toast} from "sonner";
 
 // ----------------------------------------------------------------------
@@ -44,7 +43,6 @@ export const SignUpSchema = zod.object({
 // ----------------------------------------------------------------------
 
 export function JwtSignUpView() {
-  const {checkUserSession} = useAuthContext();
 
   const router = useRouter();
 

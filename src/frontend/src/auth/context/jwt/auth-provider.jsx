@@ -22,15 +22,15 @@ export function AuthProvider({children}) {
   const checkUserSession = useCallback(async () => {
     try {
       const accessToken = localStorage.getItem(STORAGE_KEY);
-      if (accessToken && isValidToken(accessToken)) {
+      if (accessToken && isValidToken(accessToken)) { //when accessToken is valid and not expired user is authenticated
         await setSession(accessToken);
         const email = jwtDecode(accessToken).sub
-        const res = await axios.get(endpoints.users.getUser(email));
+        const res = await axios.get(endpoints.users.getUser(email)); //get user data from backend
         const user = res.data;
 
-        setState({user: {...user, accessToken}, loading: false});
+        setState({user: {...user, accessToken}, loading: false}); //set user data in state
       } else {
-        setState({user: null, loading: false});
+        setState({user: null, loading: false}); //if accessToken is invalid or expired user is not authenticated
         await signOut();
       }
     } catch (error) {
@@ -70,5 +70,5 @@ export function AuthProvider({children}) {
     [checkUserSession, state.user, status]
   );
 
-  return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>; //returning the context provider
 }

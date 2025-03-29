@@ -1,7 +1,7 @@
 import {Card, IconButton, MenuItem, Select, Stack, TextField, Typography} from "@mui/material";
 import {Iconify} from "src/components/iconify";
 import {useState} from "react";
-
+//Item for the Products
 export function ProductItem({id, product, index, onRemove, onChange}) {
   const [content, setContent] = useState(product.content || "");
 
