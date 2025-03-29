@@ -96,7 +96,7 @@ export function HomeHero({ sx, ...other }) {
 function AmountOfLinktrees() {
   const [amountOfUsers, setAmountOfUsers] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { //display the amount of linktrees created
     axiosInstance
       .get(endpoints.users.getAmountOfUsers)
       .then((response) => {
@@ -119,7 +119,7 @@ function AmountOfLinktrees() {
   );
 }
 
-function FeaturesCarousel() {
+function FeaturesCarousel() { //display the features of the linktree
   const theme = useTheme();
   const router = useRouter();
 
@@ -208,7 +208,7 @@ function FeaturesCarousel() {
   );
 }
 
-export function SocialLinks() {
+export function SocialLinks() {  //display the social media links
   const theme = useTheme();
 
   return (
@@ -267,7 +267,7 @@ function AnimatedButton({ onClick, big = false }) {
 const socialLinks = [
   { name: 'Instagram', url: 'https://instagram.com', icon: 'fa6-brands:instagram' },
   { name: 'TikTok', url: 'https://www.tiktok.com', icon: 'fa6-brands:tiktok' },
-  { name: 'X', url: 'https://twitter.com', icon: 'fa6-brands:x-twitter' },
+  { name: 'Twitter', url: 'https://twitter.com', icon: 'fa6-brands:x-twitter' },
   { name: 'Pinterest', url: 'https://www.pinterest.com', icon: 'fa6-brands:pinterest' },
   { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'fa6-brands:linkedin' },
   { name: 'Xing', url: 'https://www.xing.com', icon: 'fa6-brands:xing' },

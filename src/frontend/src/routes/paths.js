@@ -9,6 +9,7 @@ const ROOTS = {
 
 // ----------------------------------------------------------------------
 
+//ALL PATHS IN THE APPLICATION
 export const paths = {
   // AUTH
   auth: {

@@ -25,6 +25,7 @@ export const ProfileUpdateSchema = zod.object({
 
 // ----------------------------------------------------------------------
 
+//Form to update user attributes
 export function ProfileUpdateView({currentUser, open, onClose}) {
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
