@@ -87,6 +87,7 @@ export function LinksDisplay({links, profileData}) {
               startIcon={<Iconify icon={getIconByName(link.name)}/>}
               sx={{
                 backgroundColor: getColorByName(link.name),
+                backgroundImage: getColorByName(link.name),
                 position: "relative",
                 width: "100%",
                 height: "50px",

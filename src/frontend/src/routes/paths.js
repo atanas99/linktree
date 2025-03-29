@@ -29,4 +29,6 @@ export const paths = {
     edit: `${ROOTS.PRODUCTS}/edit`,
     view: (id) => `${ROOTS.PRODUCTS}/view/${id}`
   },
+  legalNotice: '/legal-notice',
+  dataProtection: '/data-protection'
 };
