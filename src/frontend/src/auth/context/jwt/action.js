@@ -38,7 +38,6 @@ export const signUp = async ({email, password, name, surname}) => {
   };
 
   try {
-    console.log(params)
     await axios.post(endpoints.auth.signUp, params);
   } catch (error) {
     console.error('Error during sign up:', error);

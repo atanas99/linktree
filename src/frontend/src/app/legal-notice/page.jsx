@@ -3,7 +3,7 @@ import {LegalNoticeView} from 'src/sections/legal-notice/components/LegalNoticeV
 
 // ----------------------------------------------------------------------
 
-export const metadata = {title: `Create - ${CONFIG.site.name}`};
+export const metadata = {title: `Legal notice - ${CONFIG.site.name}`};
 
 export default function Page() {
   return (

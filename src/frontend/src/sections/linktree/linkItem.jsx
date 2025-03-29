@@ -2,6 +2,10 @@ import {Card, IconButton, ListItemIcon, MenuItem, Select, Stack, TextField, Typo
 import {Iconify} from 'src/components/iconify';
 import {socialMediaLinks} from "./socialMediaStyles";
 
+
+
+//Item to display a link in the list
+
 export function LinkItem({id, link, index, onRemove, onChange}) {
   return (
     <Card sx={{p: 2, mt: 2, display: 'flex', flexDirection: 'column', gap: 2}}>

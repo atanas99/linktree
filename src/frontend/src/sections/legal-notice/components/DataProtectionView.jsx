@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Box, Link, Card, Grid } from '@mui/material';
-import { DashboardContent } from "../../../layouts/dashboard";
+import {Box, Card, Grid, Typography} from '@mui/material';
+import {DashboardContent} from "../../../layouts/dashboard";
 
 export function DataProtectionView() {
   return (

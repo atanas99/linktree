@@ -33,7 +33,7 @@ export function ProductsEditView() {
   ];
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProducts = async () => { //fetch user products if there are any yet
       try {
         const response = await axios.get(endpoints.products.getProductsById(user.id));
         const updatedProducts = response.data.map(product => ({

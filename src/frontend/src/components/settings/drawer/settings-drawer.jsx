@@ -28,12 +28,7 @@ import {FullScreenButton} from './fullscreen-button';
 export function SettingsDrawer({
                                  sx,
                                  hideFont,
-                                 hideCompact,
                                  hidePresets,
-                                 hideNavColor,
-                                 hideContrast,
-                                 hideNavLayout,
-                                 hideDirection,
                                  hideColorScheme,
                                }) {
   const theme = useTheme();
@@ -80,18 +75,6 @@ export function SettingsDrawer({
         settings.onUpdateField('colorScheme', mode === 'light' ? 'dark' : 'light');
         setMode(mode === 'light' ? 'dark' : 'light');
       }}
-    />
-  );
-
-
-  const renderRTL = (
-    <BaseOption
-      label="Right to left"
-      icon="align-right"
-      selected={settings.direction === 'rtl'}
-      onClick={() =>
-        settings.onUpdateField('direction', settings.direction === 'ltr' ? 'rtl' : 'ltr')
-      }
     />
   );
 
@@ -142,7 +125,6 @@ export function SettingsDrawer({
         <Stack spacing={6} sx={{px: 2.5, pb: 5}}>
           <Box gap={2} display="grid" gridTemplateColumns="repeat(2, 1fr)">
             {!hideColorScheme && renderMode}
-            {!hideDirection && renderRTL}
           </Box>
           {!hidePresets && renderPresets}
           {!hideFont && renderFont}

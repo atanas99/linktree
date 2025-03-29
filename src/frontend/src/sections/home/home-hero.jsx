@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
-import { useTheme } from '@mui/material/styles';
-import { Box, Button, Card, CardActionArea, CardContent, Container, Grid, Stack, Typography } from '@mui/material';
-import { useRouter } from 'src/routes/hooks';
-import { paths } from 'src/routes/paths';
+import {useEffect, useState} from 'react';
+import {useTheme} from '@mui/material/styles';
+import {Box, Button, Card, CardActionArea, CardContent, Container, Grid, Stack, Typography} from '@mui/material';
+import {useRouter} from 'src/routes/hooks';
+import {paths} from 'src/routes/paths';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
+import {Autoplay, Pagination} from 'swiper/modules';
 
-import { m } from 'framer-motion';
+import {m} from 'framer-motion';
 
-import { HeroBackground } from './components/hero-background';
-import { Iconify } from '../../components/iconify';
+import {HeroBackground} from './components/hero-background';
+import {Iconify} from '../../components/iconify';
 import Link from '@mui/material/Link';
 
-import axiosInstance, { endpoints } from 'src/utils/axios';
+import axiosInstance, {endpoints} from 'src/utils/axios';
 
+//Hero for the background effects
 export function HomeHero({ sx, ...other }) {
   const router = useRouter();
 

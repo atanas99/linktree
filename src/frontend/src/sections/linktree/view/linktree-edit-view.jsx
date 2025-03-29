@@ -17,7 +17,7 @@ export function LinktreeEditView() {
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const {user} = useAuthContext();
 
-  useEffect(() => {
+  useEffect(() => { //fetch links if there are any yet
     const fetchLinks = async () => {
       try {
         const response = await axios.get(endpoints.links.getLinks(user.id));
